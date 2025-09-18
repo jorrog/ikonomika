@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивен тест: Основи на маркетинга</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FFF7;
+        }
+        .answer-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .selected {
+            background-color: #45B7D1 !important;
+            color: white !important;
+            border-color: #45B7D1 !important;
+        }
+        .correct {
+            background-color: #4ECDC4 !important;
+            color: #1A535C !important;
+            border-color: #4ECDC4 !important;
+        }
+        .incorrect {
+            background-color: #FF6B6B !important;
+            color: white !important;
+            border-color: #FF6B6B !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+        <div id="quiz-container">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A535C]">Тест: Светът на маркетинга</h2>
+                    <div id="progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="question-card" class="mb-6">
+                    <p id="question" class="text-2xl font-bold text-[#1A535C] leading-snug"></p>
+                    <p id="hint" class="text-sm text-gray-500 mt-2 italic"></p>
+                </div>
+                <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Предишен</button>
+                <button id="next-btn" class="bg-[#1A535C] text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Следващ</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="p-8 text-center hidden">
+            <h2 class="text-3xl font-bold text-[#1A535C] mb-4">Тестът приключи!</h2>
+            <p class="text-xl text-gray-600 mb-2">Вашият резултат е:</p>
+            <p id="score" class="text-6xl font-bold text-[#45B7D1] mb-6"></p>
+            <p id="score-text" class="text-lg text-gray-500 mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="restart-btn" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition duration-300">Нов опит</button>
+                <button id="review-btn" class="bg-[#1A535C] text-white font-bold py-3 px-8 rounded-lg hover:bg-opacity-90 transition duration-300">Преглед на отговорите</button>
+            </div>
+        </div>
+        
+        <div id="review-container" class="hidden">
+             <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A535C]">Преглед на отговорите</h2>
+                    <div id="review-progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="review-question-card" class="mb-6">
+                    <p id="review-question" class="text-2xl font-bold text-[#1A535C] leading-snug"></p>
+                </div>
+                <div id="review-options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                 <div id="rationale-card" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold text-yellow-800">Обяснение:</h4>
+                    <p id="rationale-text" class="text-yellow-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="review-prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Предишен</button>
+                <button id="back-to-results-btn" class="bg-[#1A535C] text-white font-bold py-2 px-6 rounded-lg hover:bg-opacity-90 transition duration-300">Към резултатите</button>
+                <button id="review-next-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Следващ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = {
+          "questions": [
+            {
+              "questionNumber": 1,
+              "question": "Кое е основната цел на модерния маркетинг, която едно стартиращо предприятие, насочено към млади хора, трябва да следва?",
+              "answerOptions": [
+                {
+                  "text": "Да произведе възможно най-евтиния продукт, за да има ниска цена.",
+                  "rationale": "Това е производствена концепция. Модерният маркетинг се фокусира върху създаването на стойност за клиента, а не само върху ниската цена.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Да разбере нуждите и желанията на младите хора и да им предложи стойност.",
+                  "rationale": "Точно така! Маркетинговата концепция поставя клиента и неговите нужди в центъра на всички бизнес решения.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Да намери най-евтините материали, за да увеличи печалбата си.",
+                  "rationale": "Фокусът само върху разходите пренебрегва преживяването на клиента, което е ключово за успеха на бранда.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Да продава колкото се може повече, без значение на кого.",
+                  "rationale": "Това е търговска концепция. Ефективният маркетинг се цели в конкретна аудитория и изгражда дълготрайни връзки.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Помисли дали маркетингът се фокусира върху продукта или върху клиента."
+            },
+            {
+              "questionNumber": 2,
+              "question": "Кое от изброените е елемент от \"Продукт\" (Product) в маркетинг микса на предприятие, продаващо потребителски стоки?",
+              "answerOptions": [
+                {
+                  "text": "Публикация в Instagram.",
+                  "rationale": "Това е част от \"Промоция\" (Promotion), тъй като цели да комуникира стойността на продукта.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Карта за лоялни клиенти.",
+                  "rationale": "Това е инструмент, свързан с \"Цена\" (Price) и \"Промоция\" (Promotion), целящ да стимулира повторни покупки.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Атрактивният дизайн на опаковката на продукта.",
+                  "rationale": "Дизайнът, опаковката и характеристиките на самия артикул са ключова част от елемента \"Продукт\".",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Позиционирането на щанд пред училище.",
+                  "rationale": "Това се отнася до \"Място\" (Place), т.е. къде продуктът е достъпен за клиентите.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Този елемент се отнася до всичко, свързано със самия артикул, който клиентът получава – неговите характеристики, дизайн, опаковка."
+            },
+            {
+              "questionNumber": 3,
+              "question": "Решението на една фирма да продава продуктите си на музикален фестивал е част от кой елемент на маркетинг микса?",
+              "answerOptions": [
+                {
+                  "text": "Продукт (Product)",
+                  "rationale": "\"Продукт\" описва какво се продава, а не къде.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Цена (Price)",
+                  "rationale": "\"Цена\" се отнася до сумата, която клиентите плащат.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Място (Place)",
+                  "rationale": "Точно така! \"Място\" (или дистрибуция) се отнася до всички решения, свързани с това как продуктът да достигне до клиента.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Промоция (Promotion)",
+                  "rationale": "\"Промоция\" се отнася до комуникацията с клиента, например реклама.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Този елемент отговаря на въпроса: \"Къде клиентите могат да намерят и закупят продукта?\""
+            },
+            {
+              "questionNumber": 4,
+              "question": "Вярно или невярно: Усмивката и приятелското отношение на продавача са без значение за маркетинга, тъй като се продава физически продукт.",
+              "answerOptions": [
+                {
+                  "text": "Вярно",
+                  "rationale": "Това е грешно. При маркетинга на услуги, човешкият фактор е от огромно значение за цялостното преживяване на клиента.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Невярно",
+                  "rationale": "Точно така! Всеки търговски обект предлага и услуга (обслужване), а при услугите качеството на човешкото взаимодействие е ключов елемент от маркетинга.",
+                  "isCorrect": true
+                }
+              ],
+              "hint": "Помисли дали клиентът купува само продукт или цялостно преживяване."
+            },
+            {
+              "questionNumber": 5,
+              "question": "Кой е най-подходящият промоционален канал за бранд, който цели да достигне до ученици и студенти?",
+              "answerOptions": [
+                {
+                  "text": "Реклама в национален вестник.",
+                  "rationale": "Тази аудитория рядко чете печатни вестници, което прави този канал неефективен и скъп.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Кампании в TikTok и Instagram.",
+                  "rationale": "Това са социалните мрежи, където младите хора прекарват най-много време, което ги прави идеален канал за комуникация.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Телевизионна реклама в праймтайма.",
+                  "rationale": "Телевизионната реклама е изключително скъпа и не е насочена толкова прецизно към младежката аудитория.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Радио реклама в сутрешен блок.",
+                  "rationale": "Въпреки че може да достигне до някои млади хора, този канал не е толкова ефективен и визуален, колкото социалните мрежи.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Къде младите хора прекарват най-много от свободното си време онлайн?"
+            },
+            {
+              "questionNumber": 6,
+              "question": "Ако една компания реши да дарява 5% от печалбата си за засаждане на дървета, тя използва принципите на:",
+              "answerOptions": [
+                {
+                  "text": "Индустриален маркетинг",
+                  "rationale": "Индустриалният маркетинг се занимава с продажби между фирми (B2B), а не с крайни потребители или социални каузи.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Банков маркетинг",
+                  "rationale": "Това е специализиран маркетинг за финансови услуги.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Социален маркетинг (маркетинг с кауза)",
+                  "rationale": "Точно така! Това е стратегия, при която брандът се обвързва със социално значима кауза, за да изгради положителен имидж.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Директен маркетинг",
+                  "rationale": "Директният маркетинг се отнася до директна комуникация с клиента (напр. имейл), а не до подкрепа на каузи.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Тази форма на маркетинг цели да подобри имиджа на компанията, като я свърже с общественополезна дейност."
+            },
+            {
+              "questionNumber": 7,
+              "question": "Кое от изброените е пример за конкурент на малък обект за улична храна?",
+              "answerOptions": [
+                {
+                  "text": "Доставчикът на продукти.",
+                  "rationale": "Доставчикът е партньор, а не конкурент, тъй като не се бори за същите крайни клиенти.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Местен инфлуенсър, който рекламира обекта.",
+                  "rationale": "Инфлуенсърът е промоционален партньор.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Общината, която организира фестивал.",
+                  "rationale": "Общината е партньор или регулатор, но не и пряк конкурент в продажбата на храна.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Вендинг машината за напитки и пакетирани храни наблизо.",
+                  "rationale": "Точно така! Вендинг машината предлага алтернативен начин за задоволяване на същата нужда (бързо хапване/напитка) и се бори за парите на същите клиенти.",
+                  "isCorrect": true
+                }
+              ],
+              "hint": "Конкурент е всеки, който предлага алтернативно решение на същия проблем за същите клиенти."
+            },
+            {
+              "questionNumber": 8,
+              "question": "Коя е първата стъпка от методологията на маркетинговата дейност?",
+              "answerOptions": [
+                {
+                  "text": "Определяне на стратегията (Маркетинг микс).",
+                  "rationale": "Стратегията се определя СЛЕД като имаме информация от анализа.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Анализиране на пазара (потребители, конкуренти).",
+                  "rationale": "Точно така! Всяка успешна маркетингова дейност започва със задълбочено проучване и анализ на пазарната среда.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Реализиране на рекламната кампания.",
+                  "rationale": "Рекламата е част от реализацията, която идва след анализа и стратегията.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Контрол на резултатите.",
+                  "rationale": "Контролът е последната фаза, която измерва успеха на предходните стъпки.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Преди да действаш, трябва да..."
+            },
+            {
+              "questionNumber": 9,
+              "question": "Когато общината (нестопанска организация) организира фестивал, нейната основна маркетингова цел е:",
+              "answerOptions": [
+                {
+                  "text": "Максимална финансова печалба.",
+                  "rationale": "Нестопанските организации по дефиниция не се стремят към печалба.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Да продаде всички билети на всяка цена.",
+                  "rationale": "Това е търговска цел, а целите на нестопанския маркетинг са по-скоро социални и имиджови.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Да изгради положителен обществен образ и да подкрепи общността.",
+                  "rationale": "Точно така! Целите са свързани с репутация, ангажираност на гражданите и постигане на социални ползи.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Да победи конкурентен фестивал в съседен град.",
+                  "rationale": "Въпреки че може да има елемент на конкуренция, основната цел не е комерсиалното надмощие, а обществената полза.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Помисли какви са целите на една организация, чиято основна мисия не е да печели пари."
+            },
+            {
+              "questionNumber": 10,
+              "question": "Основната роля на размяната в маркетинга означава, че:",
+              "answerOptions": [
+                {
+                  "text": "Клиентът винаги трябва да плати възможно най-високата цена.",
+                  "rationale": "Целта е справедлива размяна, а не максимално ощетяване на клиента.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Фирмата трябва да даде възможно най-малко, за да спечели повече.",
+                  "rationale": "Ако фирмата не предоставя стойност, размяната няма да се случи повторно и бизнесът ще се провали.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "И двете страни (клиент и фирма) получават нещо ценно.",
+                  "rationale": "Това е същността на маркетинга – клиентът получава стойност (продукт, преживяване), а фирмата получава стойност (пари, лоялност).",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Размяната се случва само веднъж.",
+                  "rationale": "Целта на маркетинга е да изгради взаимоотношения, които водят до многократни размени (лоялност).",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "За да има успешна сделка, и двете страни трябва да са доволни."
+            }
+          ]
+        };
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const reviewContainer = document.getElementById('review-container');
+        
+        const questionEl = document.getElementById('question');
+        const hintEl = document.getElementById('hint');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        
+        const scoreEl = document.getElementById('score');
+        const scoreTextEl = document.getElementById('score-text');
+
+        const reviewQuestionEl = document.getElementById('review-question');
+        const reviewOptionsEl = document.getElementById('review-options');
+        const reviewProgressEl = document.getElementById('review-progress');
+        const rationaleCardEl = document.getElementById('rationale-card');
+        const rationaleTextEl = document.getElementById('rationale-text');
+        const reviewPrevBtn = document.getElementById('review-prev-btn');
+        const reviewNextBtn = document.getElementById('review-next-btn');
+        const backToResultsBtn = document.getElementById('back-to-results-btn');
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizData.questions.length).fill(null);
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            quizContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.add('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            hintEl.textContent = currentQuestion.hint;
+            optionsEl.innerHTML = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'border-gray-300', 'rounded-lg', 'text-left', 'hover:bg-gray-100', 'hover:border-blue-500');
+                if (userAnswers[currentQuestionIndex] === index) {
+                    button.classList.add('selected');
+                }
+                button.onclick = () => selectAnswer(index);
+                optionsEl.appendChild(button);
+            });
+
+            updateNavigation();
+        }
+
+        function selectAnswer(index) {
+            userAnswers[currentQuestionIndex] = index;
+            const buttons = optionsEl.querySelectorAll('button');
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('selected', i === index);
+            });
+            nextBtn.disabled = false;
+        }
+
+        function updateNavigation() {
+            progressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            
+            if (currentQuestionIndex === quizData.questions.length - 1) {
+                nextBtn.textContent = 'Предай теста';
+            } else {
+                nextBtn.textContent = 'Следващ';
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer !== null && quizData.questions[index].answerOptions[answer].isCorrect) {
+                    score++;
+                }
+            });
+
+            const totalQuestions = quizData.questions.length;
+            scoreEl.textContent = `${score} / ${totalQuestions}`;
+
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage >= 80) {
+                scoreTextEl.textContent = 'Отличен резултат! Мислиш като истински маркетинг директор.';
+            } else if (percentage >= 50) {
+                scoreTextEl.textContent = 'Добър резултат! Разбираш основите, но можеш да се задълбочиш още повече.';
+            } else {
+                scoreTextEl.textContent = 'Има нужда от още малко работа. Прегледай отговорите си, за да видиш къде са пропуските.';
+            }
+        }
+
+        function startReview() {
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const userAnswerIndex = userAnswers[currentQuestionIndex];
+            
+            reviewQuestionEl.textContent = currentQuestion.question;
+            reviewOptionsEl.innerHTML = '';
+            
+            let correctRationale = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'rounded-lg', 'text-left', 'cursor-default');
+
+                if (option.isCorrect) {
+                    button.classList.add('correct');
+                    correctRationale = option.rationale;
+                } else if (userAnswerIndex === index) {
+                    button.classList.add('incorrect');
+                } else {
+                    button.classList.add('border-gray-300', 'bg-gray-100', 'opacity-70');
+                }
+                reviewOptionsEl.appendChild(button);
+            });
+            
+            if (userAnswerIndex !== null) {
+                 rationaleCardEl.classList.remove('hidden');
+                 rationaleTextEl.textContent = correctRationale;
+            } else {
+                 rationaleCardEl.classList.add('hidden');
+            }
+
+            reviewProgressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            reviewPrevBtn.disabled = currentQuestionIndex === 0;
+            reviewNextBtn.disabled = currentQuestionIndex === quizData.questions.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+        
+        restartBtn.addEventListener('click', startQuiz);
+        reviewBtn.addEventListener('click', startReview);
+
+        reviewPrevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadReviewQuestion();
+            }
+        });
+
+        reviewNextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadReviewQuestion();
+            }
+        });
+        
+        backToResultsBtn.addEventListener('click', () => {
+            reviewContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика: Маркетинг стратегия в действие</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F7FFF7]">
+    
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+        
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1A535C] mb-4">Маркетинг стратегия в действие</h1>
+            <p class="text-lg text-[#4ECDC4] font-semibold">Казус: Мобилното кафене "Кафе в движение"</p>
+        </header>
+
+        <section id="the-idea" class="text-center bg-white p-8 rounded-2xl shadow-xl mb-16">
+            <h2 class="text-3xl font-bold text-[#1A535C] mb-4">Запознайте се с Мария и нейната идея!</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto mb-6">Мария иска да създаде мобилна количка за специално кафе и авторски лимонади. Нейната цел е да достигне до младите хора, предлагайки им не просто напитка, а цялостно преживяване. Нашата мисия е да изградим нейната печеливша маркетингова стратегия от нулата.</p>
+            <div class="text-5xl">☕️🍋</div>
+        </section>
+
+        <section id="market-analysis" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Етап 1: Разбиране на игралното поле</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#FF6B6B]">
+                    <h3 class="text-2xl font-bold mb-3 text-[#1A535C]">👥 Потребители</h3>
+                    <p class="text-gray-600">Ученици и студенти, които търсят качествени напитки, удобство и модерна атмосфера за срещи.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#45B7D1]">
+                    <h3 class="text-2xl font-bold mb-3 text-[#1A535C]">⚔️ Конкуренти</h3>
+                    <p class="text-gray-600">Местни кафенета, павилиони, вендинг машини. Борбата е за вниманието и предпочитанията на младите.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg border-t-4 border-[#4ECDC4]">
+                    <h3 class="text-2xl font-bold mb-3 text-[#1A535C]">🎁 Продукт</h3>
+                    <p class="text-gray-600">Размяна на стойност: парите на клиентите срещу преживяване, статус и вкус, а не просто течност в чаша.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="marketing-mix" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Етап 2: Изграждане на стратегията (Маркетинг Микс)</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-12">В сърцето на всяка маркетингова стратегия лежи Маркетинг Миксът, известен като 4-те "P". Това са инструментите, които ще използваме, за да позиционираме успешно бранда на Мария на пазара.</p>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#1A535C] mb-4 text-center">Примерно разпределение на бюджета</h3>
+                    <div class="chart-container">
+                        <canvas id="marketingMixChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <h4 class="text-xl font-bold text-[#FF6B6B] mb-2">📦 Продукт (Product)</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Качествено "specialty" кафе</li>
+                            <li>Уникални вкусове лимонада</li>
+                            <li>Брандирани еко-чаши</li>
+                            <li>Атрактивен дизайн на количката</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <h4 class="text-xl font-bold text-[#45B7D1] mb-2">💲 Цена (Price)</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Конкурентно ценообразуване</li>
+                            <li>Промоции "Доведи приятел"</li>
+                            <li>Карти за лоялни клиенти</li>
+                            <li>Комбо оферти</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <h4 class="text-xl font-bold text-[#4ECDC4] mb-2">📍 Място (Place)</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Пред училища и университети</li>
+                            <li>В градски паркове и градини</li>
+                            <li>На фестивали и събития</li>
+                            <li>Онлайн присъствие</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl shadow-lg transform hover:scale-105 transition-transform duration-300">
+                        <h4 class="text-xl font-bold text-gray-800 mb-2">📣 Промоция (Promotion)</h4>
+                        <ul class="list-disc list-inside text-gray-600 space-y-1">
+                            <li>Instagram и TikTok кампании</li>
+                            <li>Работа с инфлуенсъри</li>
+                            <li>Събитие за откриването</li>
+                            <li>Партньорства с ученически съвети</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="vision-expansion">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Етап 3: Разширяване на визията</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-3">Маркетинг на Услуги</h3>
+                    <p class="text-gray-600">Мария не продава само продукт, а и услуга. Усмивката, бързината на обслужване и персоналното отношение са ключови, защото услугата е неосезаема и зависи пряко от човешкия фактор.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-3">Социален Маркетинг</h3>
+                    <p class="text-gray-600">Като набляга на "еко" кафе и дарява част от печалбата си за кауза, Мария изгражда положителен имидж и привлича клиенти, които споделят нейните ценности. Това е маркетинг с кауза.</p>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-3">Нестопански Маркетинг</h3>
+                    <p class="text-gray-600">Когато общината подкрепя Мария, тя също прави маркетинг. Нейната цел не е печалба, а изграждане на обществен образ, популяризиране на събития и подкрепа за местната общност.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#4ECDC4] pt-8">
+            <p class="text-xl font-bold text-[#1A535C]">Ключов извод:</p>
+            <p class="text-gray-600">Маркетингът не е просто реклама. Той е цялостна философия, която поставя <span class="font-bold text-[#FF6B6B]">клиента в центъра</span> на всяко бизнес решение.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        function wrapLabels(label, maxWidth) {
+            const words = label.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + ' ' + word).length > maxWidth) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            if (currentLine.length > 0) {
+                lines.push(currentLine.trim());
+            }
+            return lines;
+        }
+
+        const ctx = document.getElementById('marketingMixChart').getContext('2d');
+        const marketingMixChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Промоция', 'Продукт', 'Място', 'Цена'],
+                datasets: [{
+                    label: 'Разпределение на бюджета',
+                    data: [40, 25, 20, 15],
+                    backgroundColor: [
+                        '#45B7D1',
+                        '#FF6B6B',
+                        '#4ECDC4',
+                        '#1A535C'
+                    ],
+                    borderColor: '#F7FFF7',
+                    borderWidth: 4,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14,
+                                family: 'Inter'
+                            },
+                            color: '#1A535C',
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: 'Inter',
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: 'Inter'
+                        },
+                        padding: 12,
+                        backgroundColor: '#1A535C',
+                        titleColor: '#F7FFF7',
+                        bodyColor: '#F7FFF7',
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

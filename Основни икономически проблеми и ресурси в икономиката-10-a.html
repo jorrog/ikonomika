@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика: Основни Икономически Проблеми</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+         @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F7F7F7] text-[#2D2D2D]">
+    
+    <div class="container mx-auto p-4 md:p-8 max-w-6xl">
+
+        <header class="text-center my-12 md:my-16">
+            <h1 class="text-4xl md:text-6xl font-black uppercase tracking-wide">Основни Икономически</h1>
+            <h2 class="text-5xl md:text-7xl font-black text-[#FF6B6B] uppercase tracking-wider mt-2">Проблеми</h2>
+            <p class="mt-4 text-lg md:text-2xl text-gray-600 font-bold">Защо не можем да имаме всичко, което поискаме?</p>
+        </header>
+
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-10">
+                 <h3 class="text-3xl md:text-4xl font-black">Вечният сблъсък</h3>
+                 <p class="mt-2 text-gray-500 max-w-2xl mx-auto">В основата на цялата икономика стои едно фундаментално противоречие.</p>
+            </div>
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+                <div class="flex flex-col md:flex-row items-center justify-around gap-8">
+                    <div class="text-center w-full md:w-1/3">
+                        <h4 class="text-2xl md:text-3xl font-bold text-[#45B7D1]">Безкрайни Потребности</h4>
+                        <p class="text-6xl my-4">❤️ ✨ ✈️ 📱 🏠</p>
+                        <p class="text-gray-600">Нашите нужди и желания са практически неограничени. Щом задоволим еднo, веднага се появява ново.</p>
+                    </div>
+                    <div class="text-center">
+                        <p class="text-5xl md:text-8xl font-black text-gray-300 transform md:-rotate-90">VS</p>
+                    </div>
+                     <div class="text-center w-full md:w-1/3">
+                        <h4 class="text-2xl md:text-3xl font-bold text-[#FED766]">Ограничени Ресурси</h4>
+                        <p class="text-6xl my-4">🌍 👷‍♂️ 🏢 💡</p>
+                        <p class="text-gray-600">Средствата, с които разполагаме, за да произвеждаме стоки и услуги, са винаги ограничени.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 md:my-24 bg-[#2D2D2D] text-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
+            <h3 class="text-2xl font-bold uppercase tracking-wider">Резултатът от този сблъсък е:</h3>
+            <p class="text-7xl md:text-9xl font-black my-4 text-[#FF6B6B]">ОСКЪДНОСТ</p>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto">Това е основният икономически проблем – никога няма достатъчно ресурси, за да се задоволят всички потребности на всички хора. Оскъдността ни принуждава да правим избор.</p>
+        </section>
+
+        <section class="my-16 md:my-24">
+             <div class="text-center mb-10">
+                 <h3 class="text-3xl md:text-4xl font-black">От оскъдността до избора</h3>
+                 <p class="mt-2 text-gray-500 max-w-2xl mx-auto">Всеки ден, всяка фирма и всяко правителство следват тази логика.</p>
+            </div>
+            <div class="flex flex-col md:flex-row items-stretch justify-center gap-4 text-center">
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex-1">
+                    <h4 class="text-xl font-bold text-[#FF6B6B]">1. Оскъдност</h4>
+                    <p class="mt-2 text-gray-600">Не можем да имаме всичко.</p>
+                </div>
+                <div class="text-4xl font-bold text-gray-300 self-center mx-4 transform rotate-90 md:rotate-0">➡️</div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex-1">
+                    <h4 class="text-xl font-bold text-[#4ECDC4]">2. Правим ИЗБОР</h4>
+                    <p class="mt-2 text-gray-600">Разпределяме ресурсите си.</p>
+                </div>
+                <div class="text-4xl font-bold text-gray-300 self-center mx-4 transform rotate-90 md:rotate-0">➡️</div>
+                <div class="bg-white rounded-2xl shadow-xl p-6 flex-1">
+                    <h4 class="text-xl font-bold text-[#FED766]">3. Плащаме "цена"</h4>
+                    <p class="mt-2 text-gray-600">Това е <span class="font-bold">алтернативният разход</span> – най-добрата пропусната възможност.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-10">
+                 <h3 class="text-3xl md:text-4xl font-black">Градивните елементи: 4-те производствени фактора</h3>
+                 <p class="mt-2 text-gray-500 max-w-2xl mx-auto">Това са ресурсите, с които всяка икономика създава блага.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+                    <p class="text-6xl">🌍</p>
+                    <h4 class="text-2xl font-bold mt-4">Земя</h4>
+                    <p class="mt-2 text-gray-600">Всички природни ресурси – почва, вода, гори, минерали.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+                    <p class="text-6xl">👷‍♂️</p>
+                    <h4 class="text-2xl font-bold mt-4">Труд</h4>
+                    <p class="mt-2 text-gray-600">Физическите и умствените усилия на хората в производството.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+                    <p class="text-6xl">🏢</p>
+                    <h4 class="text-2xl font-bold mt-4">Капитал</h4>
+                    <p class="mt-2 text-gray-600">Машини, сгради, инструменти и технологии, създадени от човека.</p>
+                </div>
+                <div class="bg-white rounded-2xl shadow-xl p-8 text-center">
+                    <p class="text-6xl">💡</p>
+                    <h4 class="text-2xl font-bold mt-4">Предприемачество</h4>
+                    <p class="mt-2 text-gray-600">Умението да се организират останалите фактори и да се поемат рискове.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 md:my-24">
+            <div class="bg-white rounded-2xl shadow-xl p-6 md:p-10">
+                <div class="text-center mb-10">
+                    <h3 class="text-3xl md:text-4xl font-black">Трите фундаментални въпроса</h3>
+                    <p class="mt-2 text-gray-500 max-w-2xl mx-auto">Поради оскъдността, всяко общество трябва да реши как да отговори на тези три въпроса, за да организира икономическия си живот.</p>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="w-full md:w-1/2">
+                        <div class="chart-container">
+                            <canvas id="threeQuestionsChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 space-y-6">
+                        <div class="p-4 border-l-4 border-[#FF6B6B]">
+                            <h4 class="text-xl font-bold">1. КАКВО да се произвежда?</h4>
+                            <p class="text-gray-600 mt-1">Кои стоки и услуги да се създадат с ограничените ресурси? Повече образование или повече пътища?</p>
+                        </div>
+                        <div class="p-4 border-l-4 border-[#4ECDC4]">
+                            <h4 class="text-xl font-bold">2. КАК да се произвежда?</h4>
+                            <p class="text-gray-600 mt-1">Какви технологии да се използват? С повече машини или с повече ръчен труд?</p>
+                        </div>
+                         <div class="p-4 border-l-4 border-[#FED766]">
+                            <h4 class="text-xl font-bold">3. ЗА КОГО да се произвежда?</h4>
+                            <p class="text-gray-600 mt-1">Как ще се разпредели произведеното между хората в обществото?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center my-12 md:my-16">
+            <p class="text-lg text-gray-700">Икономиката е навсякъде около нас – в личния ни бюджет, в работата на фирмите и в решенията на правителствата. Разбирането на тези основни принципи е първата стъпка към по-добра икономическа грамотност.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        const wrapLabel = (str, maxWidth) => {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            let lines = [];
+            let currentLine = words[0];
+
+            for (let i = 1; i < words.length; i++) {
+                if ((currentLine + ' ' + words[i]).length > maxWidth) {
+                    lines.push(currentLine);
+                    currentLine = words[i];
+                } else {
+                    currentLine += ' ' + words[i];
+                }
+            }
+            lines.push(currentLine);
+            return lines;
+        };
+
+        const ctx = document.getElementById('threeQuestionsChart').getContext('2d');
+        const threeQuestionsChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['КАКВО?', 'КАК?', 'ЗА КОГО?'],
+                datasets: [{
+                    label: 'Основни икономически въпроси',
+                    data: [33.3, 33.3, 33.3],
+                    backgroundColor: [
+                        '#FF6B6B',
+                        '#4ECDC4',
+                        '#FED766'
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 4,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14,
+                                weight: 'bold'
+                            },
+                             padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+    </script>
+</body>
+</html>
+

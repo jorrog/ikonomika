@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивен тест: Икономика на предприятието</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .answer-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .answer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .selected {
+            background-color: #3b82f6 !important;
+            color: white !important;
+            border-color: #3b82f6 !important;
+        }
+        .correct {
+            background-color: #22c55e !important;
+            color: white !important;
+            border-color: #22c55e !important;
+        }
+        .incorrect {
+            background-color: #ef4444 !important;
+            color: white !important;
+            border-color: #ef4444 !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+        <div id="quiz-container">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-700">Тест: Предприятието от А до Я</h2>
+                    <div id="progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="question-card" class="mb-6">
+                    <p id="question" class="text-2xl font-bold text-gray-900 leading-snug"></p>
+                    <p id="hint" class="text-sm text-gray-500 mt-2 italic"></p>
+                </div>
+                <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Предишен</button>
+                <button id="next-btn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Следващ</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="p-8 text-center hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4">Тестът приключи!</h2>
+            <p class="text-xl text-gray-600 mb-2">Вашият резултат е:</p>
+            <p id="score" class="text-6xl font-bold text-blue-600 mb-6"></p>
+            <p id="score-text" class="text-lg text-gray-500 mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="restart-btn" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition duration-300">Нов опит</button>
+                <button id="review-btn" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">Преглед на отговорите</button>
+            </div>
+        </div>
+        
+        <div id="review-container" class="hidden">
+             <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-gray-700">Преглед на отговорите</h2>
+                    <div id="review-progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="review-question-card" class="mb-6">
+                    <p id="review-question" class="text-2xl font-bold text-gray-900 leading-snug"></p>
+                </div>
+                <div id="review-options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                 <div id="rationale-card" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold">Обяснение:</h4>
+                    <p id="rationale-text" class="text-gray-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="review-prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Предишен</button>
+                <button id="back-to-results-btn" class="bg-blue-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-700 transition duration-300">Към резултатите</button>
+                <button id="review-next-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Следващ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = {
+          "questions": [
+            {
+              "questionNumber": 1,
+              "question": "Кое твърдение най-точно описва разликата между понятията \"предприятие\" и \"фирма\"?",
+              "answerOptions": [
+                {
+                  "text": "Фирмата е сградата, а предприятието са хората в нея.",
+                  "rationale": "Това разграничение е твърде опростено; и двете понятия включват по-сложни елементи от сгради и хора.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Предприятието е стопанската дейност, а фирмата е името, под което тя се извършва.",
+                  "rationale": "Това е точното юридическо и икономическо разграничение между организацията на дейността и нейното официално наименование.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Няма съществена разлика, двете думи са пълни синоними.",
+                  "rationale": "В ежедневния език често се използват като синоними, но в икономиката и правото имат различни значения.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Предприятието винаги е производствено, докато фирмата може да е търговска.",
+                  "rationale": "Предприятията могат да извършват всякакъв вид дейност – производствена, търговска, услуги.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Помисли кое е самата дейност и кое е нейното официално наименование в търговския регистър."
+            },
+            {
+              "questionNumber": 2,
+              "question": "Анна и Борис са двама съдружници. Коя правна форма е най-подходяща за тях, за да стартират своя бизнес с ограничена отговорност?",
+              "answerOptions": [
+                {
+                  "text": "Едноличен търговец (ЕТ)",
+                  "rationale": "Тази форма е подходяща само за един собственик, а не за съдружие.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Акционерно дружество (АД)",
+                  "rationale": "Тази форма е предназначена за едър бизнес със значителен капитал и сложна структура, което не отговаря на казуса.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Дружество с ограничена отговорност (ООД)",
+                  "rationale": "Тази форма е идеална за съдружие, тъй като отговорността е ограничена до размера на дяловия капитал и защитава личното имущество.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Кооперация",
+                  "rationale": "Кооперациите имат различна цел и структура на управление, която не е оптимална за търговско дружество с двама основатели.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Коя от формите е специално създадена за съдружие и носи името \"дружество\"?"
+            },
+            {
+              "questionNumber": 3,
+              "question": "Шевните машини, които Анна и Борис ще закупят за своя цех, са част от:",
+              "answerOptions": [
+                {
+                  "text": "Оборотния капитал",
+                  "rationale": "Оборотният капитал включва ресурси, които се изразходват в рамките на един производствен цикъл, като материали.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Основния капитал",
+                  "rationale": "Основният капитал се състои от активи, които участват в производството дълго време и се износват постепенно, като машини и сгради.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Финансовия капитал",
+                  "rationale": "Финансовият капитал са парите, с които се закупуват активите, но самите машини са физически, а не финансов капитал.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Човешкия капитал",
+                  "rationale": "Човешкият капитал представлява уменията и знанията на персонала, а не физическите активи.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Този вид капитал се използва в много производствени цикли и се амортизира (изхабява) бавно с времето."
+            },
+            {
+              "questionNumber": 4,
+              "question": "Вярно или невярно: Парите за закупуване на платове и ципове за първата партида раници са част от основния капитал на предприятието.",
+              "answerOptions": [
+                {
+                  "text": "Вярно",
+                  "rationale": "Платовете и циповете се изразходват изцяло в производството на една партида, което ги прави оборотен, а не основен капитал.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Невярно",
+                  "rationale": "Материалите, които се влагат и изразходват в рамките на един производствен цикъл, са класически пример за оборотен капитал.",
+                  "isCorrect": true
+                }
+              ],
+              "hint": "Помисли дали тези материали ще се използват многократно или ще се превърнат в част от крайния продукт."
+            },
+            {
+              "questionNumber": 5,
+              "question": "Ако Анна и Борис искат да стимулират шивачите да произвеждат максимален брой раници, коя система на заплащане е най-подходяща?",
+              "answerOptions": [
+                {
+                  "text": "Повременна (твърда месечна заплата)",
+                  "rationale": "Тази система гарантира сигурност на дохода, но не мотивира пряко за по-голямо количество продукция.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Сделна (заплащане на бройка)",
+                  "rationale": "Тази система директно обвързва възнаграждението с броя произведени единици, което силно стимулира производителността.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Комисионна",
+                  "rationale": "Комисионната обикновено е процент от продажбите и е подходяща за търговци, а не за производствени работници.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Акордна",
+                  "rationale": "Акордната система е за изпълнение на цялостна задача срещу определена сума, а не за поточно производство на бройки.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Коя система директно обвързва възнаграждението с количеството на произведената продукция?"
+            },
+            {
+              "questionNumber": 6,
+              "question": "Всички разходи за материали, труд и други дейности, направени за производството на ЕДНА раница, формират нейната:",
+              "answerOptions": [
+                {
+                  "text": "Цена",
+                  "rationale": "Цената включва всички разходи плюс надценка за печалба.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Печалба",
+                  "rationale": "Печалбата е разликата между цената и разходите, а не самите разходи.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Рентабилност",
+                  "rationale": "Рентабилността е коефициент, който измерва колко е печеливш бизнесът, а не сума на разходи.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Себестойност",
+                  "rationale": "Себестойността е точната сума на всички вложени ресурси за производството на единица продукция.",
+                  "isCorrect": true
+                }
+              ],
+              "hint": "Това е сумата, която предприятието трябва да похарчи, за да създаде един продукт, преди да добави надценка за печалба."
+            },
+            {
+              "questionNumber": 7,
+              "question": "Ако себестойността на една раница е 40 лв., а продажната ѝ цена е 90 лв., разликата от 50 лв. представлява:",
+              "answerOptions": [
+                {
+                  "text": "Нетна печалба",
+                  "rationale": "Нетната печалба се получава, след като от тази сума се приспаднат и общите разходи на фирмата (наем, маркетинг, данъци).",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Оборот",
+                  "rationale": "Оборотът е общата сума от приходите от продажби (например, ако се продадат 10 раници, оборотът е 900 лв.).",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Брутна печалба",
+                  "rationale": "Това е печалбата преди приспадане на общите административни, маркетингови и други разходи на предприятието.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Данък добавена стойност (ДДС)",
+                  "rationale": "ДДС е косвен данък, който се начислява върху цената, но не е печалба за предприятието.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Тази печалба е \"брутна\", защото от нея все още не са приспаднати общите разходи на фирмата като наем и администрация."
+            },
+            {
+              "questionNumber": 8,
+              "question": "Кое от изброените НЕ е пряк фактор за повишаване на конкурентоспособността на раниците на Анна и Борис?",
+              "answerOptions": [
+                {
+                  "text": "Високо качество на материалите и изработката.",
+                  "rationale": "Качеството е един от най-важните фактори, които отличават един продукт от друг на пазара.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Уникален \"еко\" дизайн.",
+                  "rationale": "Дизайнът и уникалната пазарна ниша (екологичност) са ключови за привличане на клиенти.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Местоположението на офиса в престижна сграда.",
+                  "rationale": "За онлайн бизнес, който продава физически продукти, локацията на офиса няма пряко значение за качеството или цената на продукта.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Ефективна маркетингова стратегия.",
+                  "rationale": "Маркетингът прави продукта видим и желан от потребителите, което е съществена част от пазарната борба.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Конкурентоспособността се отнася до предимствата на самия продукт или услуга, които го правят по-желан от клиентите."
+            },
+            {
+              "questionNumber": 9,
+              "question": "Показателят, който измерва колко ефективно предприятието използва своите ресурси (труд, капитал) за създаване на продукция, се нарича:",
+              "answerOptions": [
+                {
+                  "text": "Ликвидност",
+                  "rationale": "Ликвидността показва способността на фирмата да покрива своите краткосрочни задължения, а не ефективността на производството.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Производителност",
+                  "rationale": "Това е точното определение - съотношението между вложените ресурси и получения резултат (продукция).",
+                  "isCorrect": true
+                },
+                {
+                  "text": "Рентабилност",
+                  "rationale": "Рентабилността измерва колко е печеливш бизнесът, а не колко бързо или ефективно произвежда.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "Себестойност",
+                  "rationale": "Себестойността измерва разходите за единица продукция, а не ефективността на процеса.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Често се измерва като \"продукция за един работен час\" или \"продукция на един работник\"."
+            },
+            {
+              "questionNumber": 10,
+              "question": "Кое е основно предимство за предприятието на Анна и Борис, ако изберат да позиционират цеха си в по-малък град?",
+              "answerOptions": [
+                {
+                  "text": "Близост до по-голям брой потенциални клиенти.",
+                  "rationale": "В по-малките градове обикновено има по-малко клиенти, отколкото в големите.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "По-ниски разходи за наем и труд.",
+                  "rationale": "Разходите за имоти и средните заплати са значително по-ниски в малките населени места, което намалява себестойността.",
+                  "isCorrect": true
+                },
+                {
+                  "text": "По-голям избор на висококвалифицирани кадри.",
+                  "rationale": "Обикновено в големите градове има по-голяма концентрация на специалисти.",
+                  "isCorrect": false
+                },
+                {
+                  "text": "По-добра логистична инфраструктура за износ.",
+                  "rationale": "Големите градове обикновено са транспортни хъбове с по-добри логистични връзки.",
+                  "isCorrect": false
+                }
+              ],
+              "hint": "Помисли как разходите за основни ресурси като имоти и работна ръка се различават в големите и малките населени места."
+            }
+          ]
+        };
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const reviewContainer = document.getElementById('review-container');
+        
+        const questionEl = document.getElementById('question');
+        const hintEl = document.getElementById('hint');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        
+        const scoreEl = document.getElementById('score');
+        const scoreTextEl = document.getElementById('score-text');
+
+        const reviewQuestionEl = document.getElementById('review-question');
+        const reviewOptionsEl = document.getElementById('review-options');
+        const reviewProgressEl = document.getElementById('review-progress');
+        const rationaleCardEl = document.getElementById('rationale-card');
+        const rationaleTextEl = document.getElementById('rationale-text');
+        const reviewPrevBtn = document.getElementById('review-prev-btn');
+        const reviewNextBtn = document.getElementById('review-next-btn');
+        const backToResultsBtn = document.getElementById('back-to-results-btn');
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizData.questions.length).fill(null);
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            quizContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.add('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            hintEl.textContent = currentQuestion.hint;
+            optionsEl.innerHTML = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'border-gray-300', 'rounded-lg', 'text-left', 'hover:bg-gray-100', 'hover:border-blue-500');
+                if (userAnswers[currentQuestionIndex] === index) {
+                    button.classList.add('selected');
+                }
+                button.onclick = () => selectAnswer(index);
+                optionsEl.appendChild(button);
+            });
+
+            updateNavigation();
+        }
+
+        function selectAnswer(index) {
+            userAnswers[currentQuestionIndex] = index;
+            const buttons = optionsEl.querySelectorAll('button');
+            buttons.forEach((btn, i) => {
+                btn.classList.toggle('selected', i === index);
+            });
+            nextBtn.disabled = false;
+        }
+
+        function updateNavigation() {
+            progressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            prevBtn.disabled = currentQuestionIndex === 0;
+            nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            
+            if (currentQuestionIndex === quizData.questions.length - 1) {
+                nextBtn.textContent = 'Предай теста';
+            } else {
+                nextBtn.textContent = 'Следващ';
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer !== null && quizData.questions[index].answerOptions[answer].isCorrect) {
+                    score++;
+                }
+            });
+
+            const totalQuestions = quizData.questions.length;
+            scoreEl.textContent = `${score} / ${totalQuestions}`;
+
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage >= 80) {
+                scoreTextEl.textContent = 'Отличен резултат! Вие сте истински експерт в икономиката на предприятието.';
+            } else if (percentage >= 50) {
+                scoreTextEl.textContent = 'Добър резултат! Покрили сте основните понятия, но има още какво да се желае.';
+            } else {
+                scoreTextEl.textContent = 'Имате нужда от още малко подготовка. Прегледайте отговорите си, за да видите къде са пропуските.';
+            }
+        }
+
+        function startReview() {
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const userAnswerIndex = userAnswers[currentQuestionIndex];
+            
+            reviewQuestionEl.textContent = currentQuestion.question;
+            reviewOptionsEl.innerHTML = '';
+            
+            let correctRationale = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'rounded-lg', 'text-left', 'cursor-default');
+
+                if (option.isCorrect) {
+                    button.classList.add('correct');
+                    correctRationale = option.rationale;
+                } else if (userAnswerIndex === index) {
+                    button.classList.add('incorrect');
+                } else {
+                    button.classList.add('border-gray-300', 'bg-gray-100', 'opacity-70');
+                }
+                reviewOptionsEl.appendChild(button);
+            });
+            
+            if (userAnswerIndex !== null && !currentQuestion.answerOptions[userAnswerIndex].isCorrect) {
+                rationaleCardEl.classList.remove('hidden');
+                rationaleTextEl.textContent = correctRationale;
+            } else if (userAnswerIndex !== null && currentQuestion.answerOptions[userAnswerIndex].isCorrect) {
+                rationaleCardEl.classList.remove('hidden');
+                rationaleTextEl.textContent = correctRationale;
+            } else {
+                 rationaleCardEl.classList.add('hidden');
+            }
+
+            reviewProgressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            reviewPrevBtn.disabled = currentQuestionIndex === 0;
+            reviewNextBtn.disabled = currentQuestionIndex === quizData.questions.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+        
+        restartBtn.addEventListener('click', startQuiz);
+        reviewBtn.addEventListener('click', startReview);
+
+        reviewPrevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadReviewQuestion();
+            }
+        });
+
+        reviewNextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadReviewQuestion();
+            }
+        });
+        
+        backToResultsBtn.addEventListener('click', () => {
+            reviewContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>

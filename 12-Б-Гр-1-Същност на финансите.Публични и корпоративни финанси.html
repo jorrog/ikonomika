@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика: Анатомия на Финансите</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 350px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 350px;
+        }
+         @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#C4DFE6]">
+
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#003B46] mb-4">Анатомия на Финансите</h1>
+            <p class="text-lg text-[#07575B] font-semibold">Как работи нервната система на икономиката?</p>
+        </header>
+
+        <section id="definition" class="bg-white p-8 rounded-2xl shadow-xl mb-16 text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-[#003B46] mb-4">Какво са финансите?</h2>
+            <p class="text-gray-700 text-lg">Финансите не са просто "пари". Те са сложна система от икономически отношения, свързани със <span class="font-bold text-[#07575B]">събирането, разпределението и използването</span> на парични средства за задоволяване на определени потребности. Те управляват и контролират ресурсите в икономиката.</p>
+        </section>
+
+        <section id="two-pillars" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-12">Двата стълба на финансовата система</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-2xl border-t-8 border-[#07575B]">
+                    <h3 class="text-3xl font-bold text-center text-[#003B46] mb-6">🏛️ Публични Финанси</h3>
+                    <p class="text-center text-gray-600 mb-8">Парите на държавата и общините.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg text-[#07575B]">Основна цел:</h4>
+                            <p class="text-gray-700">Осигуряване на обществено благо и социална сигурност, а не печалба.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#07575B]">Основен източник на средства:</h4>
+                            <p class="text-gray-700">Данъци и такси - принудителни плащания от граждани и фирми.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#07575B]">Основен разход:</h4>
+                            <p class="text-gray-700">Финансиране на обществени услуги: здравеопазване, образование, инфраструктура, отбрана.</p>
+                        </div>
+                    </div>
+                    <div class="mt-8">
+                         <h4 class="font-bold text-lg text-center text-[#07575B] mb-4">Основен източник на приходи в бюджета</h4>
+                        <div class="chart-container">
+                            <canvas id="publicFinanceChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-2xl border-t-8 border-[#66A5AD]">
+                    <h3 class="text-3xl font-bold text-center text-[#003B46] mb-6">🏭 Корпоративни Финанси</h3>
+                    <p class="text-center text-gray-600 mb-8">Парите на бизнеса и предприятията.</p>
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg text-[#66A5AD]">Основна цел:</h4>
+                            <p class="text-gray-700">Максимизиране на печалбата и стойността за собствениците.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#66A5AD]">Основен източник на средства:</h4>
+                            <p class="text-gray-700">Приходи от продажби, банкови кредити, инвестиции - доброволни.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg text-[#66A5AD]">Основен разход:</h4>
+                            <p class="text-gray-700">Оперативни разходи: заплати, материали, наеми, маркетинг, инвестиции.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="comparison" class="mb-16 bg-white p-8 rounded-2xl shadow-xl">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Сравнителен анализ: Ключовите разлики</h2>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left">
+                    <thead>
+                        <tr class="bg-[#003B46] text-white">
+                            <th class="p-4 rounded-tl-lg">Критерий</th>
+                            <th class="p-4">Публични Финанси</th>
+                            <th class="p-4 rounded-tr-lg">Корпоративни Финанси</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-b bg-blue-50">
+                            <td class="p-4 font-bold">Основна цел</td>
+                            <td class="p-4">Обществено благо</td>
+                            <td class="p-4 font-bold text-[#07575B]">Печалба</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-4 font-bold">Източник</td>
+                            <td class="p-4">Данъци (принудителни)</td>
+                            <td class="p-4">Приходи, заеми (доброволни)</td>
+                        </tr>
+                        <tr class="border-b bg-blue-50">
+                            <td class="p-4 font-bold">Разходи</td>
+                            <td class="p-4">Обществени услуги</td>
+                            <td class="p-4">Оперативни разходи</td>
+                        </tr>
+                        <tr class="border-b">
+                            <td class="p-4 font-bold">План</td>
+                            <td class="p-4">Държавен бюджет</td>
+                            <td class="p-4">Фирмен бюджет / Бизнес план</td>
+                        </tr>
+                        <tr class="">
+                            <td class="p-4 font-bold rounded-bl-lg">Решения</td>
+                            <td class="p-4">Правителство (публично)</td>
+                            <td class="p-4 rounded-br-lg">Мениджмънт (частно)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section id="interconnection" class="bg-white p-8 rounded-2xl shadow-xl">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Взаимовръзката между двете системи</h2>
+            <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">Въпреки различните си цели, публичните и корпоративните финанси са в непрекъсната симбиоза. Едната система не може да функционира ефективно без другата.</p>
+            <div class="flex flex-col md:flex-row justify-center items-center text-center gap-4">
+                <div class="p-6 bg-gray-100 rounded-lg">
+                    <h3 class="text-xl font-bold text-[#003B46]">🏭 Бизнесът</h3>
+                </div>
+                <div class="font-bold text-2xl text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                <div class="p-6 bg-gray-200 rounded-lg">
+                    <p class="text-gray-700">Плаща данъци</p>
+                </div>
+                <div class="font-bold text-2xl text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                <div class="p-6 bg-gray-100 rounded-lg">
+                    <h3 class="text-xl font-bold text-[#003B46]">🏛️ Държавата</h3>
+                </div>
+                <div class="font-bold text-2xl text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                <div class="p-6 bg-gray-200 rounded-lg">
+                    <p class="text-gray-700">Създава среда (инфраструктура, закони)</p>
+                </div>
+                 <div class="font-bold text-2xl text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                 <div class="p-6 bg-gray-100 rounded-lg">
+                    <h3 class="text-xl font-bold text-[#003B46]">🏭 Бизнесът</h3>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#07575B] pt-8">
+            <p class="text-xl font-bold text-[#003B46]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg">Разбирането на динамиката между публичните и корпоративните финанси е ключът към разбирането на съвременната икономика.</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('publicFinanceChart').getContext('2d');
+        const publicFinanceChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Данъци', 'Такси и други'],
+                datasets: [{
+                    label: 'Източник на приходи',
+                    data: [85, 15],
+                    backgroundColor: [
+                        '#07575B',
+                        '#66A5AD',
+                    ],
+                    borderColor: '#FFFFFF',
+                    borderWidth: 5,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '65%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 14,
+                                family: 'Inter',
+                                weight: '600'
+                            },
+                            color: '#003B46',
+                            padding: 20
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                 }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: 'Inter',
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: 'Inter'
+                        },
+                        padding: 12,
+                        backgroundColor: '#003B46',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
