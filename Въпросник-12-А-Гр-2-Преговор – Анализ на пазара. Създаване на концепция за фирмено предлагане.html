@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Въпросник: Анализ на пазара и фирмено предлагане</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .answer-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .answer-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .correct {
+            background-color: #68D391 !important;
+            color: #1A202C !important;
+            border-color: #68D391 !important;
+        }
+        .incorrect {
+            background-color: #FC8181 !important;
+            color: white !important;
+            border-color: #FC8181 !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+        <div id="quiz-container">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A202C]">Тест: Анализ на пазара</h2>
+                    <div id="progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="question-card" class="mb-6">
+                    <p id="question" class="text-2xl font-bold text-[#1A202C] leading-snug"></p>
+                    <p id="hint" class="text-sm text-gray-500 mt-2 italic"></p>
+                </div>
+                <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <div id="rationale-card-quiz" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold text-yellow-800">Обяснение:</h4>
+                    <p id="rationale-text-quiz" class="text-yellow-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Предишен</button>
+                <button id="next-btn" class="bg-[#2B6CB0] text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Следващ</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="p-8 text-center hidden">
+            <h2 class="text-3xl font-bold text-[#1A202C] mb-4">Тестът приключи!</h2>
+            <p class="text-xl text-gray-600 mb-2">Вашият резултат е:</p>
+            <p id="score" class="text-6xl font-bold text-[#2B6CB0] mb-6"></p>
+            <p id="score-text" class="text-lg text-gray-500 mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="restart-btn" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition duration-300">Нов опит</button>
+                <button id="review-btn" class="bg-[#2B6CB0] text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-800 transition duration-300">Преглед на отговорите</button>
+            </div>
+        </div>
+        
+        <div id="review-container" class="hidden">
+             <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A202C]">Преглед на отговорите</h2>
+                    <div id="review-progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="review-question-card" class="mb-6">
+                    <p id="review-question" class="text-2xl font-bold text-[#1A202C] leading-snug"></p>
+                </div>
+                <div id="review-options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                 <div id="rationale-card" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold text-yellow-800">Обяснение:</h4>
+                    <p id="rationale-text" class="text-yellow-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="review-prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Предишен</button>
+                <button id="back-to-results-btn" class="bg-[#2B6CB0] text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-800 transition duration-300">Към резултатите</button>
+                <button id="review-next-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Следващ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = {
+          "questions": [
+            {
+              "questionNumber": 1,
+              "question": "Коя е първата стъпка, която една компания трябва да предприеме, преди да създаде нов продукт?",
+              "answerOptions": [
+                { "text": "Да създаде рекламна кампания.", "rationale": "Рекламата идва много по-късно. Първо трябва да знаем какво ще рекламираме и на кого.", "isCorrect": false },
+                { "text": "Да анализира пазара.", "rationale": "Точно така! Анализът на потребителите, конкурентите и средата е фундаменталната първа стъпка, за да се намали рискът от провал.", "isCorrect": true },
+                { "text": "Да определи цената.", "rationale": "Цената се определя на базата на продукта, целевия пазар и конкуренцията, които се изясняват след анализа.", "isCorrect": false },
+                { "text": "Да наеме повече служители.", "rationale": "Наемането на служители е оперативно решение, което следва стратегическите.", "isCorrect": false }
+              ],
+              "hint": "Преди да действаш, трябва да 'слушаш' пазара."
+            },
+            {
+              "questionNumber": 2,
+              "question": "Процесът на разделяне на широкия потребителски пазар на по-малки групи със сходни нужди се нарича:",
+              "answerOptions": [
+                { "text": "Позициониране", "rationale": "Позиционирането е създаване на образ в съзнанието на клиента, което се случва след като сме избрали групата.", "isCorrect": false },
+                { "text": "Сегментиране", "rationale": "Точно така! Сегментирането е като да 'нарежем тортата' на по-малки парчета, за да изберем кое е за нас.", "isCorrect": true },
+                { "text": "Целеполагане", "rationale": "Целеполагането е по-общ термин. Изборът на целеви пазар е конкретна стъпка.", "isCorrect": false },
+                { "text": "Пазарен анализ", "rationale": "Анализът е процесът на събиране на информация, на базата на която се извършва сегментирането.", "isCorrect": false }
+              ],
+              "hint": "Ключовата дума е 'разделяне'."
+            },
+            {
+              "questionNumber": 3,
+              "question": "Една или няколко пазарни групи, към които предприятието насочва своите маркетингови усилия, се наричат:",
+              "answerOptions": [
+                { "text": "Конкурентен пазар", "rationale": "Конкурентният пазар е средата, в която фирмата оперира, а не групата, която обслужва.", "isCorrect": false },
+                { "text": "Потенциален пазар", "rationale": "Потенциалният пазар включва всички възможни клиенти, докато целевият е конкретно избрана част от тях.", "isCorrect": false },
+                { "text": "Целеви пазар", "rationale": "Точно така! Това е нашата избрана 'публика', за която създаваме продукти и комуникация.", "isCorrect": true },
+                { "text": "Масов пазар", "rationale": "Масовият пазар предполага, че продаваме на всички, което е обратното на целенасочения подход.", "isCorrect": false }
+              ],
+              "hint": "Това е нашата конкретна 'мишена'."
+            },
+            {
+              "questionNumber": 4,
+              "question": "Създаването на отличителен образ и идентичност на марката в съзнанието на потребителите е същността на:",
+              "answerOptions": [
+                { "text": "Сегментирането", "rationale": "Сегментирането е разделяне на пазара, а не създаване на образ.", "isCorrect": false },
+                { "text": "Ценообразуването", "rationale": "Ценообразуването е само един от инструментите, чрез които се изгражда образът.", "isCorrect": false },
+                { "text": "Позиционирането", "rationale": "Точно така! Позиционирането е битката за 'място' в ума на потребителя.", "isCorrect": true },
+                { "text": "Дистрибуцията", "rationale": "Дистрибуцията е свързана с това как продуктът достига до клиента.", "isCorrect": false }
+              ],
+              "hint": "Как искаме да ни запомнят?"
+            },
+            {
+              "questionNumber": 5,
+              "question": "Кой е основният въпрос, на който отговаря концепцията на фирменото предлагане (Value Proposition)?",
+              "answerOptions": [
+                { "text": "Колко струва?", "rationale": "Въпросът за цената е само част от цялостното предлагане.", "isCorrect": false },
+                { "text": "Защо трябва да купя от вас?", "rationale": "Точно така! Това е уникалното обещание за стойност, което отличава фирмата от конкуренцията.", "isCorrect": true },
+                { "text": "Къде мога да го намеря?", "rationale": "Това е въпрос, свързан с дистрибуцията (Place).", "isCorrect": false },
+                { "text": "Кой друг го използва?", "rationale": "Това може да е част от маркетинговата комуникация, но не е същността на предлагането.", "isCorrect": false }
+              ],
+              "hint": "Това е уникалното обещание на фирмата към нейния целеви клиент."
+            },
+            {
+              "questionNumber": 6,
+              "question": "Вярно или невярно: Една успешна компания трябва да се опита да се хареса на абсолютно всички потребители на пазара.",
+              "answerOptions": [
+                { "text": "Вярно", "rationale": "Това е невярно. Съвременният маркетинг се основава на фокус – опитът да се харесаш на всички води до разпиляване на ресурси и неясно послание.", "isCorrect": false },
+                { "text": "Невярно", "rationale": "Точно така! Стратегическият маркетинг изисква избор на конкретен целеви пазар, на чиито нужди компанията да отговори по-добре от конкуренцията.", "isCorrect": true }
+              ],
+              "hint": "Ефективно ли е да се опитваш да продаваш на всички едновременно?"
+            },
+            {
+              "questionNumber": 7,
+              "question": "Кой от елементите на маркетинг микса НЕ е част от концепцията на фирменото предлагане?",
+              "answerOptions": [
+                { "text": "Продукт (Product)", "rationale": "Продуктът е в сърцето на предлагането.", "isCorrect": false },
+                { "text": "Позиция (Positioning)", "rationale": "Точно така! Позиционирането е стратегическата цел (мястото в съзнанието), а маркетинг миксът е инструментът за постигането ѝ. Всички останали са елементи на микса.", "isCorrect": true },
+                { "text": "Цена (Price)", "rationale": "Цената е ключов елемент от стойността, която предлагаме.", "isCorrect": false },
+                { "text": "Промоция (Promotion)", "rationale": "Промоцията комуникира нашето предлагане.", "isCorrect": false }
+              ],
+              "hint": "Три от отговорите са част от 4Р, един е част от STP."
+            },
+            {
+              "questionNumber": 8,
+              "question": "Ако една автомобилна компания се позиционира като 'най-достъпния семеен автомобил', нейната стратегия се базира основно на:",
+              "answerOptions": [
+                { "text": "Луксозен имидж", "rationale": "Луксозният имидж е противоположен на позиционирането, базирано на достъпност.", "isCorrect": false },
+                { "text": "Най-високи технологии", "rationale": "Най-високите технологии обикновено са свързани с по-висока цена, което противоречи на 'достъпен'.", "isCorrect": false },
+                { "text": "Ценово предимство", "rationale": "Точно така! Думата 'достъпен' директно свързва позиционирането с предлагането на добра стойност на ниска цена.", "isCorrect": true },
+                { "text": "Спортен дух", "rationale": "Спортният дух е съвсем различна пазарна позиция.", "isCorrect": false }
+              ],
+              "hint": "Коя дума в изречението е ключова за стратегията?"
+            },
+            {
+              "questionNumber": 9,
+              "question": "Стратегическият процес 'Сегментиране -> Избор на целеви пазар -> Позициониране' е известен като:",
+              "answerOptions": [
+                { "text": "Модел на 4-те 'Р'", "rationale": "Моделът на 4-те 'Р' е маркетинг миксът (Product, Price, Place, Promotion) и е инструмент за изпълнение на стратегията.", "isCorrect": false },
+                { "text": "SWOT анализ", "rationale": "SWOT анализът е инструмент за ситуационен анализ на силни/слаби страни, възможности/заплахи.", "isCorrect": false },
+                { "text": "STP модел", "rationale": "Точно така! STP е акроним от Segmentation, Targeting, Positioning.", "isCorrect": true },
+                { "text": "Модел на жизнения цикъл", "rationale": "Моделът на жизнения цикъл описва етапите, през които преминава един продукт на пазара.", "isCorrect": false }
+              ],
+              "hint": "Името на модела е акроним от имената на стъпките на английски."
+            },
+            {
+              "questionNumber": 10,
+              "question": "Концепцията на фирменото предлагане се реализира на практика чрез:",
+              "answerOptions": [
+                { "text": "Маркетинг микса (4Р)", "rationale": "Точно така! Продуктът, цената, дистрибуцията и промоцията са конкретните инструменти, с които 'опаковаме' и доставяме нашето уникално предложение за стойност.", "isCorrect": true },
+                { "text": "Финансовия анализ", "rationale": "Финансовият анализ е вътрешен процес, който помага за вземане на решения, но не е начинът, по който предлагането достига до клиента.", "isCorrect": false },
+                { "text": "Само чрез реклама", "rationale": "Рекламата е само част от промоцията, която е само един от четирите елемента на маркетинг микса.", "isCorrect": false },
+                { "text": "Производствения план", "rationale": "Производственият план е вътрешен документ, а маркетинг миксът е 'лицето' на фирмата към пазара.", "isCorrect": false }
+              ],
+              "hint": "Как обещанието се превръща в реалност?"
+            }
+          ]
+        };
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const reviewContainer = document.getElementById('review-container');
+        
+        const questionEl = document.getElementById('question');
+        const hintEl = document.getElementById('hint');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        
+        const rationaleCardQuizEl = document.getElementById('rationale-card-quiz');
+        const rationaleTextQuizEl = document.getElementById('rationale-text-quiz');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        
+        const scoreEl = document.getElementById('score');
+        const scoreTextEl = document.getElementById('score-text');
+
+        const reviewQuestionEl = document.getElementById('review-question');
+        const reviewOptionsEl = document.getElementById('review-options');
+        const reviewProgressEl = document.getElementById('review-progress');
+        const rationaleCardEl = document.getElementById('rationale-card');
+        const rationaleTextEl = document.getElementById('rationale-text');
+        const reviewPrevBtn = document.getElementById('review-prev-btn');
+        const reviewNextBtn = document.getElementById('review-next-btn');
+        const backToResultsBtn = document.getElementById('back-to-results-btn');
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizData.questions.length).fill(null);
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            quizContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.add('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            hintEl.textContent = currentQuestion.hint;
+            optionsEl.innerHTML = '';
+            rationaleCardQuizEl.classList.add('hidden');
+
+            const userAnswer = userAnswers[currentQuestionIndex];
+            const correctIndex = currentQuestion.answerOptions.findIndex(opt => opt.isCorrect);
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'border-gray-300', 'rounded-lg', 'text-left');
+                
+                if (userAnswer !== null) {
+                    button.disabled = true;
+                    if (index === correctIndex) {
+                        button.classList.add('correct');
+                    } else if (index === userAnswer) {
+                        button.classList.add('incorrect');
+                    }
+                } else {
+                    button.classList.add('hover:bg-gray-100');
+                    button.onclick = () => selectAnswer(index);
+                }
+                optionsEl.appendChild(button);
+            });
+
+            if (userAnswer !== null) {
+                rationaleTextQuizEl.textContent = currentQuestion.answerOptions[correctIndex].rationale;
+                rationaleCardQuizEl.classList.remove('hidden');
+            }
+
+            updateNavigation();
+        }
+
+        function selectAnswer(index) {
+            if (userAnswers[currentQuestionIndex] !== null) return;
+
+            userAnswers[currentQuestionIndex] = index;
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const buttons = optionsEl.querySelectorAll('button');
+            const correctIndex = currentQuestion.answerOptions.findIndex(opt => opt.isCorrect);
+
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-100');
+                if (i === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (i === index) {
+                    btn.classList.add('incorrect');
+                }
+            });
+            
+            rationaleTextQuizEl.textContent = currentQuestion.answerOptions[correctIndex].rationale;
+            rationaleCardQuizEl.classList.remove('hidden');
+
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            progressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            const allAnswered = userAnswers.every(answer => answer !== null);
+            
+            if (currentQuestionIndex === quizData.questions.length - 1) {
+                nextBtn.textContent = 'Предай теста';
+                nextBtn.disabled = !allAnswered;
+            } else {
+                nextBtn.textContent = 'Следващ';
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer !== null && quizData.questions[index].answerOptions[answer].isCorrect) {
+                    score++;
+                }
+            });
+
+            const totalQuestions = quizData.questions.length;
+            scoreEl.textContent = `${score} / ${totalQuestions}`;
+
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage >= 80) {
+                scoreTextEl.textContent = 'Отличен резултат! Мислиш като истински маркетинг стратег.';
+            } else if (percentage >= 50) {
+                scoreTextEl.textContent = 'Добър резултат! Разбираш основите на стратегическия маркетинг.';
+            } else {
+                scoreTextEl.textContent = 'Има нужда от още малко работа. Прегледай отговорите си, за да видиш къде са пропуските.';
+            }
+        }
+
+        function startReview() {
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const userAnswerIndex = userAnswers[currentQuestionIndex];
+            
+            reviewQuestionEl.textContent = currentQuestion.question;
+            reviewOptionsEl.innerHTML = '';
+            
+            let correctRationale = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'rounded-lg', 'text-left', 'cursor-default');
+
+                if (option.isCorrect) {
+                    button.classList.add('correct');
+                    correctRationale = option.rationale;
+                } else if (userAnswerIndex === index) {
+                    button.classList.add('incorrect');
+                } else {
+                    button.classList.add('border-gray-300', 'bg-gray-100', 'opacity-70');
+                }
+                reviewOptionsEl.appendChild(button);
+            });
+            
+            if (userAnswerIndex !== null) {
+                 rationaleCardEl.classList.remove('hidden');
+                 rationaleTextEl.textContent = correctRationale;
+            } else {
+                 rationaleCardEl.classList.add('hidden');
+            }
+
+            reviewProgressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            reviewPrevBtn.disabled = currentQuestionIndex === 0;
+            reviewNextBtn.disabled = currentQuestionIndex === quizData.questions.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+        
+        restartBtn.addEventListener('click', startQuiz);
+        reviewBtn.addEventListener('click', startReview);
+
+        reviewPrevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadReviewQuestion();
+            }
+        });
+
+        reviewNextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadReviewQuestion();
+            }
+        });
+        
+        backToResultsBtn.addEventListener('click', () => {
+            reviewContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>
