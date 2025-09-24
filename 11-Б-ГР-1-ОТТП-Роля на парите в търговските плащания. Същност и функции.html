@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика: Ролята на парите в търговските плащания</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F7FFF7]">
+
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1A535C] mb-4">Ролята на парите в търговските плащания</h1>
+            <p class="text-lg text-[#45B7D1] font-semibold">Едно от най-великите изобретения на човечеството</p>
+        </header>
+
+        <section id="barter-problem" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Проблемът: Свят без пари (Бартер)</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#FF6B6B] mb-4 text-center">Хаосът на бартера</h3>
+                    <p class="text-gray-700 mb-4">Представете си фермер с жито, който иска обувки, но обущарят иска риба. Размяната е почти невъзможна поради:</p>
+                    <ul class="space-y-2 text-gray-700">
+                        <li class="flex items-start"><span class="mr-2 text-red-500 font-bold">✗</span>Нужда от "двойно съвпадение на желанията".</li>
+                        <li class="flex items-start"><span class="mr-2 text-red-500 font-bold">✗</span>Липса на обща мярка за стойност.</li>
+                        <li class="flex items-start"><span class="mr-2 text-red-500 font-bold">✗</span>Неделимост на стоките (как разменяш крава за хляб?).</li>
+                    </ul>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#4ECDC4] mb-4 text-center">Решението: Парите</h3>
+                    <p class="text-gray-700 mb-4">Парите действат като универсален посредник. Фермерът продава житото за пари и с тях купува обувки.</p>
+                    <div class="text-center font-bold text-2xl text-gray-700 p-4 bg-green-50 rounded-lg">
+                        <span>🌾</span>
+                        <span class="mx-2 text-green-600">→</span>
+                        <span>💰</span>
+                        <span class="mx-2 text-green-600">→</span>
+                        <span>👞</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="definition" class="bg-[#1A535C] text-white p-8 rounded-2xl shadow-xl mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-4">Какво представляват парите?</h2>
+            <p class="text-lg max-w-3xl mx-auto">Парите са специфична стока, която служи като **общоприето и универсално средство за размяна**. Тяхната сила не е в материала, а във **всеобщото доверие**, че с тях можем да получим всяка друга стока.</p>
+        </section>
+
+        <section id="functions" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-12">Четирите "суперсили" (функции) на парите</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl mb-4">🔄</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Средство за размяна</h3>
+                    <p class="text-gray-600">Служат като посредник при покупко-продажба, елиминирайки нуждата от бартер.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl mb-4">📏</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Мярка за стойността</h3>
+                    <p class="text-gray-600">Служат като общ знаменател за изразяване на цените на всички стоки и услуги.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl mb-4">🏦</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Средство за натрупване</h3>
+                    <p class="text-gray-600">Позволяват съхранението на стойност и прехвърлянето ѝ от настоящето в бъдещето.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl mb-4">🧾</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Платежно средство</h3>
+                    <p class="text-gray-600">Служат за уреждане на дългови и финансови задължения (данъци, кредити).</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="money-types" class="mb-16 bg-white p-8 rounded-2xl shadow-xl">
+             <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-4">Видове пари: От мидата до смартфона</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-10">В съвременната икономика огромна част от парите съществуват не като физически банкноти, а като дигитални записи в банковите системи.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="chart-container">
+                    <canvas id="moneyTypeChart"></canvas>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-2xl font-bold text-[#1A535C] mb-4">Дебитна карта ≠ Пари</h3>
+                    <p class="text-gray-700 text-lg">Дебитната или кредитната карта не са пари сами по себе си. Те са **инструмент за достъп** до вашите **електронни пари**, които се съхраняват в банковата ви сметка.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#4ECDC4] pt-8">
+            <p class="text-2xl font-bold text-[#1A535C]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Парите са основата на съвременната икономика. Като изпълняват своите четири ключови функции, те правят възможни сложните търговски плащания, които движат света напред.</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('moneyTypeChart').getContext('2d');
+        const moneyTypeChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Електронни пари (по сметки)', 'Пари в брой (банкноти и монети)'],
+                datasets: [{
+                    label: 'Дял в паричното предлагане (М1)',
+                    data: [92, 8],
+                    backgroundColor: [
+                        '#45B7D1',
+                        '#1A535C'
+                    ],
+                    borderColor: '#F7FFF7',
+                    borderWidth: 5,
+                    hoverOffset: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: {
+                                size: 12,
+                                family: 'Inter',
+                            },
+                            color: '#1A535C',
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                 }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        },
+                        titleFont: {
+                            size: 16,
+                            family: 'Inter',
+                            weight: 'bold'
+                        },
+                        bodyFont: {
+                            size: 14,
+                            family: 'Inter'
+                        },
+                        padding: 12,
+                        backgroundColor: '#1A535C',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

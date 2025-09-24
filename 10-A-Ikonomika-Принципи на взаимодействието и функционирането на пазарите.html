@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The application uses a linear, single-page scrolling structure that mirrors the logical flow of the source presentation. It starts with the basic definition of a market, introduces the two opposing forces (Demand and Supply), and culminates in a central interactive "Market Simulator" section where these forces meet. This structure was chosen to guide the student through the concepts sequentially, building knowledge that culminates in an interactive, hands-on experience. The user flow is simple: scroll, read, and interact with the central chart to understand equilibrium, surplus, and shortage. This transforms a passive lesson into an active learning tool. -->
+    <!-- Visualization & Content Choices: 1. Market Definition: Goal=Inform, Method=HTML/CSS Card, Justification=Simple and clear presentation of the core concept. 2. Demand & Supply Laws: Goal=Inform/Compare, Method=Side-by-side HTML/CSS cards with Unicode arrows, Justification=Clearly contrasts the opposing principles. 3. Market Simulator: Goal=Relationships/Change/Compare, Method=Interactive Chart.js line chart with a price slider, Justification=This is the core of the app. It allows students to manipulate the price variable and see its direct impact on demand, supply, and market balance (surplus/shortage), which is far more effective than static graphs. 4. Surplus/Shortage Definitions: Goal=Inform, Method=HTML/CSS Cards, Justification=Provides formal definitions that directly relate to the outcomes the user can produce in the simulator. All choices adhere to the NO SVG/Mermaid constraint. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Интерактивна инфографика: Пазарни принципи</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #07575B;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        input[type=range]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            background: #07575B;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body class="bg-[#C4DFE6]">
+
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#003B46] mb-4">Принципи на функциониране на пазарите</h1>
+            <p class="text-lg text-[#07575B] font-semibold">Танцът на търсенето и предлагането</p>
+        </header>
+
+        <section id="market-definition" class="bg-white p-8 rounded-2xl shadow-xl mb-16 text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-[#003B46] mb-4">Какво е пазарът?</h2>
+            <p class="text-gray-700 text-lg">Пазарът не е просто място, а **механизъм**. Той е всяка ситуация, в която потенциални купувачи и потенциални продавачи влизат във взаимодействие, за да определят цената и количеството на дадена стока или услуга. Той се управлява от две велики, противоположни сили.</p>
+        </section>
+
+        <section id="forces" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Двете велики сили на пазара</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-red-400">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-4">Силата на Търсенето (Купувачите)</h3>
+                    <p class="text-gray-700 mb-4">Количеството от дадена стока, което потребителите желаят и **могат да закупят** при различни цени.</p>
+                    <div class="bg-red-50 p-4 rounded-lg">
+                        <p class="font-bold text-red-800">Закон на търсенето:</p>
+                        <p class="text-red-700 flex items-center mt-1"><span class="text-2xl mr-2">↑</span> Цена <span class="mx-2">→</span> <span class="text-2xl mr-2">↓</span> Търсено количество</p>
+                    </div>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-xl border-l-8 border-green-400">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-4">Силата на Предлагането (Продавачите)</h3>
+                    <p class="text-gray-700 mb-4">Количеството от дадена стока, което производителите желаят и **могат да предложат** при различни цени.</p>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="font-bold text-green-800">Закон на предлагането:</p>
+                        <p class="text-green-700 flex items-center mt-1"><span class="text-2xl mr-2">↑</span> Цена <span class="mx-2">→</span> <span class="text-2xl mr-2">↑</span> Предлагано количество</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equilibrium-simulator" class="bg-white p-8 rounded-2xl shadow-xl mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-4">"Невидимата ръка": Пазарен симулатор</h2>
+            <p class="text-center text-gray-700 max-w-3xl mx-auto mb-8">Купувачите искат ниски цени, а продавачите - високи. Пазарът намира баланс в точката на **равновесие**, където търсеното количество е равно на предлаганото. Използвайте плъзгача, за да видите как промяната в цената влияе на пазара.</p>
+            <div class="chart-container">
+                <canvas id="marketChart"></canvas>
+            </div>
+            <div class="mt-8 max-w-2xl mx-auto">
+                <div class="flex items-center">
+                    <span class="font-bold mr-4">Цена (лв.):</span>
+                    <input type="range" id="priceSlider" min="1" max="10" value="5.5" step="0.5" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer">
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 text-center">
+                    <div class="bg-gray-100 p-3 rounded-lg">
+                        <p class="text-sm font-bold text-gray-500">Текуща цена</p>
+                        <p id="currentPrice" class="text-2xl font-bold text-[#003B46]"></p>
+                    </div>
+                    <div class="bg-red-50 p-3 rounded-lg">
+                        <p class="text-sm font-bold text-red-500">Търсят се</p>
+                        <p id="quantityDemanded" class="text-2xl font-bold text-red-800"></p>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded-lg">
+                        <p class="text-sm font-bold text-green-500">Предлагат се</p>
+                        <p id="quantitySupplied" class="text-2xl font-bold text-green-800"></p>
+                    </div>
+                     <div class="bg-blue-50 p-3 rounded-lg">
+                        <p class="text-sm font-bold text-blue-500">Резултат</p>
+                        <p id="marketResult" class="text-xl font-bold text-blue-800"></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="disequilibrium" class="mb-16">
+             <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Какво се случва извън равновесието?</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-4">Пазарен излишък (Свръхпредлагане)</h3>
+                    <p class="text-gray-700">Възниква, когато **цената е по-висока от равновесната**. Продавачите предлагат повече, отколкото купувачите искат. За да продадат стоката си, продавачите са принудени да **намалят цената**, движейки пазара обратно към равновесие.</p>
+                </div>
+                 <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-4">Пазарен дефицит (Недостиг)</h3>
+                    <p class="text-gray-700">Възниква, когато **цената е по-ниска от равновесната**. Купувачите търсят повече, отколкото продавачите предлагат. Готовността на купувачите да платят повече **покачва цената**, движейки пазара обратно към равновесие.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#07575B] pt-8">
+            <p class="text-2xl font-bold text-[#003B46]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Пазарът е мощен, саморегулиращ се механизъм. Чрез гъвкавостта на цените, той постоянно се стреми да балансира интересите на купувачи и продавачи и да елиминира излишъци и дефицити.</p>
+        </footer>
+    </div>
+
+    <script>
+        const demandData = Array.from({length: 19}, (_, i) => ({ x: (i * 0.5) + 1, y: 10 - ((i * 0.5)) }));
+        const supplyData = Array.from({length: 19}, (_, i) => ({ x: (i * 0.5) + 1, y: 1 + ((i * 0.5)) * 0.9 }));
+        const equilibriumPrice = 5.5;
+
+        const ctx = document.getElementById('marketChart').getContext('2d');
+        let marketChart;
+
+        function createChart() {
+            marketChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    datasets: [{
+                        label: 'Търсене',
+                        data: demandData.map(p => ({x: p.y, y: p.x})),
+                        borderColor: '#FC8181',
+                        backgroundColor: '#FC8181',
+                        tension: 0.1,
+                        borderWidth: 3
+                    }, {
+                        label: 'Предлагане',
+                        data: supplyData.map(p => ({x: p.y, y: p.x})),
+                        borderColor: '#68D391',
+                        backgroundColor: '#68D391',
+                        tension: 0.1,
+                        borderWidth: 3
+                    }, {
+                        label: 'Текуща цена',
+                        data: [],
+                        borderColor: '#4299E1',
+                        borderWidth: 2,
+                        borderDash: [5, 5],
+                        pointRadius: 0,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: { display: true, text: 'Количество (бройки)', font: { size: 14, family: 'Inter', weight: '600' }, color: '#003B46' },
+                            min: 0,
+                            max: 10
+                        },
+                        y: {
+                            title: { display: true, text: 'Цена (лв.)', font: { size: 14, family: 'Inter', weight: '600' }, color: '#003B46' },
+                            min: 0,
+                            max: 11
+                        }
+                    },
+                    plugins: {
+                        legend: { position: 'top' },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.dataset.label || '';
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                },
+                                label: function(context) {
+                                     return `Цена: ${context.parsed.y.toFixed(2)} лв., Количество: ${context.parsed.x.toFixed(0)} бр.`;
+                                }
+                            }
+                        }
+                    },
+                    animation: {
+                        duration: 0
+                    }
+                }
+            });
+        }
+        
+        const priceSlider = document.getElementById('priceSlider');
+        const currentPriceEl = document.getElementById('currentPrice');
+        const quantityDemandedEl = document.getElementById('quantityDemanded');
+        const quantitySuppliedEl = document.getElementById('quantitySupplied');
+        const marketResultEl = document.getElementById('marketResult');
+
+        function updateMarket(price) {
+            const demandPoint = demandData.find(p => p.x === price) || { y: 10 - price };
+            const supplyPoint = supplyData.find(p => p.x === price) || { y: 1 + price * 0.9 };
+            
+            const qDemanded = Math.round(demandPoint.y);
+            const qSupplied = Math.round(supplyPoint.y);
+
+            currentPriceEl.textContent = `${price.toFixed(2)} лв.`;
+            quantityDemandedEl.textContent = `${qDemanded} бр.`;
+            quantitySuppliedEl.textContent = `${qSupplied} бр.`;
+
+            marketChart.data.datasets[2].data = [{x: 0, y: price}, {x: 10, y: price}];
+            
+            if (qDemanded > qSupplied) {
+                const shortage = qDemanded - qSupplied;
+                marketResultEl.textContent = `Дефицит (${shortage} бр.)`;
+            } else if (qSupplied > qDemanded) {
+                const surplus = qSupplied - qDemanded;
+                marketResultEl.textContent = `Излишък (${surplus} бр.)`;
+            } else {
+                marketResultEl.textContent = 'Равновесие';
+            }
+
+            marketChart.update();
+        }
+
+        priceSlider.addEventListener('input', (event) => {
+            updateMarket(parseFloat(event.target.value));
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createChart();
+            updateMarket(equilibriumPrice);
+        });
+
+    </script>
+
+</body>
+</html>

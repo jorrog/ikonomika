@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Инфографика: Принципи на икономическия избор</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#C4DFE6]">
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#003B46] mb-4">Принципи на икономическия избор</h1>
+            <p class="text-lg text-[#07575B] font-semibold">Да разберем цената на пропуснатото</p>
+        </header>
+
+        <section id="scarcity" class="bg-white p-8 rounded-2xl shadow-xl mb-16 text-center">
+            <h2 class="text-3xl font-bold text-[#003B46] mb-4">Всичко започва с един проблем: Оскъдността</h2>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Нашите желания са неограничени, но ресурсите ни (време, пари, енергия) са ограничени. Този фундаментален сблъсък ни принуждава непрекъснато да правим **икономически избор** – да решаваме как да разпределим това, което имаме, между нещата, които искаме.</p>
+        </section>
+
+        <section id="tradeoff" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Компромисът (Trade-off)</h2>
+            <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-10">Всяко "Да" на една възможност е "Не" на друга. В икономиката няма решение без компромис. Когато избираме едно нещо, ние се отказваме от друго.</p>
+            <div class="flex justify-center items-center">
+                <div class="text-center p-4">
+                    <div class="text-6xl mb-2">📚</div>
+                    <span class="text-xl font-bold text-gray-800">Учене за тест</span>
+                </div>
+                <div class="text-5xl font-bold text-[#66A5AD] mx-8">VS</div>
+                 <div class="text-center p-4">
+                    <div class="text-6xl mb-2">🎬</div>
+                    <span class="text-xl font-bold text-gray-800">Излизане на кино</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="opportunity-cost" class="bg-white p-8 rounded-2xl shadow-xl mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-4">Алтернативна цена (Opportunity Cost)</h2>
+            <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-6">Истинската цена на един избор не са парите, които плащаме, а стойността на **най-добрата възможност, която сме пропуснали**.</p>
+            <blockquote class="text-center text-xl italic text-[#07575B] font-semibold">"Няма такова нещо като безплатен обяд."</blockquote>
+        </section>
+
+        <section id="ppf" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Визуализация на избора: Граница на производствените възможности</h2>
+            <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-10">Този модел показва максималното количество от два продукта, което една икономика може да произведе с наличните си ресурси. Всяка точка на кривата е ефективен избор, но изисква компромис.</p>
+            <div class="bg-white p-6 rounded-2xl shadow-xl">
+                <div class="chart-container">
+                    <canvas id="ppfChart"></canvas>
+                </div>
+            </div>
+             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 text-center text-sm">
+                <p><span class="font-bold text-blue-600">Точки A, B:</span> Ефективно производство, различен избор.</p>
+                <p><span class="font-bold text-yellow-600">Точка C:</span> Неефективно производство (не се използват всички ресурси).</p>
+                <p><span class="font-bold text-red-600">Точка D:</span> Невъзможно производство с настоящите ресурси.</p>
+                <p><span class="font-bold text-green-600">Движение от A към B:</span> Алтернативната цена на повече смартфони е по-малко лаптопи.</p>
+            </div>
+        </section>
+
+        <section id="case-study" class="bg-white p-8 rounded-2xl shadow-xl">
+             <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Практически казус: Избор след гимназията</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-2">Опция 1: Работа</h3>
+                    <p class="text-4xl font-bold text-green-600">15 000 лв.</p>
+                    <p class="text-gray-600">Пропуснати доходи за 1 година</p>
+                </div>
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-2xl font-bold text-[#003B46] mb-2">Опция 2: Университет</h3>
+                    <p class="text-4xl font-bold text-red-600">-10 000 лв.</p>
+                    <p class="text-gray-600">Директни разходи (такси, квартира)</p>
+                </div>
+            </div>
+            <div class="mt-8 text-center">
+                <h3 class="text-2xl font-bold text-[#003B46]">Каква е истинската алтернативна цена на ученето?</h3>
+                <p class="text-lg text-gray-700 mt-2">Алтернативна цена = Директни разходи + Пропуснати доходи</p>
+                <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 rounded-r-lg mt-4 inline-block">
+                    <p class="text-3xl font-extrabold">10 000 лв. + 15 000 лв. = 25 000 лв.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#07575B] pt-8">
+            <p class="text-2xl font-bold text-[#003B46]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Да мислиш като икономист означава винаги да си задаваш въпроса: "Добре, избирам това, но от какво се отказвам?"</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('ppfChart').getContext('2d');
+        const ppfChart = new Chart(ctx, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    type: 'line',
+                    label: 'Граница на производствените възможности',
+                    data: [{x: 0, y: 100}, {x: 20, y: 95}, {x: 40, y: 85}, {x: 60, y: 70}, {x: 80, y: 50}, {x: 100, y: 0}],
+                    borderColor: '#003B46',
+                    borderWidth: 3,
+                    fill: false,
+                    tension: 0.4,
+                    pointRadius: 0
+                }, {
+                    label: 'Точка A (Ефективно)',
+                    data: [{x: 40, y: 85}],
+                    backgroundColor: '#3B82F6',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }, {
+                    label: 'Точка B (Ефективно)',
+                    data: [{x: 80, y: 50}],
+                    backgroundColor: '#3B82F6',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }, {
+                    label: 'Точка C (Неефективно)',
+                    data: [{x: 40, y: 50}],
+                    backgroundColor: '#F59E0B',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }, {
+                    label: 'Точка D (Невъзможно)',
+                    data: [{x: 80, y: 80}],
+                    backgroundColor: '#EF4444',
+                    pointRadius: 6,
+                    pointHoverRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Производство на Смартфони',
+                            font: { size: 14, family: 'Inter', weight: '600' },
+                            color: '#003B46'
+                        },
+                         min: 0,
+                         max: 110
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'Производство на Лаптопи',
+                            font: { size: 14, family: 'Inter', weight: '600' },
+                            color: '#003B46'
+                        },
+                        min: 0,
+                        max: 110
+                    }
+                },
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.dataset.label || '';
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                             label: function(context) {
+                                let label = `Смартфони: ${context.parsed.x}`;
+                                let label2 = `Лаптопи: ${context.parsed.y}`;
+                                return [label, label2];
+                            }
+                        }
+                    },
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            usePointStyle: true,
+                            font: { family: 'Inter' }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

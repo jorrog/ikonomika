@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The application is designed as a linear, top-to-bottom educational narrative that follows the strategic marketing process. It starts with the broad concept of 'listening' (Market Analysis), then funnels down through the STP process (Segmentation, Targeting, Positioning), and finally arrives at the execution phase (Value Proposition & Marketing Mix). This funnel-like structure was chosen because it perfectly mirrors the marketing strategy creation process, making it highly intuitive for students. The user flow is a simple vertical scroll, encouraging a step-by-step understanding of how broad market data is refined into a specific, actionable plan. -->
+    <!-- Visualization & Content Choices: 1. STP Process: Goal=Organize, Method=HTML/CSS Flow Diagram (Funnel), Justification=Clearly visualizes the narrowing-down process from a wide market to a specific position, which is the core concept of the lesson. 2. Value Proposition: Goal=Inform, Method=Callout Box, Justification=Highlights the central question "Why should I buy from you?" effectively. 3. Marketing Mix (4Ps): Goal=Organize, Method=Grid of styled HTML cards, Justification=Breaks down the execution elements into four clear, easy-to-digest components. 4. Case Study: Goal=Compare, Method=Side-by-side HTML cards, Justification=Provides a concrete application of the abstract concepts using well-known brands (Volvo/Ferrari). All visualizations are built with HTML/CSS to adhere to the NO SVG/Mermaid constraint. The content is qualitative, so no data charts are necessary. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Инфографика: Анализ на пазара и създаване на концепция за предлагане</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+    </style>
+</head>
+<body class="bg-[#C4DFE6]">
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#003B46] mb-4">Анализ на пазара и създаване на концепция за предлагане</h1>
+            <p class="text-lg text-[#07575B] font-semibold">Пътят от "Всички" до "Точно ти"</p>
+        </header>
+
+        <section id="analysis" class="bg-white p-8 rounded-2xl shadow-xl mb-16 text-center max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-[#003B46] mb-4">Началото на всичко: Слушай пазара!</h2>
+            <p class="text-gray-700 text-lg">Успешните компании не започват с продукта, а с **проучването**. Преди да създадат каквото и да е, те анализират потребителите, конкурентите и глобалните тенденции. Без този **пазарен анализ**, всяко бизнес решение е просто догадка и огромен риск.</p>
+        </section>
+        
+        <section id="stp-process" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-12">Стратегическият път: STP Моделът</h2>
+            <div class="space-y-8">
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#07575B] mb-2">Стъпка 1: Сегментиране (Разделяй, за да владееш)</h3>
+                    <p class="text-gray-700">Пазарът е огромен и разнообразен. Умните компании не се опитват да продават на всички. Те разделят целия пазар на по-малки, хомогенни групи (**сегменти**) от потребители със сходни нужди, характеристики или поведение.</p>
+                </div>
+
+                <div class="flex justify-center text-5xl text-[#07575B] font-bold">↓</div>
+
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#07575B] mb-2">Стъпка 2: Избор на целеви пазар (Избери своята "публика")</h3>
+                    <p class="text-gray-700">След като пазарът е разделен, компанията избира един или няколко сегмента, които може да обслужи най-добре и най-печелившо. Тази избрана група се превръща в неин **целеви пазар**.</p>
+                </div>
+                
+                <div class="flex justify-center text-5xl text-[#07575B] font-bold">↓</div>
+                
+                <div class="bg-white p-8 rounded-2xl shadow-xl">
+                    <h3 class="text-2xl font-bold text-[#07575B] mb-2">Стъпка 3: Позициониране (Как искаш да те запомнят?)</h3>
+                    <p class="text-gray-700">Това е процесът на създаване на ясно, уникално и желано "място" за продукта в съзнанието на целевия потребител. Целта е клиентът веднага да разграничава твоя бранд от конкурентите. (Volvo = Безопасност; Ferrari = Скорост).</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="value-proposition" class="bg-[#003B46] text-white p-8 rounded-2xl shadow-xl mb-16 text-center">
+            <h2 class="text-3xl font-bold mb-4">Финалът: Нашето уникално обещание (Value Proposition)</h2>
+            <p class="text-lg max-w-3xl mx-auto">Това е конкретният пакет от ползи, който предлагаме на нашия целеви пазар. Той отговаря на най-важния въпрос на клиента:</p>
+            <blockquote class="text-2xl italic font-semibold mt-4 text-[#66A5AD]">"Защо трябва да купя от вас?"</blockquote>
+        </section>
+
+        <section id="marketing-mix" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Изпълнение на обещанието: Маркетинг микс (4Р)</h2>
+            <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-10">Концепцията на предлагането се превръща в реалност чрез четирите класически инструмента на маркетинга:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">📦</div>
+                    <h3 class="text-xl font-bold text-[#1A202C]">Продукт (Product)</h3>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold text-[#1A202C]">Цена (Price)</h3>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">📍</div>
+                    <h3 class="text-xl font-bold text-[#1A202C]">Място (Place)</h3>
+                </div>
+                 <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <div class="text-5xl mb-4">📢</div>
+                    <h3 class="text-xl font-bold text-[#1A202C]">Промоция (Promotion)</h3>
+                </div>
+            </div>
+        </section>
+        
+        <section id="case-study" class="bg-white p-8 rounded-2xl shadow-xl">
+             <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Практика: McDonald's срещу Subway</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-red-50 border-l-4 border-red-400 p-6 rounded-r-lg">
+                    <h3 class="text-2xl font-bold text-red-800 mb-2">McDonald's</h3>
+                    <p><strong>Целеви пазар:</strong> Семейства с деца, търсещи бързина и забавление.</p>
+                    <p><strong>Позициониране:</strong> Бързо, лесно, познато, забавно.</p>
+                    <p><strong>Предлагане:</strong> Стандартизирани менюта, детски кътове, бързо обслужване.</p>
+                </div>
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                    <h3 class="text-2xl font-bold text-green-800 mb-2">Subway</h3>
+                    <p><strong>Целеви пазар:</strong> Здравословно ориентирани хора, търсещи персонализация.</p>
+                    <p><strong>Позициониране:</strong> Свежо, направено по твой вкус, по-здравословна алтернатива.</p>
+                    <p><strong>Предлагане:</strong> Избор на съставки, пресни зеленчуци, възможност за персонализация.</p>
+                </div>
+             </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#07575B] pt-8">
+            <p class="text-2xl font-bold text-[#003B46]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Успешният маркетинг не е случаен. Той е логически процес от **слушане**, **избор**, **обещание** и **изпълнение**, който създава силни и устойчиви брандове.</p>
+        </footer>
+    </div>
+</body>
+</html>

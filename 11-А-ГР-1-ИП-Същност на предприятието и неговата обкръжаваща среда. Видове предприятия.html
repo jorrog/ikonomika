@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic follows a linear narrative structure, starting from the core definition of an enterprise as a system, expanding outwards to its environment (micro and macro), and then categorizing the different types. This top-down approach is logical and easy for students to follow. The user flow is a simple vertical scroll. The structure was chosen to build knowledge layer by layer, mirroring the presentation's logic for optimal educational impact. -->
+    <!-- Visualization & Content Choices: 1. Enterprise System: Goal=Organize, Method=HTML/CSS Flow Diagram, Justification=Clearly shows the input-process-output model without complex libraries. 2. Business Environment: Goal=Organize/Relationships, Method=HTML/CSS Concentric Diagram, Justification=Visually separates the layers of influence (micro/macro). 3. Enterprise Size Distribution: Goal=Inform/Compare, Method=Chart.js Doughnut Chart, Justification=Effectively shows the overwhelming proportion of SMEs in the economy, a key quantitative insight. 4. Enterprise Types: Goal=Organize, Method=Styled HTML Cards, Justification=Simple and clear way to present classifications. All choices adhere to the NO SVG/Mermaid constraint. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Инфографика: Анатомия на предприятието</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-[#F0F4F8]">
+
+    <div class="container mx-auto px-4 py-12 max-w-6xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#003B46] mb-4">Анатомия на предприятието</h1>
+            <p class="text-lg text-[#07575B] font-semibold">Живият организъм на икономиката</p>
+        </header>
+
+        <section id="system-definition" class="bg-white p-8 rounded-2xl shadow-xl mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Предприятието като отворена система</h2>
+            <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-10">Най-точният начин да разберем едно предприятие е като система, която постоянно обменя ресурси и информация със средата. Тя има три основни елемента:</p>
+            <div class="flex flex-col md:flex-row justify-center items-center text-center gap-4">
+                <div class="bg-blue-100 p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold text-[#07575B]">ВХОД</h3>
+                    <p class="text-gray-600">Ресурси</p>
+                </div>
+                <div class="text-4xl font-bold text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                <div class="bg-green-100 p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold text-green-800">ПРОЦЕС</h3>
+                    <p class="text-gray-600">Трансформация</p>
+                </div>
+                <div class="text-4xl font-bold text-[#66A5AD] transform md:rotate-0 rotate-90">→</div>
+                <div class="bg-yellow-100 p-6 rounded-lg shadow">
+                    <h3 class="text-2xl font-bold text-yellow-800">ИЗХОД</h3>
+                    <p class="text-gray-600">Продукти/Услуги</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="environment" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-8">Обкръжаващата среда</h2>
+             <p class="text-center text-gray-700 text-lg max-w-3xl mx-auto mb-10">Предприятието не съществува в изолация. То е заобиколено от два основни слоя фактори, които влияят на неговата дейност.</p>
+            <div class="relative flex justify-center items-center min-h-[400px] md:min-h-[500px]">
+                <div class="absolute w-full h-full max-w-lg max-h-lg bg-blue-100 rounded-full flex justify-center items-center">
+                    <span class="text-center font-bold text-[#003B46] text-xl">МАКРОСРЕДА<br><span class="text-sm font-normal">(Глобални сили)</span></span>
+                </div>
+                 <div class="absolute w-2/3 h-2/3 max-w-md max-h-md bg-blue-200 rounded-full flex justify-center items-center">
+                     <span class="text-center font-bold text-[#07575B] text-lg">МИКРОСРЕДА<br><span class="text-sm font-normal">(Близък кръг)</span></span>
+                </div>
+                <div class="absolute w-1/3 h-1/3 max-w-xs max-h-xs bg-white rounded-full flex justify-center items-center shadow-inner">
+                    <span class="text-center font-bold text-[#1A202C] text-2xl">🏭<br>ПРЕДПРИЯТИЕ</span>
+                </div>
+            </div>
+        </section>
+        
+        <section id="environment-details" class="mb-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-2xl font-bold text-[#07575B] mb-4">Микросреда ("Близкият кръг")</h3>
+                <p class="text-gray-700 mb-4">Силите от непосредственото обкръжение, с които фирмата има **пряко взаимодействие**.</p>
+                <ul class="space-y-2 text-gray-800">
+                    <li class="flex items-center"><span class="text-2xl mr-3">🚚</span> Доставчици</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">👥</span> Клиенти</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">⚔️</span> Конкуренти</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">📢</span> Публики</li>
+                </ul>
+            </div>
+             <div class="bg-white p-8 rounded-2xl shadow-xl">
+                <h3 class="text-2xl font-bold text-[#003B46] mb-4">Макросреда ("Глобалните сили")</h3>
+                <p class="text-gray-700 mb-4">Глобалните фактори, върху които фирмата **няма контрол**, но трябва да се **адаптира** към тях.</p>
+                 <ul class="space-y-2 text-gray-800">
+                    <li class="flex items-center"><span class="text-2xl mr-3">⚖️</span> Политико-правни</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">📈</span> Икономически</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">👨‍👩‍👧‍👦</span> Социално-културни</li>
+                    <li class="flex items-center"><span class="text-2xl mr-3">💻</span> Технологични</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="types" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#003B46] mb-12">Видове предприятия: Класификация</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#07575B] mb-2 text-center">1. Според собствеността</h3>
+                    <p class="text-center"><strong>Частни:</strong> Собственост на частни лица.</p>
+                    <p class="text-center"><strong>Публични:</strong> Държавни/общински.</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#07575B] mb-2 text-center">2. Според размера</h3>
+                     <p class="text-center">Микро (до 10 души)</p>
+                     <p class="text-center">Малки (до 50 души)</p>
+                     <p class="text-center">Средни (до 250 души)</p>
+                     <p class="text-center">Големи (> 250 души)</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-lg">
+                    <h3 class="text-xl font-bold text-[#07575B] mb-2 text-center">3. Според дейността</h3>
+                     <p class="text-center"><strong>Производствени:</strong> Създават продукти.</p>
+                     <p class="text-center"><strong>Търговски:</strong> Купуват и препродават.</p>
+                     <p class="text-center"><strong>За услуги:</strong> Предоставят услуги.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="chart-size" class="bg-white p-8 rounded-2xl shadow-xl">
+             <h2 class="text-3xl font-bold text-center text-[#003B46] mb-4">Гръбнакът на икономиката</h2>
+             <p class="text-center text-gray-600 max-w-3xl mx-auto mb-8">В България, както и в целия ЕС, над 99% от предприятията са малки и средни (МСП). Те създават по-голямата част от работните места и брутния вътрешен продукт.</p>
+            <div class="chart-container">
+                <canvas id="sizeChart"></canvas>
+            </div>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#07575B] pt-8">
+            <p class="text-2xl font-bold text-[#003B46]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Успехът на едно предприятие зависи от способността му да разбира и да се адаптира към своята сложна микро- и макросреда.</p>
+        </footer>
+    </div>
+
+    <script>
+        const ctx = document.getElementById('sizeChart').getContext('2d');
+        const sizeChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Микро (<10)', 'Малки (10-49)', 'Средни (50-249)', 'Големи (>250)'],
+                datasets: [{
+                    label: 'Дял на предприятията по размер',
+                    data: [93.2, 5.6, 0.9, 0.3],
+                    backgroundColor: [
+                        '#07575B',
+                        '#66A5AD',
+                        '#C4DFE6',
+                        '#003B46'
+                    ],
+                    borderColor: '#F0F4F8',
+                    borderWidth: 4,
+                    hoverOffset: 10
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: {
+                            font: { size: 12, family: 'Inter' },
+                            color: '#003B46',
+                            padding: 15
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            },
+                            label: function(context) {
+                                let label = context.dataset.label || '';
+                                if (label) {
+                                    label += ': ';
+                                 }
+                                if (context.parsed !== null) {
+                                    label += context.parsed + '%';
+                                }
+                                return label;
+                            }
+                        },
+                        titleFont: { size: 16, family: 'Inter', weight: 'bold' },
+                        bodyFont: { size: 14, family: 'Inter' },
+                        padding: 12,
+                        backgroundColor: '#003B46',
+                        titleColor: '#FFFFFF',
+                        bodyColor: '#FFFFFF',
+                        cornerRadius: 8
+                    }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

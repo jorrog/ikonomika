@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The SPA is designed as a single-page, top-to-bottom narrative scroll, which is the most intuitive user flow for educational content. The structure guides the user logically from the 'who' (the entrepreneur as a superhero), to the 'how' (the entrepreneurial process as a simple flowchart), and finally to the 'why' (the societal impact shown in interactive cards). This structure was chosen to build understanding step-by-step, making complex ideas digestible for an 8th-grade audience. The interactive hover effects on the final cards serve as a simple engagement mechanism. -->
+    <!-- Visualization & Content Choices: 1. Entrepreneur Definition: Goal=Inform, Method=HTML/CSS Card with Unicode icon, Justification=Strong visual metaphor (superhero) to introduce the concept. 2. Entrepreneurship Process: Goal=Organize, Method=HTML/CSS Flowchart, Justification=Clearly visualizes the 4-step process without needing complex libraries. 3. Importance of Entrepreneurship: Goal=Compare/Inform, Method=Grid of interactive HTML/CSS cards, Justification=Breaks down the four key societal benefits into easy-to-scan, visually distinct blocks. 4. Case Study: Goal=Inform, Method=Integrated text callout, Justification=Provides a real-world example (Zuckerberg) to ground the abstract concepts. All visualizations are built with HTML/CSS to adhere to the NO SVG/Mermaid constraint. No data charts were needed as the source material is qualitative. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Инфографика: Същност и значение на предприемачеството</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F7FFF7;
+        }
+        .impact-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .impact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .flow-arrow::after {
+            content: '→';
+            font-size: 2.5rem;
+            color: #4ECDC4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+
+        <header class="text-center mb-16">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#1A535C] mb-4">Същност и значение на предприемачеството</h1>
+            <p class="text-lg text-[#45B7D1] font-semibold">Супергероите на модерния свят</p>
+        </header>
+
+        <section id="entrepreneur" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Кой е предприемачът?</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-xl max-w-3xl mx-auto text-center">
+                <span class="text-6xl">🦸</span>
+                <p class="text-lg text-gray-700 mt-4 mb-6">С какви думи бихте описали хора като Илон Мъск или създателите на любимата ви игра? Тяхната "суперсила" е да **виждат проблеми, които другите не виждат, и да ги превръщат във възможности.**</p>
+                <div class="bg-[#F7FFF7] border-l-4 border-[#FF6B6B] p-4 rounded-r-lg">
+                    <h3 class="font-bold text-lg text-[#1A535C]">ДЕФИНИЦИЯ:</h3>
+                    <p class="text-gray-800">**Предприемачът** е личност, която проявява инициатива, организира ресурси и поема пресметнат риск с цел да създаде нов продукт, услуга или бизнес.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="entrepreneurship" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Какво е предприемачеството?</h2>
+            <div class="bg-white p-8 rounded-2xl shadow-xl max-w-4xl mx-auto">
+                 <p class="text-center text-lg text-gray-700 mb-8">Всичко започва от прост процес. Представете си, че постоянно си губите ключовете. Предприемачът генерира идея за решение, след което предприема действие, за да създаде продукт, който носи стойност на хората.</p>
+                <div class="flex flex-col md:flex-row justify-around items-center text-center gap-4">
+                    <div class="flex-1">
+                        <div class="text-4xl mb-2">🤔</div>
+                        <h4 class="font-bold text-xl text-[#1A535C]">Проблем</h4>
+                    </div>
+                    <div class="flow-arrow transform md:rotate-0 rotate-90"></div>
+                    <div class="flex-1">
+                        <div class="text-4xl mb-2">💡</div>
+                        <h4 class="font-bold text-xl text-[#1A535C]">Идея</h4>
+                    </div>
+                     <div class="flow-arrow transform md:rotate-0 rotate-90"></div>
+                    <div class="flex-1">
+                        <div class="text-4xl mb-2">🚀</div>
+                        <h4 class="font-bold text-xl text-[#1A535C]">Действие</h4>
+                    </div>
+                     <div class="flow-arrow transform md:rotate-0 rotate-90"></div>
+                    <div class="flex-1">
+                        <div class="text-4xl mb-2">💎</div>
+                        <h4 class="font-bold text-xl text-[#1A535C]">Стойност</h4>
+                    </div>
+                </div>
+                 <div class="bg-[#F7FFF7] border-l-4 border-[#4ECDC4] p-4 rounded-r-lg mt-8">
+                    <h3 class="font-bold text-lg text-[#1A535C]">ДЕФИНИЦИЯ:</h3>
+                    <p class="text-gray-800">**Предприемачеството** е процесът на откриване на възможности, създаване на иновации и изграждане на бизнес, който създава стойност за потребителите.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="importance" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-[#1A535C] mb-8">Защо предприемачеството е толкова важно?</h2>
+            <p class="text-center text-lg text-gray-700 max-w-3xl mx-auto mb-12">Представете си свят без смартфони, без TikTok, без любимите ви маратонки. Предприемачите са двигателят на всяка модерна икономика и тяхната дейност има огромно значение за всички нас.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="impact-card bg-white p-6 rounded-xl shadow-lg text-center">
+                    <div class="text-5xl mb-4">💡</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Двигател на иновациите</h3>
+                    <p class="text-gray-600">Създават новите технологии и продукти, които променят живота ни към по-добро.</p>
+                </div>
+                <div class="impact-card bg-white p-6 rounded-xl shadow-lg text-center">
+                     <div class="text-5xl mb-4">👨‍👩‍👧‍👦</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Създаване на работни места</h3>
+                    <p class="text-gray-600">Всяка нова фирма, от малка до голяма, осигурява доходи и препитание на хората.</p>
+                </div>
+                <div class="impact-card bg-white p-6 rounded-xl shadow-lg text-center">
+                     <div class="text-5xl mb-4">🌍</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Решаване на проблеми</h3>
+                    <p class="text-gray-600">Фокусират се върху обществени проблеми като замърсяване, образование и здравеопазване.</p>
+                </div>
+                 <div class="impact-card bg-white p-6 rounded-xl shadow-lg text-center">
+                     <div class="text-5xl mb-4">🏆</div>
+                    <h3 class="text-xl font-bold text-[#1A535C] mb-2">Повишаване на конкуренцията</h3>
+                    <p class="text-gray-600">Карат старите фирми да стават по-добри, което води до по-високо качество за всички.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="case-study" class="bg-white p-8 rounded-2xl shadow-xl text-center">
+             <h2 class="text-3xl font-bold text-[#1A535C] mb-4">Практика: Да анализираме Facebook (Meta)</h2>
+             <p class="text-gray-700 text-lg max-w-3xl mx-auto">Марк Зукърбърг е класически пример за предприемач. В началото той решава **проблем** - липсата на лесен начин студентите да се свързват онлайн. Проявява **инициативност, иновативност и поема риск**, за да превърне идеята си в реалност. В резултат неговият бизнес **повлиява на обществото**, като променя начина, по който общуваме и създава хиляди работни места.</p>
+        </section>
+
+        <footer class="text-center mt-16 border-t-2 border-[#4ECDC4] pt-8">
+            <p class="text-2xl font-bold text-[#1A535C]">Ключов извод:</p>
+            <p class="text-gray-700 text-lg max-w-3xl mx-auto">Предприемачеството е начин на мислене, който може да започне още от днес! Оглеждай се за проблеми и не се страхувай да предлагаш решения.</p>
+        </footer>
+    </div>
+</body>
+</html>

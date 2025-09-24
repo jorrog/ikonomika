@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Входен тест: Икономика на предприятието</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F0F4F8;
+        }
+        .answer-btn {
+            transition: all 0.2s ease-in-out;
+        }
+        .answer-btn:not(:disabled):hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .correct {
+            background-color: #68D391 !important;
+            color: #1A202C !important;
+            border-color: #68D391 !important;
+        }
+        .incorrect {
+            background-color: #FC8181 !important;
+            color: white !important;
+            border-color: #FC8181 !important;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-3xl overflow-hidden">
+        <div id="quiz-container">
+            <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A202C]">Входен тест: Икономика на предприятието</h2>
+                    <div id="progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="question-card" class="mb-6">
+                    <p id="question" class="text-2xl font-bold text-[#1A202C] leading-snug"></p>
+                    <p id="hint" class="text-sm text-gray-500 mt-2 italic"></p>
+                </div>
+                <div id="options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                <div id="rationale-card-quiz" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold text-yellow-800">Обяснение:</h4>
+                    <p id="rationale-text-quiz" class="text-yellow-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Предишен</button>
+                <button id="next-btn" class="bg-[#2B6CB0] text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-800 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">Следващ</button>
+            </div>
+        </div>
+
+        <div id="result-container" class="p-8 text-center hidden">
+            <h2 class="text-3xl font-bold text-[#1A202C] mb-4">Тестът приключи!</h2>
+            <p class="text-xl text-gray-600 mb-2">Вашият резултат е:</p>
+            <p id="score" class="text-6xl font-bold text-[#2B6CB0] mb-6"></p>
+            <p id="score-text" class="text-lg text-gray-500 mb-8"></p>
+            <div class="flex justify-center gap-4">
+                <button id="restart-btn" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-gray-800 transition duration-300">Нов опит</button>
+                <button id="review-btn" class="bg-[#2B6CB0] text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-800 transition duration-300">Преглед на отговорите</button>
+            </div>
+        </div>
+        
+        <div id="review-container" class="hidden">
+             <div class="p-8">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-xl font-bold text-[#1A202C]">Преглед на отговорите</h2>
+                    <div id="review-progress" class="text-sm font-semibold text-gray-500 bg-gray-200 px-3 py-1 rounded-full"></div>
+                </div>
+                <div id="review-question-card" class="mb-6">
+                    <p id="review-question" class="text-2xl font-bold text-[#1A202C] leading-snug"></p>
+                </div>
+                <div id="review-options" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+                 <div id="rationale-card" class="mt-6 p-4 bg-yellow-100 border-l-4 border-yellow-400 rounded-r-lg hidden">
+                    <h4 class="font-bold text-yellow-800">Обяснение:</h4>
+                    <p id="rationale-text" class="text-yellow-700"></p>
+                </div>
+            </div>
+            <div class="bg-gray-50 px-8 py-4 flex justify-between items-center border-t border-gray-200">
+                <button id="review-prev-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Предишен</button>
+                <button id="back-to-results-btn" class="bg-[#2B6CB0] text-white font-bold py-2 px-6 rounded-lg hover:bg-blue-800 transition duration-300">Към резултатите</button>
+                <button id="review-next-btn" class="bg-gray-300 text-gray-700 font-bold py-2 px-6 rounded-lg hover:bg-gray-400 transition duration-300 disabled:opacity-50">Следващ</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        const quizData = {
+          "questions": [
+            {
+              "questionNumber": 1,
+              "question": "Кое от изброените НЕ е част от микросредата на предприятието?",
+              "answerOptions": [
+                { "text": "Клиенти", "rationale": "Клиентите са ключов елемент от микросредата, тъй като предприятието има пряко взаимодействие с тях.", "isCorrect": false },
+                { "text": "Технологични промени", "rationale": "Точно така! Технологичните промени са глобален фактор от макросредата, който влияе на всички предприятия, но върху който отделната фирма няма пряк контрол.", "isCorrect": true },
+                { "text": "Конкуренти", "rationale": "Конкурентите са в пряка, ежедневна борба с предприятието и са част от неговата микросреда.", "isCorrect": false },
+                { "text": "Доставчици", "rationale": "Доставчиците са част от микросредата, тъй като предприятието договаря и взаимодейства директно с тях.", "isCorrect": false }
+              ],
+              "hint": "Микросредата включва елементите, с които фирмата има пряко взаимодействие."
+            },
+            {
+              "questionNumber": 2,
+              "question": "Предприятие с 45 служители и годишен оборот от 15 млн. лв. се класифицира като:",
+              "answerOptions": [
+                { "text": "Микро предприятие", "rationale": "Микро предприятията са с персонал до 10 души.", "isCorrect": false },
+                { "text": "Малко предприятие", "rationale": "Точно така! Малките предприятия са с персонал до 50 души и оборот до 19.5 млн. лв.", "isCorrect": true },
+                { "text": "Средно предприятие", "rationale": "Средните предприятия са с персонал до 250 души.", "isCorrect": false },
+                { "text": "Голямо предприятие", "rationale": "Големите предприятия надхвърлят показателите за средно предприятие.", "isCorrect": false }
+              ],
+              "hint": "Спомни си критериите по Закона за малките и средни предприятия."
+            },
+            {
+              "questionNumber": 3,
+              "question": "Кое от изброените е пример за оборотен (краткотраен) капитал?",
+              "answerOptions": [
+                { "text": "Машини и оборудване", "rationale": "Машините са основен (дълготраен) капитал, тъй като участват в производството многократно.", "isCorrect": false },
+                { "text": "Сградата на цеха", "rationale": "Сградата е основен (дълготраен) капитал.", "isCorrect": false },
+                { "text": "Суровини и материали", "rationale": "Точно така! Суровините се потребяват изцяло в рамките на един производствен цикъл и са част от оборотния капитал.", "isCorrect": true },
+                { "text": "Фирмен автомобил", "rationale": "Автомобилът е основен (дълготраен) капитал.", "isCorrect": false }
+              ],
+              "hint": "Този вид капитал се 'обръща' многократно в рамките на една година."
+            },
+            {
+              "questionNumber": 4,
+              "question": "Разликата между приходите от продажби и всички разходи на предприятието се нарича:",
+              "answerOptions": [
+                { "text": "Себестойност", "rationale": "Себестойността представлява само разходите за производството на единица продукция.", "isCorrect": false },
+                { "text": "Цена", "rationale": "Цената е паричният израз на стойността, която купувачът плаща.", "isCorrect": false },
+                { "text": "Печалба", "rationale": "Точно така! Печалбата е крайният финансов резултат от дейността на предприятието.", "isCorrect": true },
+                { "text": "Оборот", "rationale": "Оборотът (или приходите) е общата сума от продажбите, преди да се извадят разходите.", "isCorrect": false }
+              ],
+              "hint": "Това е крайният финансов резултат от дейността."
+            },
+            {
+              "questionNumber": 5,
+              "question": "БДЖ (Български държавни железници) е пример за предприятие, което според собствеността е:",
+              "answerOptions": [
+                { "text": "Частно", "rationale": "Частните предприятия са собственост на частни лица или фирми.", "isCorrect": false },
+                { "text": "Публично (държавно)", "rationale": "Точно така! БДЖ е собственост на държавата, поради което е публично предприятие.", "isCorrect": true },
+                { "text": "Кооперативно", "rationale": "Кооперациите са собственост на техните членове.", "isCorrect": false },
+                { "text": "Смесено", "rationale": "Смесените предприятия имат както частно, така и публично участие.", "isCorrect": false }
+              ],
+              "hint": "Помисли кой е собственикът на тази компания."
+            },
+            {
+              "questionNumber": 6,
+              "question": "Кое от изброените е пример за вътрешно финансиране?",
+              "answerOptions": [
+                { "text": "Използване на натрупаната печалба", "rationale": "Точно така! Използването на собствени средства, като печалбата, е основна форма на вътрешно финансиране.", "isCorrect": true },
+                { "text": "Изтегляне на банков кредит", "rationale": "Банковият кредит е класически пример за външно финансиране.", "isCorrect": false },
+                { "text": "Продажба на акции на борсата", "rationale": "Продажбата на акции е форма на външно финансиране чрез привличане на инвеститори.", "isCorrect": false },
+                { "text": "Получаване на средства от инвеститор", "rationale": "Привличането на инвеститор е външно финансиране.", "isCorrect": false }
+              ],
+              "hint": "Този вид финансиране идва от източници 'отвътре' фирмата."
+            },
+            {
+              "questionNumber": 7,
+              "question": "Влагането на средства в ценни книжа (акции, облигации) е пример за:",
+              "answerOptions": [
+                { "text": "Реална инвестиция", "rationale": "Реалната инвестиция е влагане на средства в материални активи като сгради и машини.", "isCorrect": false },
+                { "text": "Финансова инвестиция", "rationale": "Точно така! Финансовата инвестиция е покупка на финансови инструменти с очакване за бъдеща възвръщаемост.", "isCorrect": true },
+                { "text": "Краткосрочен кредит", "rationale": "Кредитът е форма на финансиране (набиране на средства), а не на инвестиране (влагане на средства).", "isCorrect": false },
+                { "text": "Пасивна операция", "rationale": "Пасивните операции са свързани с дейността на банките по привличане на средства.", "isCorrect": false }
+              ],
+              "hint": "Този вид инвестиция не е в материални, а във финансови активи."
+            },
+            {
+              "questionNumber": 8,
+              "question": "Когато една банка отпуска кредити на фирми, тя извършва:",
+              "answerOptions": [
+                { "text": "Пасивна операция", "rationale": "Пасивните операции са тези, при които банката ПРИВЛИЧА средства (депозити).", "isCorrect": false },
+                { "text": "Активна операция", "rationale": "Точно така! Активните операции са тези, при които банката ДАВА средства (кредити) и формира своите активи.", "isCorrect": true },
+                { "text": "Борсова операция", "rationale": "Борсовите операции са свързани с търговия на борсата.", "isCorrect": false },
+                { "text": "Касова операция", "rationale": "Касовите операции са свързани с движението на пари в брой.", "isCorrect": false }
+              ],
+              "hint": "При този вид операция банката формира своите активи."
+            },
+            {
+              "questionNumber": 9,
+              "question": "Какво представлява облигацията?",
+              "answerOptions": [
+                { "text": "Ценна книга, удостоверяваща собственост", "rationale": "Това е дефиницията за акция, а не за облигация.", "isCorrect": false },
+                { "text": "Дългова ценна книга", "rationale": "Точно така! Купувайки облигация, вие на практика давате заем на издателя (фирма или държава) срещу лихва.", "isCorrect": true },
+                { "text": "Документ за получен банков кредит", "rationale": "Кредитът се урежда с договор за кредит, а не с облигация.", "isCorrect": false },
+                { "text": "Разрешение за търговия на борсата", "rationale": "Това не е финансов инструмент.", "isCorrect": false }
+              ],
+              "hint": "Този финансов инструмент е свързан със заем, а не със собственост."
+            },
+            {
+              "questionNumber": 10,
+              "question": "Процесът на определяне на бъдещите финансови цели на предприятието се нарича:",
+              "answerOptions": [
+                { "text": "Финансов анализ", "rationale": "Анализът оценява миналото и настоящето, а не бъдещето.", "isCorrect": false },
+                { "text": "Финансово планиране", "rationale": "Точно така! Планирането е изцяло насочено към бъдещето и определянето на цели и стратегии.", "isCorrect": true },
+                { "text": "Финансиране", "rationale": "Финансирането е набиране на средства.", "isCorrect": false },
+                { "text": "Инвестиране", "rationale": "Инвестирането е влагане на средства.", "isCorrect": false }
+              ],
+              "hint": "Този процес е насочен към бъдещето."
+            },
+            { "questionNumber": 11, "question": "Фризьорски салон е предприятие, което според дейността си е:", "answerOptions": [ { "text": "Производствено", "rationale": "Производствените предприятия създават материални продукти.", "isCorrect": false }, { "text": "Търговско", "rationale": "Търговските предприятия купуват и препродават готови стоки.", "isCorrect": false }, { "text": "В сферата на услугите", "rationale": "Точно така! Фризьорският салон предоставя нематериална услуга.", "isCorrect": true }, { "text": "Финансово", "rationale": "Финансовите предприятия се занимават с парични операции (банки, застрахователи).", "isCorrect": false } ], "hint": "Помисли дали продуктът е материален или не." },
+            { "questionNumber": 12, "question": "Кое от изброените е елемент от макросредата на предприятието?", "answerOptions": [ { "text": "Доставчик на суровини", "rationale": "Доставчикът е част от микросредата.", "isCorrect": false }, { "text": "Основен конкурент", "rationale": "Конкурентът е част от микросредата.", "isCorrect": false }, { "text": "Повишаване на инфлацията", "rationale": "Точно така! Инфлацията е икономически фактор от макросредата, който влияе на всички.", "isCorrect": true }, { "text": "Лоялни клиенти", "rationale": "Клиентите са част от микросредата.", "isCorrect": false } ], "hint": "Макросредата включва глобални фактори, върху които фирмата няма контрол." },
+            { "questionNumber": 13, "question": "Системата на заплащане, при която възнаграждението зависи от броя произведени единици, се нарича:", "answerOptions": [ { "text": "Повременна", "rationale": "При повременната система заплащането зависи от отработеното време (часове, дни).", "isCorrect": false }, { "text": "Сделна", "rationale": "Точно така! Сделната система (на парче) обвързва заплащането директно с количеството произведена продукция.", "isCorrect": true }, { "text": "Акордна", "rationale": "Акордната система е разновидност на сделната, но за изпълнение на цялостна задача.", "isCorrect": false }, { "text": "Тарифна", "rationale": "Тарифната система е начин за определяне на основната заплата според квалификацията.", "isCorrect": false } ], "hint": "Заплащането е 'на парче'." },
+            { "questionNumber": 14, "question": "Основната цел на финансовия анализ е:", "answerOptions": [ { "text": "Да предвиди бъдещите печалби с точност.", "rationale": "Предвиждането на бъдещето е задача на планирането, а не на анализа.", "isCorrect": false }, { "text": "Да оцени финансовото състояние и резултати.", "rationale": "Точно така! Анализът използва данни от миналото, за да оцени настоящото 'здраве' на фирмата.", "isCorrect": true }, { "text": "Да намери нови източници на финансиране.", "rationale": "Това е задача на финансовия мениджмънт, която се базира на анализа, но не е негова основна цел.", "isCorrect": false }, { "text": "Да определи цените на продуктите.", "rationale": "Ценообразуването е маркетингово решение, което се информира от финансовия анализ, но не е негова цел.", "isCorrect": false } ], "hint": "Анализът гледа назад, за да разбере какво е положението сега." },
+            { "questionNumber": 15, "question": "Организираният пазар, на който се търгуват ценни книжа, се нарича:", "answerOptions": [ { "text": "Стокова борса", "rationale": "На стоковата борса се търгуват суровини и стоки (петрол, зърно).", "isCorrect": false }, { "text": "Валутна борса", "rationale": "На валутната борса (Forex) се търгуват валути.", "isCorrect": false }, { "text": "Фондова борса", "rationale": "Точно така! Фондовата борса е мястото за търговия с акции и облигации.", "isCorrect": true }, { "text": "Трудова борса", "rationale": "Трудовата борса е институция, която посредничи между търсещи и предлагащи работа.", "isCorrect": false } ], "hint": "Търгуват се фондове (капитал) под формата на ценни книжа." },
+            { "questionNumber": 16, "question": "Кое от изброените НЕ е характеристика на предприятието като отворена система?", "answerOptions": [ { "text": "Вход (ресурси)", "rationale": "Входът е първият елемент на системата - ресурсите, които тя привлича.", "isCorrect": false }, { "text": "Изход (продукти)", "rationale": "Изходът е крайният резултат от дейността - готовите продукти и услуги.", "isCorrect": false }, { "text": "Пълна независимост от средата", "rationale": "Точно така! Като 'отворена' система, предприятието е в постоянна и пълна зависимост от своята обкръжаваща среда.", "isCorrect": true }, { "text": "Процес на трансформация", "rationale": "Процесът на трансформация е дейността, която превръща ресурсите в продукти.", "isCorrect": false } ], "hint": "Помисли за значението на думата 'отворена'." },
+            { "questionNumber": 17, "question": "Когато едно предприятие закупува акции на друго предприятие, то извършва:", "answerOptions": [ { "text": "Реална инвестиция", "rationale": "Реалната инвестиция е в материални активи.", "isCorrect": false }, { "text": "Външно финансиране", "rationale": "Това е инвестиция (влагане на средства), а не финансиране (набиране на средства).", "isCorrect": false }, { "text": "Финансова инвестиция", "rationale": "Точно така! Покупката на акции е влагане на средства във финансови активи.", "isCorrect": true }, { "text": "Активна банкова операция", "rationale": "Това е операция, извършвана от банка, а не от обикновено предприятие.", "isCorrect": false } ], "hint": "Акцията е финансов актив." },
+            { "questionNumber": 18, "question": "Основната разлика между акция и облигация е, че:", "answerOptions": [ { "text": "Акцията носи лихва, а облигацията - дивидент.", "rationale": "Обратното е вярно - облигацията носи лихва (цена на заема), а акцията може да носи дивидент (част от печалбата).", "isCorrect": false }, { "text": "Акцията е собственост, а облигацията е дълг.", "rationale": "Точно така! Акционерът е собственик, а облигационерът е кредитор на компанията.", "isCorrect": true }, { "text": "Акциите се търгуват на борсата, а облигациите - не.", "rationale": "И двата вида ценни книжа могат да се търгуват на фондовата борса.", "isCorrect": false }, { "text": "Акциите са краткосрочни, а облигациите - дългосрочни.", "rationale": "И двата инструмента са дългосрочни, част от капиталовия пазар.", "isCorrect": false } ], "hint": "Помисли какви права дават двата инструмента." },
+            { "questionNumber": 19, "question": "Кой показател измерва възвръщаемостта на вложения капитал (колко печелим от всеки инвестиран лев)?", "answerOptions": [ { "text": "Ликвидност", "rationale": "Ликвидността измерва способността на фирмата да покрива краткосрочните си задължения.", "isCorrect": false }, { "text": "Производителност", "rationale": "Производителността измерва ефективността на използване на ресурсите (колко произвеждаме).", "isCorrect": false }, { "text": "Рентабилност", "rationale": "Точно така! Рентабилността е ключовият показател за доходност и ефективност на инвестициите.", "isCorrect": true }, { "text": "Себестойност", "rationale": "Себестойността е показател за разходите, а не за печалбата.", "isCorrect": false } ], "hint": "Ключовата дума е 'доходност'." },
+            { "questionNumber": 20, "question": "Коя институция е основен участник на капиталовия пазар в България?", "answerOptions": [ { "text": "Българска народна банка (БНБ)", "rationale": "БНБ е централната банка, която регулира банковата система и паричния пазар, но не е участник на капиталовия пазар.", "isCorrect": false }, { "text": "Българска фондова борса (БФБ)", "rationale": "Точно така! БФБ е организираният пазар, на който се търгуват акции и облигации в България.", "isCorrect": true }, { "text": "Национална агенция за приходите (НАП)", "rationale": "НАП е институцията, която събира данъци и осигуровки.", "isCorrect": false }, { "text": "Агенция по заетостта", "rationale": "Агенцията по заетостта се занимава с пазара на труда.", "isCorrect": false } ], "hint": "Търсим организирания пазар за търговия с акции." }
+          ]
+        };
+
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const reviewContainer = document.getElementById('review-container');
+        
+        const questionEl = document.getElementById('question');
+        const hintEl = document.getElementById('hint');
+        const optionsEl = document.getElementById('options');
+        const progressEl = document.getElementById('progress');
+        
+        const rationaleCardQuizEl = document.getElementById('rationale-card-quiz');
+        const rationaleTextQuizEl = document.getElementById('rationale-text-quiz');
+        
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const restartBtn = document.getElementById('restart-btn');
+        const reviewBtn = document.getElementById('review-btn');
+        
+        const scoreEl = document.getElementById('score');
+        const scoreTextEl = document.getElementById('score-text');
+
+        const reviewQuestionEl = document.getElementById('review-question');
+        const reviewOptionsEl = document.getElementById('review-options');
+        const reviewProgressEl = document.getElementById('review-progress');
+        const rationaleCardEl = document.getElementById('rationale-card');
+        const rationaleTextEl = document.getElementById('rationale-text');
+        const reviewPrevBtn = document.getElementById('review-prev-btn');
+        const reviewNextBtn = document.getElementById('review-next-btn');
+        const backToResultsBtn = document.getElementById('back-to-results-btn');
+
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(quizData.questions.length).fill(null);
+
+        function startQuiz() {
+            currentQuestionIndex = 0;
+            userAnswers.fill(null);
+            quizContainer.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.add('hidden');
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            questionEl.textContent = currentQuestion.question;
+            hintEl.textContent = currentQuestion.hint;
+            optionsEl.innerHTML = '';
+            rationaleCardQuizEl.classList.add('hidden');
+
+            const userAnswer = userAnswers[currentQuestionIndex];
+            const correctIndex = currentQuestion.answerOptions.findIndex(opt => opt.isCorrect);
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'border-gray-300', 'rounded-lg', 'text-left');
+                
+                if (userAnswer !== null) {
+                    button.disabled = true;
+                    if (index === correctIndex) {
+                        button.classList.add('correct');
+                    } else if (index === userAnswer) {
+                        button.classList.add('incorrect');
+                    }
+                } else {
+                    button.classList.add('hover:bg-gray-100');
+                    button.onclick = () => selectAnswer(index);
+                }
+                optionsEl.appendChild(button);
+            });
+
+            if (userAnswer !== null) {
+                rationaleTextQuizEl.textContent = currentQuestion.answerOptions[correctIndex].rationale;
+                rationaleCardQuizEl.classList.remove('hidden');
+            }
+
+            updateNavigation();
+        }
+
+        function selectAnswer(index) {
+            if (userAnswers[currentQuestionIndex] !== null) return;
+
+            userAnswers[currentQuestionIndex] = index;
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const buttons = optionsEl.querySelectorAll('button');
+            const correctIndex = currentQuestion.answerOptions.findIndex(opt => opt.isCorrect);
+
+            buttons.forEach((btn, i) => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-gray-100');
+                if (i === correctIndex) {
+                    btn.classList.add('correct');
+                } else if (i === index) {
+                    btn.classList.add('incorrect');
+                }
+            });
+            
+            rationaleTextQuizEl.textContent = currentQuestion.answerOptions[correctIndex].rationale;
+            rationaleCardQuizEl.classList.remove('hidden');
+
+            updateNavigation();
+        }
+
+        function updateNavigation() {
+            progressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            const allAnswered = userAnswers.every(answer => answer !== null);
+            
+            if (currentQuestionIndex === quizData.questions.length - 1) {
+                nextBtn.textContent = 'Предай теста';
+                nextBtn.disabled = !allAnswered;
+            } else {
+                nextBtn.textContent = 'Следващ';
+                nextBtn.disabled = userAnswers[currentQuestionIndex] === null;
+            }
+        }
+
+        function showResults() {
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+
+            let score = 0;
+            userAnswers.forEach((answer, index) => {
+                if (answer !== null && quizData.questions[index].answerOptions[answer].isCorrect) {
+                    score++;
+                }
+            });
+
+            const totalQuestions = quizData.questions.length;
+            scoreEl.textContent = `${score} / ${totalQuestions}`;
+
+            const percentage = (score / totalQuestions) * 100;
+            if (percentage >= 85) {
+                scoreTextEl.textContent = 'Отличен резултат! Владееш отлично материала.';
+            } else if (percentage >= 60) {
+                scoreTextEl.textContent = 'Много добър резултат! Имаш стабилни познания.';
+            } else if (percentage >= 40) {
+                scoreTextEl.textContent = 'Добър резултат. Има някои пропуски, които можеш да прегледаш.';
+            }
+            else {
+                scoreTextEl.textContent = 'Има нужда от още работа. Прегледай отговорите си, за да видиш къде са пропуските.';
+            }
+        }
+
+        function startReview() {
+            resultContainer.classList.add('hidden');
+            reviewContainer.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            loadReviewQuestion();
+        }
+
+        function loadReviewQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            const userAnswerIndex = userAnswers[currentQuestionIndex];
+            
+            reviewQuestionEl.textContent = currentQuestion.question;
+            reviewOptionsEl.innerHTML = '';
+            
+            let correctRationale = '';
+
+            currentQuestion.answerOptions.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('answer-btn', 'w-full', 'p-4', 'border-2', 'rounded-lg', 'text-left', 'cursor-default');
+
+                if (option.isCorrect) {
+                    button.classList.add('correct');
+                    correctRationale = option.rationale;
+                } else if (userAnswerIndex === index) {
+                    button.classList.add('incorrect');
+                } else {
+                    button.classList.add('border-gray-300', 'bg-gray-100', 'opacity-70');
+                }
+                reviewOptionsEl.appendChild(button);
+            });
+            
+            if (userAnswerIndex !== null) {
+                 rationaleCardEl.classList.remove('hidden');
+                 rationaleTextEl.textContent = correctRationale;
+            } else {
+                 rationaleCardEl.classList.add('hidden');
+            }
+
+            reviewProgressEl.textContent = `Въпрос ${currentQuestionIndex + 1} / ${quizData.questions.length}`;
+            reviewPrevBtn.disabled = currentQuestionIndex === 0;
+            reviewNextBtn.disabled = currentQuestionIndex === quizData.questions.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+        
+        restartBtn.addEventListener('click', startQuiz);
+        reviewBtn.addEventListener('click', startReview);
+
+        reviewPrevBtn.addEventListener('click', () => {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadReviewQuestion();
+            }
+        });
+
+        reviewNextBtn.addEventListener('click', () => {
+            if (currentQuestionIndex < quizData.questions.length - 1) {
+                currentQuestionIndex++;
+                loadReviewQuestion();
+            }
+        });
+        
+        backToResultsBtn.addEventListener('click', () => {
+            reviewContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+        });
+
+        startQuiz();
+    </script>
+</body>
+</html>
