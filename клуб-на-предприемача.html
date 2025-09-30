@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клуб по предприемачество "Бъдещи Лидери"</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800">
+    
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-6 py-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#577590]">Клуб "Бъдещи Лидери"</h1>
+            <p class="mt-2 text-lg text-slate-600">Твоята първа стъпка към това да промениш света.</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-6 py-12 md:py-20">
+
+        <section id="hook" class="text-center mb-16 md:mb-24">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#F94144] mb-4">Виждаш проблем около себе си?</h2>
+            <p class="max-w-3xl mx-auto text-xl text-slate-700">Всеки велик проект, всяка иновация, всяка промяна започва с един прост въпрос. Нашият клуб е мястото, където се учим да превръщаме проблемите във възможности и да действаме, вместо да чакаме някой друг да го направи.</p>
+        </section>
+        
+        <section id="core-concept" class="mb-16 md:mb-24">
+             <div class="bg-white rounded-lg shadow-lg p-8">
+                <h3 class="text-2xl font-bold text-center mb-8 text-[#43AA8B]">Нашата формула за успех</h3>
+                <div class="flex flex-col md:flex-row items-center justify-center gap-0 md:-space-x-12">
+                    <div class="w-64 h-64 rounded-full bg-[#F9C74F] flex flex-col items-center justify-center text-center p-5 shadow-lg border-4 border-white z-10 mb-4 md:mb-0">
+                        <h4 class="font-bold text-xl text-white">ПРЕДПРИЕМАЧ</h4>
+                        <p class="text-white text-sm mt-2">Създава стойност от нищото. Вижда възможности, а не проблеми.</p>
+                    </div>
+                    <div class="w-64 h-64 rounded-full bg-[#F3722C] flex flex-col items-center justify-center text-center p-5 shadow-lg border-4 border-white z-0">
+                        <h4 class="font-bold text-xl text-white">ЛИДЕР</h4>
+                        <p class="text-white text-sm mt-2">Вдъхновява екип. Води една идея към нейния успех.</p>
+                    </div>
+                </div>
+                 <p class="mt-8 text-center text-lg max-w-2xl mx-auto text-slate-600">В клуба съчетаваме креативността на предприемача с решителността на лидера. Така създаваме не просто идеи, а реални проекти с въздействие.</p>
+            </div>
+        </section>
+
+        <section id="mission" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10 text-[#577590]">Нашата Мисия: Да изградим лидерите на утрешния ден</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#F94144]">💡</div>
+                    <h3 class="font-bold text-xl mb-2">МИСЛЕНЕ</h3>
+                    <p class="text-slate-600">Ще се научим да мислим като предприемачи – критично, креативно и стратегически.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#F8961E]">🚀</div>
+                    <h3 class="font-bold text-xl mb-2">ДЕЙСТВИЕ</h3>
+                    <p class="text-slate-600">Ще се научим да действаме като лидери – да поемаме инициатива и да постигаме резултати.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#90BE6D]">🛠️</div>
+                    <h3 class="font-bold text-xl mb-2">РАЗВИТИЕ</h3>
+                    <p class="text-slate-600">Ще изградим умения за цял живот – комуникация, работа в екип и решаване на проблеми.</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-md p-6 text-center transform hover:scale-105 transition-transform duration-300">
+                    <div class="text-4xl mb-4 text-[#43AA8B]">🤝</div>
+                    <h3 class="font-bold text-xl mb-2">ОБЩНОСТ</h3>
+                    <p class="text-slate-600">Ще създадем общност, където всеки може да сподели идеите си без страх и да получи подкрепа.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="program" class="mb-16 md:mb-24">
+            <h2 class="text-3xl font-bold text-center mb-10 text-[#577590]">Пътят на лидера: Нашата програма</h2>
+             <div class="bg-white rounded-lg shadow-lg p-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-4">
+                    <div class="flex-1 text-center">
+                        <div class="bg-[#F9C74F] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto font-bold text-2xl">1</div>
+                        <h4 class="font-bold mt-4">Работилници</h4>
+                        <p class="text-sm text-slate-600">Практически обучения по публично говорене, маркетинг и работа в екип.</p>
+                    </div>
+                    <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                    <div class="flex-1 text-center">
+                        <div class="bg-[#F3722C] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto font-bold text-2xl">2</div>
+                        <h4 class="font-bold mt-4">Срещи с ментори</h4>
+                        <p class="text-sm text-slate-600">Каним успешни лидери, които споделят своя реален опит и вдъхновяват.</p>
+                    </div>
+                    <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                     <div class="flex-1 text-center">
+                        <div class="bg-[#F94144] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto font-bold text-2xl">3</div>
+                        <h4 class="font-bold mt-4">Проектна работа</h4>
+                        <p class="text-sm text-slate-600">Работим в екипи по реален проект - от идеята до финалната реализация.</p>
+                    </div>
+                    <div class="text-2xl text-slate-400 transform rotate-90 md:rotate-0">→</div>
+                    <div class="flex-1 text-center">
+                        <div class="bg-[#43AA8B] text-white w-16 h-16 rounded-full flex items-center justify-center mx-auto font-bold text-2xl">4</div>
+                        <h4 class="font-bold mt-4">Финален форум</h4>
+                        <p class="text-sm text-slate-600">Представяме проектите си пред жури и цялото училище.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="benefits" class="mb-16 md:mb-24">
+            <div class="bg-white rounded-lg shadow-lg p-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-4 text-[#577590]">Какво ще спечелиш?</h2>
+                    <p class="text-slate-700 mb-4">Участието в клуба е инвестиция в твоето бъдеще. Тук не просто учиш, а развиваш ключови умения, които ще те отличат. Тази диаграма показва основните области, в които ще натрупаш увереност и опит, превръщайки се в завършена личност, готова за предизвикателствата на бъдещето.</p>
+                     <ul class="list-disc list-inside space-y-2 text-slate-600">
+                        <li><b>Увереност:</b> Да защитаваш идеите си и да водиш проекти.</li>
+                        <li><b>Практически умения:</b> Презентиране, планиране, работа с хора.</li>
+                        <li><b>Портфолио:</b> Реален проект за твоето CV.</li>
+                        <li><b>Контакти:</b> Запознанства с професионалисти и съмишленици.</li>
+                        <li><b>Предимство:</b> Една голяма крачка напред за твоето бъдеще.</li>
+                    </ul>
+                </div>
+                <div class="chart-container">
+                    <canvas id="benefitsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="join" class="bg-[#577590] text-white rounded-lg shadow-xl p-10 text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Готов ли си да поведеш?</h2>
+            <p class="text-lg mb-6 max-w-xl mx-auto">Първата стъпка е най-важна. Ела на нашата първа организационна среща, за да научиш повече и да станеш част от общността на бъдещите лидери.</p>
+        </section>
+    </main>
+    
+    <footer class="text-center p-6 bg-white mt-12">
+        <p class="text-slate-500">&copy; 2025 Клуб по предприемачество "Бъдещи Лидери"</p>
+    </footer>
+
+<script>
+    const ctx = document.getElementById('benefitsChart').getContext('2d');
+    const benefitsChart = new Chart(ctx, {
+        type: 'radar',
+        data: {
+            labels: ['Увереност', ['Практически', 'умения'], 'Портфолио', 'Контакти', 'Предимство'],
+            datasets: [{
+                label: 'Развитие на умения',
+                data: [9, 8, 7, 8, 9.5],
+                backgroundColor: 'rgba(249, 65, 68, 0.2)',
+                borderColor: '#F94144',
+                pointBackgroundColor: '#F94144',
+                pointBorderColor: '#fff',
+                pointHoverBackgroundColor: '#fff',
+                pointHoverBorderColor: '#F94144'
+            }]
+        },
+        options: {
+            maintainAspectRatio: false,
+            responsive: true,
+            scales: {
+                r: {
+                    angleLines: {
+                        color: 'rgba(87, 117, 144, 0.2)'
+                    },
+                    grid: {
+                        color: 'rgba(87, 117, 144, 0.2)'
+                    },
+                    pointLabels: {
+                        font: {
+                            size: 13,
+                            weight: 'bold'
+                        },
+                        color: '#577590'
+                    },
+                    ticks: {
+                        backdropColor: 'rgba(248, 250, 252, 1)',
+                        color: '#43AA8B',
+                        stepSize: 2
+                    },
+                    suggestedMin: 0,
+                    suggestedMax: 10
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                              return label.join(' ');
+                            } else {
+                              return label;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
