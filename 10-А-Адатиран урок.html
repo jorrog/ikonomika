@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Интерактивен работен лист по Икономика</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .draggable {
+            cursor: grab;
+            transition: transform 0.2s;
+        }
+        .dragging {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+        .drop-zone {
+            transition: background-color 0.2s, border-color 0.2s;
+            border: 2px dashed #CBD5E0;
+        }
+        .drop-zone.drag-over {
+            background-color: #EBF8FF;
+            border-color: #4299E1;
+        }
+        .drop-zone.correct {
+            border-color: #68D391;
+            background-color: #F0FFF4;
+        }
+        .draggable.incorrect-drop {
+            animation: shake 0.5s;
+            background-color: #FED7D7;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+        .choice-btn.correct {
+            background-color: #68D391 !important;
+            color: white;
+            border-color: #68D391;
+        }
+        .choice-btn.incorrect {
+            background-color: #FC8181 !important;
+            color: white;
+            border-color: #FC8181;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="container bg-white rounded-2xl shadow-2xl p-8 w-full max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-800">Интерактивен работен лист по Икономика</h1>
+            <p class="text-gray-600 mt-2">Плъзни и пусни отговорите на правилните места и се забавлявай!</p>
+        </header>
+
+        <!-- Задача 1 -->
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 1: Какво е икономика?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-2xl w-16 text-center">🐖</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="1">
+                            <p class="font-bold">1. Икономика</p>
+                        </div>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-2xl w-16 text-center">🛍️</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="2">
+                             <p class="font-bold">2. Нужди и желания</p>
+                        </div>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-2xl w-16 text-center">🌳</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="3">
+                            <p class="font-bold">3. Ресурси</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg space-y-3" id="source1">
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="2"><p><span class="font-bold">А.</span> Нещата, които <strong>искаме</strong> (🎮, 🏖️).</p></div>
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="3"><p><span class="font-bold">Б.</span> Нещата, които <strong>имаме</strong> (💰, ⏳).</p></div>
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="1"><p><span class="font-bold">В.</span> Как управляваме парите и нещата, които имаме.</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Задача 2 -->
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 2: Основният проблем!</h2>
+            <div class="bg-gray-50 p-4 rounded-lg mb-4 text-center">
+                <p class="font-semibold mb-2">Картинки за плъзгане:</p>
+                <div class="flex flex-wrap justify-center gap-4" id="source2">
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="wants">🚗</div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="resources">⏳</div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="resources">💰</div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="wants">📱</div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="resources">🍋</div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-3xl" draggable="true" data-category="wants">🏖️</div>
+                </div>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="drop-zone p-4 rounded-lg min-h-[150px]" data-category="wants">
+                    <h3 class="font-bold text-center">Неограничени желания 😃</h3>
+                </div>
+                <div class="drop-zone p-4 rounded-lg min-h-[150px]" data-category="resources">
+                    <h3 class="font-bold text-center">Ограничени ресурси ⏳💰</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Задача 3 -->
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 3: Избор и цена.</h2>
+            <p class="mb-4"><strong>Ситуация:</strong> Имаш 5 лв. Можеш да си купиш <strong>ИЛИ</strong> 🍕 (пица), <strong>ИЛИ</strong> 🍦 (голям сладолед). Ти избираш да си купиш **пицата**.</p>
+            <div class="space-y-4">
+                <div>
+                    <p class="font-semibold">1. Какво правиш в този момент?</p>
+                    <div class="flex gap-4 mt-2" id="q3_1">
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg" data-correct="true">Избор</button>
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg">Предлагане</button>
+                    </div>
+                </div>
+                <div>
+                    <p class="font-semibold">2. Кое е нещото, от което се отказа?</p>
+                     <div class="flex gap-4 mt-2" id="q3_2">
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg text-2xl">🍕</button>
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg text-2xl" data-correct="true">🍦</button>
+                    </div>
+                </div>
+                 <div>
+                    <p class="font-semibold">3. Пропуснатият сладолед се нарича:</p>
+                     <div class="flex gap-4 mt-2" id="q3_3">
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg" data-correct="true">Алтернативна цена</button>
+                        <button class="choice-btn flex-1 border-2 border-gray-300 p-2 rounded-lg">Ресурс</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-8">
+            <button onclick="location.reload()" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">Започни отначало</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        // Drag and Drop Logic
+        const draggables = document.querySelectorAll('.draggable');
+        const dropZones = document.querySelectorAll('.drop-zone');
+        let draggedItem = null;
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', (e) => {
+                draggedItem = e.target;
+                setTimeout(() => e.target.classList.add('dragging'), 0);
+            });
+
+            draggable.addEventListener('dragend', () => {
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+            });
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', e => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('drag-over');
+            });
+
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                if (!draggedItem) return;
+
+                const isCorrect = (zone.dataset.answer && zone.dataset.answer === draggedItem.dataset.answer) ||
+                                  (zone.dataset.category && zone.dataset.category === draggedItem.dataset.category);
+
+                if (isCorrect) {
+                    draggedItem.draggable = false;
+                    draggedItem.style.cursor = 'default';
+                    zone.appendChild(draggedItem);
+                    zone.classList.add('correct');
+                    draggedItem.classList.remove('dragging');
+                    draggedItem = null;
+                } else {
+                    draggedItem.classList.add('incorrect-drop');
+                    setTimeout(() => {
+                        draggedItem.classList.remove('incorrect-drop');
+                    }, 500);
+                }
+            });
+        });
+        
+        // Multiple Choice Logic
+        const choiceContainers = [document.getElementById('q3_1'), document.getElementById('q3_2'), document.getElementById('q3_3')];
+
+        choiceContainers.forEach(container => {
+             container.addEventListener('click', e => {
+                const clickedButton = e.target.closest('.choice-btn');
+                if (!clickedButton || clickedButton.parentElement.querySelector('button[disabled]')) return;
+                
+                const isCorrect = clickedButton.dataset.correct === 'true';
+                
+                container.querySelectorAll('button').forEach(btn => {
+                    btn.disabled = true;
+                    if(btn.dataset.correct === 'true') {
+                        btn.classList.add('correct');
+                    }
+                });
+
+                if(!isCorrect) {
+                     clickedButton.classList.add('incorrect');
+                }
+            });
+        });
+    });
+    </script>
+</body>
+</html>
