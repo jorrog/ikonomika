@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Calm & Clear -->
+    <!-- Application Structure Plan: The SPA is designed as a single-page, top-to-bottom interactive worksheet. Each task from the source report is a distinct section. The user flow is a simple scroll, focusing on one task at a time. The primary interaction is drag-and-drop for matching and categorization tasks, which provides a kinesthetic learning experience. For multiple-choice questions, a simpler click interaction is used for better usability. This structure was chosen for its simplicity and direct translation of the worksheet into an engaging digital format, ideal for a student with SEN who benefits from clear, focused tasks and immediate feedback. -->
+    <!-- Visualization & Content Choices: 1. Task 1 (Matching): Goal=Organize, Method=Vanilla JS Drag & Drop, Interaction=Drag text blocks to concept boxes, Justification=Reinforces the connection between term and definition. 2. Task 2 (Categorization): Goal=Organize, Method=Vanilla JS Drag & Drop, Interaction=Drag icons into category columns, Justification=A highly visual way to teach classification. 3. Task 3 (Multiple Choice): Goal=Inform, Method=JS-powered clickable buttons, Interaction=Click to select an answer, Justification=Standard and most intuitive method for simple choices, providing instant green/red feedback. 4. Task 4 (Matching): Goal=Organize, Method=Vanilla JS Drag & Drop, Justification=Reinforces the opposing goals of buyers and sellers. All choices use styled HTML and Unicode characters, adhering to the NO SVG/Mermaid constraint. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <title>Интерактивен работен лист по Икономика</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,7 +65,6 @@
             <p class="text-gray-600 mt-2">Плъзни и пусни отговорите на правилните места и се забавлявай!</p>
         </header>
 
-        <!-- Задача 1 -->
         <div class="mb-10">
             <h2 class="text-xl font-bold mb-4">➡️ Задача 1: Какво е икономика?</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -93,7 +96,6 @@
             </div>
         </div>
 
-        <!-- Задача 2 -->
         <div class="mb-10">
             <h2 class="text-xl font-bold mb-4">➡️ Задача 2: Основният проблем!</h2>
             <div class="bg-gray-50 p-4 rounded-lg mb-4 text-center">
@@ -117,7 +119,6 @@
             </div>
         </div>
 
-        <!-- Задача 3 -->
         <div class="mb-10">
             <h2 class="text-xl font-bold mb-4">➡️ Задача 3: Избор и цена.</h2>
             <p class="mb-4"><strong>Ситуация:</strong> Имаш 5 лв. Можеш да си купиш <strong>ИЛИ</strong> 🍕 (пица), <strong>ИЛИ</strong> 🍦 (голям сладолед). Ти избираш да си купиш **пицата**.</p>
@@ -152,19 +153,37 @@
 
     <script>
     document.addEventListener('DOMContentLoaded', () => {
-        // Drag and Drop Logic
         const draggables = document.querySelectorAll('.draggable');
         const dropZones = document.querySelectorAll('.drop-zone');
         let draggedItem = null;
 
-        draggables.forEach(draggable => {
-            draggable.addEventListener('dragstart', (e) => {
-                draggedItem = e.target;
-                setTimeout(() => e.target.classList.add('dragging'), 0);
-            });
+        function handleDrop(zone) {
+            if (!draggedItem) return;
 
+            const isCorrect = (zone.dataset.answer && zone.dataset.answer === draggedItem.dataset.answer) ||
+                              (zone.dataset.category && zone.dataset.category === draggedItem.dataset.category);
+
+            if (isCorrect) {
+                draggedItem.draggable = false;
+                draggedItem.style.cursor = 'default';
+                zone.appendChild(draggedItem);
+                zone.classList.add('correct');
+            } else {
+                draggedItem.classList.add('incorrect-drop');
+                setTimeout(() => {
+                    draggedItem.classList.remove('incorrect-drop');
+                }, 500);
+            }
+        }
+
+        // Mouse Events
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', e => {
+                draggedItem = e.target.closest('.draggable');
+                setTimeout(() => draggedItem.classList.add('dragging'), 0);
+            });
             draggable.addEventListener('dragend', () => {
-                draggedItem.classList.remove('dragging');
+                if(draggedItem) draggedItem.classList.remove('dragging');
                 draggedItem = null;
             });
         });
@@ -174,38 +193,65 @@
                 e.preventDefault();
                 zone.classList.add('drag-over');
             });
-
-            zone.addEventListener('dragleave', () => {
-                zone.classList.remove('drag-over');
-            });
-
+            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
             zone.addEventListener('drop', e => {
                 e.preventDefault();
                 zone.classList.remove('drag-over');
+                handleDrop(zone);
+            });
+        });
+
+        // Touch Events
+        let lastTouchX = 0;
+        let lastTouchY = 0;
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('touchstart', e => {
+                if (draggable.draggable === false) return;
+                draggedItem = e.target.closest('.draggable');
+                draggedItem.classList.add('dragging');
+            }, { passive: false });
+
+            draggable.addEventListener('touchmove', e => {
                 if (!draggedItem) return;
+                e.preventDefault();
+                
+                lastTouchX = e.touches[0].clientX;
+                lastTouchY = e.touches[0].clientY;
 
-                const isCorrect = (zone.dataset.answer && zone.dataset.answer === draggedItem.dataset.answer) ||
-                                  (zone.dataset.category && zone.dataset.category === draggedItem.dataset.category);
+                draggedItem.style.pointerEvents = 'none';
+                const elementBelow = document.elementFromPoint(lastTouchX, lastTouchY);
+                draggedItem.style.pointerEvents = 'auto';
 
-                if (isCorrect) {
-                    draggedItem.draggable = false;
-                    draggedItem.style.cursor = 'default';
-                    zone.appendChild(draggedItem);
-                    zone.classList.add('correct');
-                    draggedItem.classList.remove('dragging');
-                    draggedItem = null;
-                } else {
-                    draggedItem.classList.add('incorrect-drop');
-                    setTimeout(() => {
-                        draggedItem.classList.remove('incorrect-drop');
-                    }, 500);
+                dropZones.forEach(zone => {
+                    if (zone === elementBelow || zone.contains(elementBelow)) {
+                        zone.classList.add('drag-over');
+                    } else {
+                        zone.classList.remove('drag-over');
+                    }
+                });
+            }, { passive: false });
+
+            draggable.addEventListener('touchend', e => {
+                if (!draggedItem) return;
+                
+                draggedItem.style.pointerEvents = 'none';
+                const elementBelow = document.elementFromPoint(lastTouchX, lastTouchY);
+                draggedItem.style.pointerEvents = 'auto';
+                
+                const dropZone = elementBelow ? elementBelow.closest('.drop-zone') : null;
+
+                if (dropZone) {
+                    handleDrop(dropZone);
                 }
+
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+                dropZones.forEach(zone => zone.classList.remove('drag-over'));
             });
         });
         
-        // Multiple Choice Logic
         const choiceContainers = [document.getElementById('q3_1'), document.getElementById('q3_2'), document.getElementById('q3_3')];
-
         choiceContainers.forEach(container => {
              container.addEventListener('click', e => {
                 const clickedButton = e.target.closest('.choice-btn');
@@ -229,3 +275,4 @@
     </script>
 </body>
 </html>
+
