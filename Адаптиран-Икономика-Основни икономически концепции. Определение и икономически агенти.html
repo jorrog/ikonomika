@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Chosen Palette: Energetic & Playful -->
+    <!-- Application Structure Plan: The SPA is a direct, interactive translation of the provided SEN worksheet for "Economic Agents". It follows a simple, linear top-to-bottom structure, presenting each task as a distinct interactive section. This was chosen to maintain clarity and focus for the student. The user flow is a simple scroll and complete each activity. The interactivity is designed to be kinesthetic (drag-and-drop), which is highly effective for this learning context. -->
+    <!-- Visualization & Content Choices: 1. Task 1 (Micro vs. Macro): Goal=Organize, Method=Vanilla JS Drag & Drop, Interaction=Drag definitions to concepts, Justification=Reinforces the "tree vs. forest" analogy visually. 2. Task 2 (Agent Roles): Goal=Organize, Method=Vanilla JS Drag & Drop, Interaction=Drag roles to the correct agent icon, Justification=A highly visual way to teach the primary functions of each agent. 3. Task 3 (Circular Flow): Goal=Organize, Method=Vanilla JS Drag & Drop, Interaction=Drag icons representing goods/money/labor to their correct place in the flow diagram, Justification=Transforms the most abstract concept of the lesson into a hands-on puzzle, making it much easier to understand. All choices use styled HTML and Unicode characters, adhering to the NO SVG/Mermaid constraint. Touch events are included for tablet compatibility. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <title>Интерактивен работен лист: Икономически агенти</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .draggable {
+            cursor: grab;
+            transition: transform 0.2s;
+        }
+        .dragging {
+            opacity: 0.5;
+            transform: scale(1.05);
+        }
+        .drop-zone {
+            transition: background-color 0.2s, border-color 0.2s;
+            border: 2px dashed #CBD5E0;
+        }
+        .drop-zone.drag-over {
+            background-color: #EBF8FF;
+            border-color: #4299E1;
+        }
+        .drop-zone.correct {
+            border-color: #68D391;
+            background-color: #F0FFF4;
+        }
+        .draggable.incorrect-drop {
+            animation: shake 0.5s;
+            background-color: #FED7D7;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-4">
+
+    <div class="container bg-white rounded-2xl shadow-2xl p-8 w-full max-w-4xl">
+        <header class="text-center mb-8">
+            <h1 class="text-3xl font-extrabold text-gray-800">Интерактивен работен лист: Икономическите "играчи"</h1>
+            <p class="text-gray-600 mt-2">Плъзни и пусни отговорите на правилните места и се забавлявай!</p>
+        </header>
+
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 1: Голямата и малката картина</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-4xl w-20 text-center">🌳</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="micro">
+                            <p class="font-bold">Микроикономика</p>
+                        </div>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-4xl w-20 text-center">🌲🌲🌲</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="macro">
+                             <p class="font-bold">Макроикономика</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg space-y-3" id="source1">
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="micro"><p>Гледа **отделните** участници (една фирма, едно семейство).</p></div>
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="macro"><p>Гледа **цялата** икономика (проблеми като безработица).</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 2: Кои са "играчите"?</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <span class="text-4xl w-20 text-center">👨‍👩‍👧‍👦</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="domakinstva">
+                            <p class="font-bold">1. Домакинства</p>
+                        </div>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-4xl w-20 text-center">🏭</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="firmi">
+                             <p class="font-bold">2. Фирми</p>
+                        </div>
+                    </div>
+                     <div class="flex items-center">
+                        <span class="text-4xl w-20 text-center">🏛️</span>
+                        <div class="flex-1 drop-zone p-4 rounded-lg min-h-[60px]" data-answer="darzhava">
+                            <p class="font-bold">3. Държава</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg space-y-3" id="source2">
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="firmi"><p><span class="font-bold">А.</span> Тези, които **произвеждат** стоки и услуги с цел печалба.</p></div>
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="darzhava"><p><span class="font-bold">Б.</span> **Определя правилата** и се грижи за общите неща (пътища, сигурност).</p></div>
+                     <div class="draggable bg-white p-3 rounded-lg shadow" draggable="true" data-answer="domakinstva"><p><span class="font-bold">В.</span> **Ние, хората.** Купуваме неща и предлагаме своя труд.</p></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="mb-10">
+            <h2 class="text-xl font-bold mb-4">➡️ Задача 3: Голямата игра!</h2>
+            <p class="mb-4">Плъзни и пусни картинките на правилните места в схемата, за да покажеш как се движат нещата между **Домакинствата** и **Фирмите**.</p>
+             <div class="bg-gray-50 p-4 rounded-lg mb-4 text-center">
+                <p class="font-semibold mb-2">Картинки за плъзгане:</p>
+                <div class="flex flex-wrap justify-center gap-4" id="source3">
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-center" draggable="true" data-answer="trud"><span class="text-3xl">💪</span><p class="text-xs">Труд</p></div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-center" draggable="true" data-answer="zaplati"><span class="text-3xl">💰</span><p class="text-xs">Заплати</p></div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-center" draggable="true" data-answer="stoki"><span class="text-3xl">🛍️</span><p class="text-xs">Стоки</p></div>
+                    <div class="draggable bg-white p-2 rounded-lg shadow text-center" draggable="true" data-answer="pari"><span class="text-3xl">💸</span><p class="text-xs">Пари</p></div>
+                </div>
+            </div>
+            <div class="grid grid-cols-5 items-center text-center">
+                 <div class="font-bold">👨‍👩‍👧‍👦<br>Домакинства</div>
+                 <div class="text-center">
+                    <p class="text-sm">Дават:</p>
+                    <div class="drop-zone rounded-lg h-16 mt-1" data-answer="trud"></div>
+                 </div>
+                 <div class="text-4xl text-gray-400">↔️</div>
+                 <div class="text-center">
+                    <p class="text-sm">Получават:</p>
+                    <div class="drop-zone rounded-lg h-16 mt-1" data-answer="zaplati"></div>
+                 </div>
+                 <div class="font-bold">🏭<br>Фирми</div>
+
+                 <div class="font-bold">👨‍👩‍👧‍👦<br>Домакинства</div>
+                 <div class="text-center">
+                    <p class="text-sm">Получават:</p>
+                    <div class="drop-zone rounded-lg h-16 mt-1" data-answer="stoki"></div>
+                 </div>
+                 <div class="text-4xl text-gray-400">↔️</div>
+                 <div class="text-center">
+                    <p class="text-sm">Плащат:</p>
+                    <div class="drop-zone rounded-lg h-16 mt-1" data-answer="pari"></div>
+                 </div>
+                 <div class="font-bold">🏭<br>Фирми</div>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <button onclick="location.reload()" class="bg-blue-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-blue-700 transition duration-300">Започни отначало</button>
+        </div>
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const draggables = document.querySelectorAll('.draggable');
+        const dropZones = document.querySelectorAll('.drop-zone');
+        let draggedItem = null;
+
+        function handleDrop(zone) {
+            if (!draggedItem) return;
+
+            const isCorrect = (zone.dataset.answer && zone.dataset.answer === draggedItem.dataset.answer) ||
+                              (zone.dataset.category && zone.dataset.category === draggedItem.dataset.category);
+
+            if (isCorrect) {
+                draggedItem.draggable = false;
+                draggedItem.style.cursor = 'default';
+                zone.appendChild(draggedItem);
+                zone.classList.add('correct');
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+            } else {
+                draggedItem.classList.add('incorrect-drop');
+                setTimeout(() => {
+                    draggedItem.classList.remove('incorrect-drop');
+                }, 500);
+            }
+        }
+        
+        draggables.forEach(draggable => {
+            draggable.addEventListener('dragstart', e => {
+                draggedItem = e.target.closest('.draggable');
+                setTimeout(() => draggedItem.classList.add('dragging'), 0);
+            });
+            draggable.addEventListener('dragend', () => {
+                if(draggedItem) draggedItem.classList.remove('dragging');
+                draggedItem = null;
+            });
+        });
+
+        dropZones.forEach(zone => {
+            zone.addEventListener('dragover', e => {
+                e.preventDefault();
+                zone.classList.add('drag-over');
+            });
+            zone.addEventListener('dragleave', () => zone.classList.remove('drag-over'));
+            zone.addEventListener('drop', e => {
+                e.preventDefault();
+                zone.classList.remove('drag-over');
+                handleDrop(zone);
+            });
+        });
+
+        let lastTouchX = 0;
+        let lastTouchY = 0;
+
+        draggables.forEach(draggable => {
+            draggable.addEventListener('touchstart', e => {
+                if (draggable.draggable === false) return;
+                draggedItem = e.target.closest('.draggable');
+                draggedItem.classList.add('dragging');
+            }, { passive: true });
+
+            draggable.addEventListener('touchmove', e => {
+                if (!draggedItem) return;
+                
+                lastTouchX = e.touches[0].clientX;
+                lastTouchY = e.touches[0].clientY;
+
+                draggedItem.style.pointerEvents = 'none';
+                const elementBelow = document.elementFromPoint(lastTouchX, lastTouchY);
+                draggedItem.style.pointerEvents = 'auto';
+
+                dropZones.forEach(zone => {
+                    if (zone === elementBelow || zone.contains(elementBelow)) {
+                        zone.classList.add('drag-over');
+                    } else {
+                        zone.classList.remove('drag-over');
+                    }
+                });
+            }, { passive: false });
+
+            draggable.addEventListener('touchend', e => {
+                if (!draggedItem) return;
+                
+                draggedItem.style.pointerEvents = 'none';
+                const elementBelow = document.elementFromPoint(lastTouchX, lastTouchY);
+                draggedItem.style.pointerEvents = 'auto';
+                
+                const dropZone = elementBelow ? elementBelow.closest('.drop-zone') : null;
+
+                if (dropZone) {
+                    handleDrop(dropZone);
+                }
+
+                draggedItem.classList.remove('dragging');
+                draggedItem = null;
+                dropZones.forEach(zone => zone.classList.remove('drag-over'));
+            });
+        });
+    });
+    </script>
+</body>
+</html>
