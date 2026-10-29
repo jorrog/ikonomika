@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="bg">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Будна България — игра за Деня на народните будители</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📜%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kurale&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- ЕКРАН: ПОДГОТОВКА -->
+  <section id="setup" class="screen">
+    <div class="ornament"></div>
+    <header class="hero">
+      <h1>Будна България</h1>
+      <p>Игра-завоевание за Деня на народните будители</p>
+    </header>
+
+    <div class="setup-grid">
+      <div class="panel">
+        <div class="panel-head">
+          <h2>Отбори</h2>
+          <label class="inline">Брой
+            <select id="teamCount">
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </label>
+        </div>
+        <div id="teamsSetup" class="teams-setup"></div>
+      </div>
+
+      <div class="panel">
+        <h2>Настройки</h2>
+        <div class="setting">
+          <span class="setting-label">Нива на въпросите</span>
+          <div class="chips" id="levelChips">
+            <label class="chip"><input type="checkbox" value="1"> Лесно <small>1–4 кл.</small></label>
+            <label class="chip"><input type="checkbox" value="2"> Средно <small>5–7 кл.</small></label>
+            <label class="chip"><input type="checkbox" value="3"> Трудно <small>8–12 кл.</small></label>
+          </div>
+        </div>
+        <label class="setting">
+          <span class="setting-label">Време за отговор</span>
+          <select id="optTimer">
+            <option value="0">без таймер</option>
+            <option value="15">15 секунди</option>
+            <option value="20">20 секунди</option>
+            <option value="30">30 секунди</option>
+            <option value="45">45 секунди</option>
+            <option value="60">60 секунди</option>
+          </select>
+        </label>
+        <label class="setting">
+          <span class="setting-label">Въпроси на отбор във фаза 1</span>
+          <select id="optPhase1"></select>
+          <small id="phase1Hint"></small>
+        </label>
+        <label class="setting">
+          <span class="setting-label">Рундове с предизвикателства</span>
+          <select id="optRounds">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </label>
+        <label class="setting check"><input type="checkbox" id="optOptions">
+          <span>Показвай 4 възможни отговора <small>Ако е изключено, отборът отговаря свободно, а учителят решава дали е вярно.</small></span></label>
+        <label class="setting check"><input type="checkbox" id="optAdjacency">
+          <span>Само съседни области <small>Отборите завладяват и атакуват само области, съседни на техните.</small></span></label>
+        <label class="setting check"><input type="checkbox" id="optRepeats">
+          <span>Без въпроси от предишни игри <small>Помни зададените въпроси и между игрите. <button type="button" class="linkbtn" id="btnResetUsed">Нулирай</button></small></span></label>
+        <label class="setting check"><input type="checkbox" id="optSound">
+          <span>Звукови ефекти</span></label>
+      </div>
+    </div>
+
+    <div id="bankStatus" class="bank-status"></div>
+    <div id="loader" class="loader" hidden>
+      <p><b>Въпросите не се заредиха автоматично.</b> Това е нормално, когато играта е отворена направо от диска.
+        Изберете файла <code>data/questions.json</code> или го пуснете тук. Ще бъде запомнен за следващия път.</p>
+      <button type="button" class="btn secondary" id="btnPickFile">Избери файл с въпроси</button>
+    </div>
+
+    <div class="setup-actions">
+      <button type="button" class="btn ghost" id="btnRules">Правила</button>
+      <button type="button" class="btn secondary" id="btnResume" hidden>Продължи запазената игра</button>
+      <button type="button" class="btn primary big" id="btnStart">Започни играта</button>
+    </div>
+    <footer class="credits">
+      <button type="button" class="linkbtn" id="btnLoadOther">Зареди друг файл с въпроси</button> ·
+      Граници на областите: geoBoundaries (Public Domain)
+    </footer>
+  </section>
+
+  <!-- ЕКРАН: ИГРА -->
+  <section id="game" class="screen" hidden>
+    <header class="topbar">
+      <div class="brand">Будна България</div>
+      <div id="phasePill" class="phase-pill"></div>
+      <div class="tools">
+        <button type="button" class="tool" id="btnUndo" title="Отмени последното действие (Ctrl+Z)">↶ Назад</button>
+        <button type="button" class="tool" id="btnSound" title="Звук">🔊</button>
+        <button type="button" class="tool" id="btnFull" title="Цял екран (F)">⛶</button>
+        <button type="button" class="tool" id="btnMenu" title="Меню">☰ Меню</button>
+      </div>
+    </header>
+    <main class="board">
+      <div class="map-wrap">
+        <div id="actionBar" class="action-bar"></div>
+        <svg id="map" role="img" aria-label="Карта на България с 28-те области"></svg>
+        <div id="tooltip" class="tooltip" hidden></div>
+      </div>
+      <aside class="side">
+        <div id="teamsBoard" class="teams-board"></div>
+        <div id="progress" class="progress-box"></div>
+        <div class="log-box">
+          <h3>Ход на играта</h3>
+          <ol id="log" class="log"></ol>
+        </div>
+      </aside>
+    </main>
+  </section>
+
+  <div id="modal" class="modal" hidden>
+    <div class="modal-card" id="modalCard" role="dialog" aria-modal="true"></div>
+  </div>
+  <div id="toast" class="toast" hidden></div>
+  <canvas id="confetti" class="confetti"></canvas>
+  <input type="file" id="fileInput" accept=".json,application/json" hidden>
+
+  <script src="js/map-data.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>
