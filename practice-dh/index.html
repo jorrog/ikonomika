@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Длъжностна характеристика – учебна практика</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Rubik:wght@500;600;700&family=PT+Serif:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: a bright, airy workbook — mint paper, teal accent, coral highlights; pill tabs walk the class from theory to a finished A4 document. */
+:root {
+  --bg: #f2f8f6;
+  --bg-2: #e4f1ec;
+  --surface: #ffffff;
+  --ink: #15262a;
+  --muted: #5c7176;
+  --line: #d5e4df;
+  --accent: #0f8b8d;
+  --accent-2: #0b6e70;
+  --accent-ink: #ffffff;
+  --accent-soft: #dcf1ee;
+  --pop: #ff6f59;
+  --pop-soft: #ffe8e2;
+  --good: #1f9a5a;
+  --good-soft: #def5e7;
+  --warn: #c7780a;
+  --warn-soft: #fff0d6;
+  --bad: #d9453a;
+  --bad-soft: #fde5e2;
+  --paper: #ffffff;
+  --paper-ink: #1b1b1b;
+  --paper-muted: #8a8578;
+  --paper-line: #e7e3d8;
+  --shadow: 0 1px 2px rgba(15, 60, 60, .05), 0 10px 30px rgba(15, 60, 60, .08);
+  --shadow-sm: 0 1px 2px rgba(15, 60, 60, .06), 0 4px 14px rgba(15, 60, 60, .05);
+  --font-display: "Rubik", "Segoe UI", Arial, sans-serif;
+  --font-body: "Nunito", "Segoe UI", Arial, sans-serif;
+  --font-doc: "PT Serif", "Times New Roman", Times, serif;
+  --radius: 16px;
+  --radius-sm: 10px;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0d1a1c;
+    --bg-2: #112326;
+    --surface: #152628;
+    --ink: #e6f0ee;
+    --muted: #93aaa8;
+    --line: #243b3d;
+    --accent: #3ec4c3;
+    --accent-2: #67d6d4;
+    --accent-ink: #062425;
+    --accent-soft: #163536;
+    --pop: #ff8a76;
+    --pop-soft: #3a211d;
+    --good: #5fd692;
+    --good-soft: #15301f;
+    --warn: #f0b451;
+    --warn-soft: #332611;
+    --bad: #ff8b80;
+    --bad-soft: #3a1b18;
+    --paper: #f3f1ea;
+    --paper-ink: #1b1b1b;
+    --paper-muted: #7d786c;
+    --paper-line: #d9d5c9;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 30px rgba(0, 0, 0, .4);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0d1a1c;
+  --bg-2: #112326;
+  --surface: #152628;
+  --ink: #e6f0ee;
+  --muted: #93aaa8;
+  --line: #243b3d;
+  --accent: #3ec4c3;
+  --accent-2: #67d6d4;
+  --accent-ink: #062425;
+  --accent-soft: #163536;
+  --pop: #ff8a76;
+  --pop-soft: #3a211d;
+  --good: #5fd692;
+  --good-soft: #15301f;
+  --warn: #f0b451;
+  --warn-soft: #332611;
+  --bad: #ff8b80;
+  --bad-soft: #3a1b18;
+  --paper: #f3f1ea;
+  --paper-ink: #1b1b1b;
+  --paper-muted: #7d786c;
+  --paper-line: #d9d5c9;
+  --shadow: 0 1px 2px rgba(0, 0, 0, .35), 0 10px 30px rgba(0, 0, 0, .4);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, .3), 0 4px 14px rgba(0, 0, 0, .3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 100%; -webkit-text-size-adjust: 100%; }
+html.large { font-size: 118.75%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  background-image: radial-gradient(900px 360px at 8% -10%, var(--accent-soft) 0%, transparent 60%), radial-gradient(700px 300px at 100% 0%, var(--pop-soft) 0%, transparent 55%);
+  background-repeat: no-repeat;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  line-height: 1.55;
+}
+h1, h2, h3 { font-family: var(--font-display); line-height: 1.2; text-wrap: balance; margin: 0; font-weight: 600; letter-spacing: -.01em; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.15rem; }
+p { margin: 0; }
+a { color: var(--accent-2); }
+button, input, textarea, select { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; border-radius: 6px; }
+[hidden] { display: none !important; }
+
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+@media (max-width: 480px) { .wrap { padding: 0 16px; } }
+
+/* Header */
+.app-head { background: transparent; border-bottom: 0; }
+.head-row { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 16px; padding: 26px 0 14px; }
+.eyebrow { font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--accent-2); font-weight: 800; display: inline-flex; align-items: center; gap: 8px; }
+.eyebrow::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: var(--pop); }
+.app-head h1 { font-size: clamp(1.7rem, 3.6vw, 2.4rem); margin-top: 4px; font-weight: 700; }
+.head-tools { display: flex; gap: 10px; align-items: center; }
+.save-note { font-size: .82rem; color: var(--muted); }
+.ident { display: flex; flex-wrap: wrap; gap: 12px 18px; align-items: flex-end; padding: 14px 18px; margin-bottom: 18px; background: var(--surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); border: 1px solid var(--line); }
+.ident .mini { display: flex; flex-direction: column; gap: 4px; }
+.ident label, .lbl { font-size: .78rem; font-weight: 800; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.ident input { border: 1.5px solid var(--line); background: var(--bg); border-radius: var(--radius-sm); padding: 9px 12px; min-width: 0; }
+.ident input:focus { border-color: var(--accent); outline: none; background: var(--surface); box-shadow: 0 0 0 4px var(--accent-soft); }
+.ident #st-name { width: 240px; max-width: 100%; }
+.ident #st-cls { width: 84px; }
+.ident #st-num { width: 64px; }
+.variant-pick { display: flex; flex-direction: column; gap: 4px; margin-left: auto; }
+.seg { display: inline-flex; flex-wrap: wrap; gap: 4px; padding: 4px; border-radius: 999px; background: var(--bg-2); }
+.seg button { border: 0; background: transparent; padding: 8px 16px; cursor: pointer; display: flex; gap: 8px; align-items: baseline; border-radius: 999px; font-weight: 700; color: var(--muted); transition: background .15s, color .15s; }
+.seg button .v { font-family: var(--font-display); font-weight: 700; }
+.seg button:hover { color: var(--ink); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); box-shadow: 0 2px 8px rgba(15, 139, 141, .35); }
+
+/* Tabs */
+.tabs { position: sticky; top: 0; z-index: 20; background: var(--bg); padding: 6px 0 10px; }
+.tabs .wrap { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: thin; padding-bottom: 2px; }
+.tab { border: 1.5px solid transparent; background: var(--surface); padding: 9px 16px 9px 10px; cursor: pointer; display: flex; gap: 10px; align-items: center; white-space: nowrap; border-radius: 999px; color: var(--muted); font-weight: 700; box-shadow: var(--shadow-sm); transition: color .15s, border-color .15s, transform .15s; }
+.tab .step { display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--bg-2); font-size: .8rem; font-weight: 800; font-family: var(--font-display); color: var(--accent-2); }
+.tab[aria-selected="true"] { color: var(--ink); border-color: var(--accent); }
+.tab[aria-selected="true"] .step { background: var(--accent); color: var(--accent-ink); }
+.tab:hover { color: var(--ink); transform: translateY(-1px); }
+
+main { padding: 22px 0 56px; }
+.view-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px; margin-bottom: 22px; }
+.view-head p { color: var(--muted); max-width: 70ch; margin-top: 6px; }
+
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px; box-shadow: var(--shadow-sm); }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.prose { max-width: 68ch; }
+.prose p + p { margin-top: 10px; }
+.muted { color: var(--muted); }
+.small { font-size: .88rem; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; border: 1.5px solid var(--line); background: var(--surface); padding: 10px 16px; border-radius: 999px; cursor: pointer; font-weight: 700; text-decoration: none; color: var(--ink); transition: transform .12s, box-shadow .12s, border-color .12s; }
+.btn:hover { border-color: var(--accent); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+.btn.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); box-shadow: 0 4px 14px rgba(15, 139, 141, .3); }
+.btn.primary:hover { filter: brightness(1.06); }
+.btn.ghost { background: transparent; border-color: transparent; }
+.btn.ghost:hover { border-color: var(--line); }
+.btn.danger { color: var(--bad); }
+.btn:disabled { opacity: .5; cursor: not-allowed; transform: none; box-shadow: none; }
+.btn-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+
+/* Theory */
+.theory-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .theory-grid { grid-template-columns: 1fr; } }
+.law { border-left: 5px solid var(--accent); background: var(--accent-soft); padding: 16px 18px; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+.law .lbl { color: var(--accent-2); }
+.skeleton { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.skeleton li { display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 10px 0; border-top: 1px dashed var(--line); align-items: start; }
+.skeleton li:first-child { border-top: 0; }
+.skeleton .rn { font-family: var(--font-display); font-weight: 700; color: var(--accent-2); background: var(--accent-soft); border-radius: 8px; text-align: center; padding: 3px 0; font-size: .85rem; }
+.skeleton b { display: block; }
+.skeleton span { color: var(--muted); font-size: .92rem; }
+.trio { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 700px) { .trio { grid-template-columns: 1fr; } }
+.trio > div { border-radius: var(--radius-sm); padding: 16px; background: var(--bg); border-top: 4px solid var(--accent); }
+.trio > div:nth-child(2) { border-top-color: var(--pop); }
+.trio > div:nth-child(3) { border-top-color: var(--warn); }
+.trio .q { font-size: .85rem; color: var(--muted); }
+.trio .ex { font-family: var(--font-doc); margin-top: 8px; }
+.rules { margin: 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 8px; }
+.rules li::marker { color: var(--accent); font-weight: 800; }
+.no-list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.no-list li { padding-left: 32px; position: relative; }
+.no-list li::before { content: "✕"; position: absolute; left: 0; top: 1px; width: 22px; height: 22px; border-radius: 50%; background: var(--bad-soft); color: var(--bad); font-weight: 800; font-size: .8rem; display: grid; place-items: center; }
+
+/* Quiz */
+.quiz-top { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.score { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--accent-2); }
+.quiz { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 14px; }
+@media (max-width: 400px) { .quiz { grid-template-columns: 1fr; } }
+.qcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; display: flex; flex-direction: column; gap: 10px; box-shadow: var(--shadow-sm); position: relative; overflow: hidden; }
+.qcard::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--line); }
+.qcard.ok::before { background: var(--good); }
+.qcard.no::before { background: var(--bad); }
+.qtext { font-family: var(--font-doc); font-size: 1.05rem; }
+.qbtns { display: flex; flex-wrap: wrap; gap: 6px; }
+.qbtns button { border: 1.5px solid var(--line); background: var(--bg); padding: 6px 12px; border-radius: 999px; cursor: pointer; font-size: .86rem; font-weight: 700; color: var(--muted); }
+.qbtns button:hover { border-color: var(--accent); color: var(--ink); }
+.qbtns button.sel-ok { background: var(--good); border-color: var(--good); color: #fff; }
+.qbtns button.sel-no { background: var(--bad); border-color: var(--bad); color: #fff; }
+.qbtns button.is-right { outline: 2px solid var(--good); outline-offset: 1px; color: var(--good); }
+.qfb { font-size: .9rem; padding: 9px 12px; border-radius: var(--radius-sm); }
+.qfb.ok { background: var(--good-soft); color: var(--good); }
+.qfb.no { background: var(--bad-soft); color: var(--bad); }
+
+/* Case */
+.case-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+@media (max-width: 900px) { .case-grid { grid-template-columns: 1fr; } }
+.task { background: var(--accent); color: var(--accent-ink); border-radius: var(--radius); padding: 20px 22px; box-shadow: 0 8px 24px rgba(15, 139, 141, .25); }
+.task h3 { color: var(--accent-ink); }
+.task ol { margin: 10px 0 0; padding-left: 1.3em; display: flex; flex-direction: column; gap: 4px; }
+.task ol li::marker { font-weight: 800; }
+.mail { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow-sm); }
+.mail-head { margin: 0; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--bg); display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; font-size: .92rem; }
+.mail-head dt { color: var(--muted); }
+.mail-head dd { margin: 0; font-weight: 700; }
+.mail-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 10px; max-width: 72ch; }
+.mail-body ul { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 4px; }
+.mail-body li::marker { color: var(--accent); }
+.nkpd { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.nkpd th, .nkpd td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); }
+.nkpd th { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.nkpd td.code { font-variant-numeric: tabular-nums; font-family: var(--font-display); font-weight: 600; color: var(--accent-2); white-space: nowrap; }
+.nkpd tbody tr:hover { background: var(--bg); }
+.trap { background: var(--pop-soft); color: var(--ink); border-radius: var(--radius); padding: 16px 18px; border-left: 5px solid var(--pop); }
+.trap b { color: var(--pop); }
+
+/* Form */
+.blanka-grid { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 24px; align-items: start; }
+.case-aside { position: sticky; top: calc(var(--tabs-h, 49px) + 14px); max-height: calc(100vh - var(--tabs-h, 49px) - 28px); overflow: auto; }
+.case-aside summary { cursor: pointer; font-weight: 800; padding: 14px 18px; list-style: none; display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display); }
+.case-aside summary::-webkit-details-marker { display: none; }
+.case-aside summary::after { content: "▾"; color: var(--muted); }
+.case-aside details:not([open]) summary::after { content: "▸"; }
+.case-aside .mail { border: 0; border-radius: 0; box-shadow: none; }
+.case-aside .mail-body { font-size: .92rem; padding: 12px 18px 16px; }
+.case-aside .mail-head { padding: 10px 18px; font-size: .85rem; }
+.case-aside .aside-nkpd { padding: 4px 18px 16px; }
+@media (max-width: 960px) {
+  .blanka-grid { grid-template-columns: 1fr; }
+  .case-aside { position: static; max-height: 60vh; order: -1; }
+}
+.form-bar { position: sticky; top: var(--tabs-h, 49px); z-index: 10; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow-sm); padding: 10px 14px; display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.progress { display: flex; align-items: center; gap: 10px; min-width: 200px; flex: 1 1 200px; }
+.bar { flex: 1; height: 10px; background: var(--bg-2); border-radius: 999px; overflow: hidden; max-width: 200px; }
+.bar > i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--accent), var(--good)); border-radius: 999px; transition: width .3s; }
+.progress .pct { font-variant-numeric: tabular-nums; font-weight: 800; font-size: .9rem; }
+.toggle { display: inline-flex; gap: 6px; align-items: center; font-size: .88rem; color: var(--muted); cursor: pointer; font-weight: 700; }
+.toggle input { accent-color: var(--accent); }
+
+.fsec { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px 22px; margin-bottom: 14px; box-shadow: var(--shadow-sm); }
+.fsec-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-bottom: 14px; }
+.fsec-head h3 { display: flex; gap: 12px; align-items: center; }
+.fsec-head .rn { color: var(--accent-ink); background: var(--accent); border-radius: 10px; min-width: 2.4em; text-align: center; padding: 3px 8px; font-size: .85rem; }
+.chip { font-size: .76rem; font-weight: 800; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
+.chip.done { background: var(--good-soft); color: var(--good); }
+.chip.todo { background: var(--bg-2); color: var(--muted); }
+.chip.opt { background: var(--accent-soft); color: var(--accent-2); }
+.fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 16px; }
+.fields .wide { grid-column: 1 / -1; }
+@media (max-width: 640px) { .fields { grid-template-columns: 1fr; } }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.field label { font-weight: 800; font-size: .92rem; }
+.field .req { color: var(--pop); }
+.hint-btn { border: 0; background: var(--accent-soft); color: var(--accent-2); font-size: .76rem; padding: 3px 10px; border-radius: 999px; cursor: pointer; font-weight: 800; }
+.hint-btn:hover { background: var(--accent); color: var(--accent-ink); }
+.hint { font-size: .87rem; color: var(--ink); background: var(--accent-soft); border-radius: var(--radius-sm); padding: 9px 12px; border-left: 3px solid var(--accent); }
+.field input, .field textarea, .list textarea {
+  width: 100%;
+  border: 1.5px solid var(--line);
+  background: var(--bg);
+  border-radius: var(--radius-sm);
+  padding: 10px 12px;
+  line-height: 1.45;
+  transition: border-color .12s, box-shadow .12s;
+}
+.field textarea, .list textarea { resize: vertical; min-height: 44px; }
+.field input:focus, .field textarea:focus, .list textarea:focus { border-color: var(--accent); background: var(--surface); outline: none; box-shadow: 0 0 0 4px var(--accent-soft); }
+.list { list-style: none; margin: 0 0 10px; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.list li { display: grid; grid-template-columns: 30px 1fr 34px; gap: 6px; align-items: start; }
+.list .n { font-family: var(--font-display); font-weight: 700; color: var(--accent-2); text-align: right; padding-top: 10px; font-variant-numeric: tabular-nums; }
+.rm { border: 1.5px solid transparent; background: none; color: var(--muted); font-size: 1.2rem; line-height: 1; height: 40px; border-radius: 10px; cursor: pointer; }
+.rm:hover { color: var(--bad); background: var(--bad-soft); }
+.add { border: 1.5px dashed var(--accent); background: none; color: var(--accent-2); padding: 8px 14px; border-radius: 999px; cursor: pointer; font-weight: 800; margin-left: 36px; }
+.add:hover { background: var(--accent-soft); }
+.list-count { font-size: .82rem; color: var(--muted); margin: 0 0 8px 36px; }
+
+.check-out { margin-bottom: 16px; display: flex; flex-direction: column; gap: 10px; }
+.check-sum { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.msgs { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.msg { padding: 10px 12px 10px 40px; border-radius: var(--radius-sm); position: relative; font-size: .93rem; }
+.msg::before { position: absolute; left: 12px; top: 9px; font-weight: 800; width: 20px; text-align: center; }
+.msg.err { background: var(--bad-soft); }
+.msg.err::before { content: "!"; color: var(--bad); }
+.msg.warn { background: var(--warn-soft); }
+.msg.warn::before { content: "⚠"; color: var(--warn); }
+.msg.tip { background: var(--accent-soft); }
+.msg.tip::before { content: "→"; color: var(--accent-2); }
+.msg.ok { background: var(--good-soft); }
+.msg.ok::before { content: "✓"; color: var(--good); }
+.msg .where { font-weight: 800; }
+.reveal { margin-top: 4px; }
+
+.confirm-row { display: inline-flex; gap: 8px; align-items: center; background: var(--bad-soft); padding: 6px 10px; border-radius: 999px; font-size: .9rem; }
+
+/* Document (paper) */
+.doc-tools { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 18px; }
+.doc-status { font-size: .9rem; color: var(--muted); }
+.paper {
+  background: var(--paper);
+  color: var(--paper-ink);
+  font-family: var(--font-doc);
+  max-width: 794px;
+  margin: 0 auto;
+  padding: 64px 72px 72px;
+  box-shadow: var(--shadow);
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+@media (max-width: 700px) { .paper { padding: 28px 22px 36px; } }
+.paper .approve { margin-left: auto; width: max-content; max-width: 100%; text-align: left; font-size: .95rem; }
+.paper .approve b { letter-spacing: .04em; }
+.paper .employer { text-align: center; font-weight: 700; margin-top: 26px; }
+.paper .dtitle { text-align: center; margin: 22px 0 6px; font-size: 1.35rem; letter-spacing: .06em; font-weight: 700; }
+.paper .dsub { text-align: center; }
+.paper h4 { font-size: 1rem; margin: 22px 0 8px; text-transform: uppercase; letter-spacing: .03em; }
+.paper .kv { margin: 3px 0; }
+.paper .kv b { font-weight: 700; }
+.paper ol { margin: 4px 0; padding-left: 1.7em; }
+.paper ol li { margin: 3px 0; }
+.paper .blank { color: var(--paper-muted); letter-spacing: .05em; }
+.paper .pre { white-space: pre-line; }
+.paper .signs { margin-top: 34px; display: grid; gap: 14px; }
+.paper .ack { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--paper-line); font-size: .95rem; }
+
+/* Teacher */
+.teacher { margin-top: 40px; }
+.teacher-gate { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.teacher-gate input { width: 120px; border: 1.5px solid var(--line); background: var(--bg); border-radius: var(--radius-sm); padding: 9px 12px; }
+.rubric { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.rubric th, .rubric td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.rubric th { font-size: .74rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.rubric td.pts, .rubric th.pts { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.rubric tfoot td { font-weight: 800; }
+.scale { display: flex; flex-wrap: wrap; gap: 6px; }
+.scale span { border-radius: 999px; padding: 5px 12px; font-size: .87rem; font-variant-numeric: tabular-nums; background: var(--accent-soft); color: var(--accent-2); font-weight: 700; }
+
+footer.foot { padding: 18px 0 30px; color: var(--muted); font-size: .85rem; }
+footer.foot .wrap { display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
+.linkish { background: none; border: 0; color: var(--accent-2); cursor: pointer; padding: 0; text-decoration: underline; font-size: inherit; font-weight: 700; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="app-head">
+  <div class="wrap">
+    <div class="head-row">
+      <div>
+        <div class="eyebrow">Учебна практика · Казус</div>
+        <h1>Длъжностна характеристика</h1>
+      </div>
+      <div class="head-tools">
+        <span class="save-note" id="save-note" aria-live="polite"></span>
+        <button class="btn ghost" type="button" id="font-toggle" aria-pressed="false" title="По-едър шрифт">Аа по-едро</button>
+      </div>
+    </div>
+    <div class="ident">
+      <div class="mini"><label for="st-name">Ученик</label><input id="st-name" type="text" autocomplete="name" placeholder="Име и фамилия"></div>
+      <div class="mini"><label for="st-cls">Клас</label><input id="st-cls" type="text" placeholder="11 б"></div>
+      <div class="mini"><label for="st-num">№</label><input id="st-num" type="text" inputmode="numeric" placeholder="7"></div>
+      <div class="variant-pick">
+        <span class="lbl" id="var-lbl">Вариант на казуса</span>
+        <div class="seg" role="group" aria-labelledby="var-lbl" id="variant-seg"></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Етапи на упражнението">
+  <div class="wrap" role="tablist" id="tablist"></div>
+</nav>
+
+<main class="wrap">
+
+  <!-- 1. ТЕОРИЯ -->
+  <section class="view" id="view-teoria" role="tabpanel" aria-labelledby="tab-teoria">
+    <div class="view-head">
+      <div>
+        <h2>Какво трябва да знаем</h2>
+        <p>Кратка теория преди да започнете. Върнете се тук, когато не сте сигурни в кой раздел пише дадено нещо.</p>
+      </div>
+      <button class="btn primary" type="button" data-go="zagryavka">Към загрявката →</button>
+    </div>
+
+    <div class="theory-grid">
+      <div class="stack">
+        <div class="card stack">
+          <h3>Какво е длъжностната характеристика</h3>
+          <div class="prose">
+            <p>Длъжностната характеристика е вътрешен документ на работодателя, който описва една длъжност: защо я има, какво точно се върши на нея, какви права и отговорности носи, на кого е подчинена и какви изисквания трябва да покрива човекът, който я заема.</p>
+            <p><b>Тя описва длъжността, а не конкретния човек.</b> Затова в нея няма имена на кандидати, лични данни или заплата.</p>
+          </div>
+          <div class="law">
+            <div class="lbl">Какво казва законът</div>
+            <p class="prose" style="margin-top:6px">Според <b>чл. 127, ал. 1, т. 4 от Кодекса на труда</b> работодателят връчва на работника или служителя длъжностна характеристика при сключването на трудовия договор — срещу подпис и с отбелязана дата на връчване. Подписаният екземпляр се пази в трудовото досие. По-късно характеристиката може да се актуализира, но трябва да остане в рамките на длъжността, за която е сключен договорът.</p>
+          </div>
+          <div class="prose">
+            <p><b>Наименование и код.</b> Наименованието и кодът на длъжността се вземат от Националната класификация на професиите и длъжностите (НКПД), която поддържа Министерството на труда и социалната политика. Кодът има 8 цифри: първите четири показват групата, а последните — конкретната длъжност. Когато наименованието от класификацията не отразява точно работата, в края му може да се добави кратко уточнение.</p>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <h3>Задължение, право или отговорност?</h3>
+          <p class="muted small">Трите раздела най-често се бъркат. Всеки отговаря на различен въпрос.</p>
+          <div class="trio">
+            <div><b>Задължение</b><div class="q">Какво прави служителят?</div><div class="ex">„Води входящия и изходящия дневник.“</div></div>
+            <div><b>Право</b><div class="q">Какво може да изисква, решава или ползва?</div><div class="ex">„Да получава от колегите нужната информация.“</div></div>
+            <div><b>Отговорност</b><div class="q">За какво носи последствия?</div><div class="ex">„Отговаря за съхранението на документите.“</div></div>
+          </div>
+        </div>
+
+        <div class="card stack">
+          <h3>Как се пише добре</h3>
+          <ol class="rules prose">
+            <li>Всяко задължение започва с глагол в сегашно време: <i>изготвя, приема, води, следи, организира</i>.</li>
+            <li>Пишете конкретно: „Приема и регистрира входящата поща в дневника“, а не „Занимава се с пощата“.</li>
+            <li>Една точка — едно задължение.</li>
+            <li>Посочвайте срокове и честота, когато ги има: „всеки петък“, „до 16:00 ч.“.</li>
+            <li>Пишете длъжността, а не името: „Управител“, а не „г-жа Петкова“.</li>
+            <li>Подреждайте задълженията от най-важните към по-редките.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card stack">
+          <h3>Структура на документа</h3>
+          <ol class="skeleton">
+            <li><span class="rn">—</span><div><b>Заглавна част</b><span>Работодател, „Утвърждавам“, наименование и код по НКПД</span></div></li>
+            <li><span class="rn">I</span><div><b>Обща информация</b><span>Звено, пряк ръководител, подчинени длъжности</span></div></li>
+            <li><span class="rn">II</span><div><b>Основна цел</b><span>Защо съществува длъжността — едно-две изречения</span></div></li>
+            <li><span class="rn">III</span><div><b>Основни задължения</b><span>Какво прави служителят</span></div></li>
+            <li><span class="rn">IV</span><div><b>Права</b><span>Какво може да изисква, решава и ползва</span></div></li>
+            <li><span class="rn">V</span><div><b>Отговорности</b><span>За какво носи последствия</span></div></li>
+            <li><span class="rn">VI</span><div><b>Взаимоотношения</b><span>С кого работи във и извън фирмата</span></div></li>
+            <li><span class="rn">VII</span><div><b>Изисквания</b><span>Образование, опит, знания и умения, лични качества</span></div></li>
+            <li><span class="rn">VIII</span><div><b>Условия на труд</b><span>Работно време, място на работа, средства за работа</span></div></li>
+            <li><span class="rn">IX</span><div><b>Критерии за оценка</b><span>По какво се оценява работата (по желание)</span></div></li>
+            <li><span class="rn">—</span><div><b>Подписи</b><span>Изготвил, утвърдил, служител „запознат съм“ с дата</span></div></li>
+          </ol>
+        </div>
+        <div class="card stack">
+          <h3>Какво не се пише</h3>
+          <ul class="no-list">
+            <li><b>Заплата, бонуси и придобивки.</b> Те се уговарят в трудовия договор.</li>
+            <li><b>Лични данни</b> и подробности за конкретен кандидат.</li>
+            <li><b>Изисквания за пол, възраст, външен вид или семейно положение.</b> Законът за защита от дискриминацията ги забранява.</li>
+            <li><b>Лични услуги</b> за ръководителя, които не са свързани с работата.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. ЗАГРЯВКА -->
+  <section class="view" id="view-zagryavka" role="tabpanel" aria-labelledby="tab-zagryavka" hidden>
+    <div class="view-head">
+      <div>
+        <h2>Загрявка: къде принадлежи?</h2>
+        <p>За всяко твърдение изберете в кой раздел на длъжностната характеристика трябва да бъде — или дали изобщо не трябва да е в нея.</p>
+      </div>
+      <div class="btn-row">
+        <button class="btn" type="button" id="quiz-reset">Започни отначало</button>
+        <button class="btn primary" type="button" data-go="kazus">Към казуса →</button>
+      </div>
+    </div>
+    <div class="quiz-top">
+      <div><span class="score" id="quiz-score">0 / 0</span> <span class="muted small" id="quiz-sub">верни отговора</span></div>
+    </div>
+    <div class="quiz" id="quiz"></div>
+  </section>
+
+  <!-- 3. КАЗУС -->
+  <section class="view" id="view-kazus" role="tabpanel" aria-labelledby="tab-kazus" hidden>
+    <div class="view-head">
+      <div>
+        <h2 id="case-title">Казус</h2>
+        <p id="case-lead"></p>
+      </div>
+      <button class="btn primary" type="button" data-go="blanka">Към бланката →</button>
+    </div>
+    <div class="case-grid">
+      <div class="stack">
+        <div class="task">
+          <h3>Вашата задача</h3>
+          <p style="margin-top:6px">Вие сте стажант в отдел „Човешки ресурси“. Получавате писмото по-долу и трябва да изготвите длъжностната характеристика за новата длъжност.</p>
+          <ol>
+            <li>Прочетете писмото внимателно.</li>
+            <li>Разпределете информацията: задължения, права, отговорности, изисквания, условия на труд.</li>
+            <li>Изберете вярното наименование и код от извадката от НКПД.</li>
+            <li>Попълнете бланката в раздел „Бланка“ и натиснете „Провери“.</li>
+            <li>Прегледайте готовия документ и го изтеглете като Word файл.</li>
+          </ol>
+        </div>
+        <div id="case-mail"></div>
+      </div>
+      <div class="stack">
+        <div class="card stack">
+          <h3>Извадка от НКПД</h3>
+          <p class="muted small">Само една от длъжностите отговаря на казуса.</p>
+          <div id="case-nkpd"></div>
+        </div>
+        <div class="trap">
+          <b>Внимание, капани!</b>
+          <p style="margin-top:4px">В писмото има поне три неща, които <b>не трябва</b> да влизат в длъжностната характеристика. Открийте ги и не ги пренасяйте в бланката.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. БЛАНКА -->
+  <section class="view" id="view-blanka" role="tabpanel" aria-labelledby="tab-blanka" hidden>
+    <div class="view-head">
+      <div>
+        <h2 id="form-title">Бланка</h2>
+        <p>Попълнете всички раздели. Отбелязаните със <span style="color:var(--bad)">*</span> са задължителни. Написаното се пази автоматично в този браузър.</p>
+      </div>
+    </div>
+    <div class="blanka-grid">
+      <div>
+        <div class="form-bar">
+          <div class="progress">
+            <div class="bar" aria-hidden="true"><i id="prog-bar"></i></div>
+            <span class="pct" id="prog-txt">0 от 10 раздела</span>
+          </div>
+          <div class="btn-row">
+            <label class="toggle"><input type="checkbox" id="all-hints"> Покажи всички подсказки</label>
+            <button class="btn primary" type="button" id="btn-check">Провери</button>
+            <button class="btn" type="button" data-go="dokument">Виж документа</button>
+          </div>
+        </div>
+        <div class="check-out" id="check-out" aria-live="polite"></div>
+        <form id="dh-form" autocomplete="off" novalidate></form>
+        <div class="btn-row" style="margin-top:8px">
+          <button class="btn primary" type="button" id="btn-check-2">Провери</button>
+          <button class="btn" type="button" data-go="dokument">Виж документа →</button>
+          <span id="clear-wrap"><button class="btn ghost danger" type="button" id="btn-clear">Изчисти бланката</button></span>
+        </div>
+      </div>
+      <aside class="case-aside card" style="padding:0">
+        <details open id="aside-details">
+          <summary id="aside-sum">Казус</summary>
+          <div id="aside-mail"></div>
+          <div class="aside-nkpd" id="aside-nkpd"></div>
+        </details>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 5. ДОКУМЕНТ -->
+  <section class="view" id="view-dokument" role="tabpanel" aria-labelledby="tab-dokument" hidden>
+    <div class="view-head">
+      <div>
+        <h2>Готов документ</h2>
+        <p>Така изглежда вашата длъжностна характеристика. Празните места са отбелязани с точки — върнете се в бланката, за да ги попълните.</p>
+      </div>
+    </div>
+    <div class="doc-tools">
+      <button class="btn primary" type="button" id="btn-docx">Изтегли като Word (.docx)</button>
+      <button class="btn" type="button" id="btn-copy">Копирай текста</button>
+      <button class="btn ghost" type="button" data-go="blanka">← Обратно към бланката</button>
+      <span class="doc-status" id="doc-status" aria-live="polite"></span>
+    </div>
+    <div class="paper" id="paper"></div>
+  </section>
+
+  <!-- УЧИТЕЛ -->
+  <section class="teacher" id="teacher" hidden>
+    <div class="card stack">
+      <div class="view-head" style="margin:0">
+        <div>
+          <h2>За учителя</h2>
+          <p>Примерно решение, капаните в казуса и критерии за оценяване за избрания вариант.</p>
+        </div>
+        <button class="btn" type="button" id="teacher-close">Скрий</button>
+      </div>
+      <div class="teacher-gate" id="teacher-gate">
+        <label for="t-pin">Код за достъп</label>
+        <input id="t-pin" type="password" inputmode="numeric" autocomplete="off">
+        <button class="btn primary" type="button" id="t-go">Отвори</button>
+        <span class="small" id="t-msg" aria-live="polite"></span>
+      </div>
+      <div id="teacher-body" hidden></div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <span>Фирмите, лицата и данните в казусите са измислени. Кодовете са от НКПД-2011 — преди реална употреба ги проверете в актуалната версия на сайта на <a href="https://www.mlsp.government.bg/">МТСП</a>.</span>
+    <button class="linkish" type="button" id="teacher-open">За учителя</button>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ---------------- ДАННИ ---------------- */
+
+  var TABS = [
+    ['teoria', 'Теория'],
+    ['zagryavka', 'Загрявка'],
+    ['kazus', 'Казус'],
+    ['blanka', 'Бланка'],
+    ['dokument', 'Готов документ']
+  ];
+
+  var VARIANTS = {
+    A: {
+      letter: 'А',
+      short: 'Офис мениджър',
+      lead: 'Семейна мебелна фирма открива нова длъжност в офиса.',
+      mail: {
+        from: 'Мария Петкова, управител на „Ясен Мебел“ ООД',
+        to: 'Отдел „Човешки ресурси“',
+        subject: 'Нова длъжност в офиса',
+        body:
+          '<p>Здравейте,</p>' +
+          '<p>„Ясен Мебел“ ООД е семейна фирма от гр. Свищов, която от 1998 г. произвежда и продава мебели по поръчка. В момента сме 26 души: 18 в цеха, 4 продавач-консултанти в шоурума, 2 шофьори и счетоводител на непълен работен ден. Досега аз сама вършех цялата административна работа, но поръчките растат и вече не смогвам. Затова откриваме нова длъжност в офиса — <b>офис мениджър</b>, пряко подчинен на мен. Моля, подгответе длъжностната характеристика — аз ще я утвърдя.</p>' +
+          '<p>Ето какво трябва да прави новият колега:</p>' +
+          '<ul>' +
+          '<li>да посреща клиентите и посетителите, да отговаря на телефона и на общия имейл на фирмата;</li>' +
+          '<li>да води входящата и изходящата поща и да подреди архива, който в момента е в кашони;</li>' +
+          '<li>да подготвя договорите с клиентите по нашия образец, да следи кога трябва да платят и да им напомня;</li>' +
+          '<li>да събира документите на новите служители и да ги дава на счетоводителката за трудовите договори, както и да води графика за отпуските;</li>' +
+          '<li>да поръчва канцеларски материали, тонер, вода и други неща за офиса — за покупки над 300 евро първо да пита мен;</li>' +
+          '<li>да води моя календар и да урежда срещите ми с клиенти и доставчици;</li>' +
+          '<li>да прави графика на доставките за двамата шофьори;</li>' +
+          '<li>всеки петък да ми дава кратък писмен отчет: колко поръчки сме приели и кои клиенти закъсняват с плащанията.</li>' +
+          '</ul>' +
+          '<p>Хигиенистката, която идва всеки следобед, ще бъде под негово ръководство. Новият колега ще отговаря и за малката каса за дребни разходи (до 200 евро), а също и за това личните данни на клиентите и служителите да не попадат в чужди ръце. Ще има право да подписва протоколите, когато получаваме материали, и да иска информация от всички колеги за отчета. Ако има идеи как да подредим работата по-добре — винаги съм готова да ги чуя.</p>' +
+          '<p>Изисквания: средно икономическо образование (висше е предимство), поне 2 години опит в офис, отлична работа с Word, Excel и имейл. Английският е плюс, но не е задължителен. Искам човек организиран, учтив и дискретен.</p>' +
+          '<p>Работното време е от 8:30 до 17:00 ч., от понеделник до петък, с половин час обедна почивка. Офисът е в шоурума, а работното място е с компютър, принтер и служебен телефон.</p>' +
+          '<p>Предлагаме заплата 1 300 евро бруто и бонус в края на годината. Имам и кандидатка наум — Илиана, живее на две преки от нас и има малко дете, мисля, че ще ѝ е удобно. И между нас казано — ще ми е много приятно, ако всяка сутрин ми прави кафе, но това не е работа, разбира се.</p>' +
+          '<p>Поздрави,<br>Мария Петкова</p>'
+      },
+      nkpd: [['33433001', 'Административен секретар'], ['33413004', 'Офис мениджър'], ['41102005', 'Технически сътрудник'], ['41202001', 'Секретар']],
+      correct: '33413004',
+      traps: [
+        { re: /кафе/iu, msg: 'Сутрешното кафе за управителя е лична услуга, а не трудово задължение — самата управителка го казва в писмото.' },
+        { re: /илиана|дете|две преки/iu, msg: 'Данните за кандидатката (адрес, дете) не се пишат — характеристиката описва длъжността, а не човека.' }
+      ],
+      topics: [
+        [/посетител|клиент|телефон|имейл|обажд/iu, 'посрещане на клиенти, телефон и имейл'],
+        [/кореспонденц|поща|дневник/iu, 'входяща и изходяща кореспонденция'],
+        [/архив/iu, 'архивът на фирмата'],
+        [/договор/iu, 'договорите с клиентите и сроковете за плащане'],
+        [/отпуск|нов\S* служител|постъпва/iu, 'документите на новите служители и графикът за отпуските'],
+        [/канцелар|материал|консуматив|покупк|тонер|заяв/iu, 'покупките за офиса'],
+        [/календар|срещ/iu, 'календарът и срещите на управителя'],
+        [/доставк|шофьор/iu, 'графикът на доставките'],
+        [/отчет/iu, 'седмичният отчет'],
+        [/хигиени/iu, 'ръководството на хигиениста']
+      ],
+      sample: {
+        employer: '„Ясен Мебел“ ООД, гр. Свищов',
+        approver: 'Мария Петкова, управител',
+        approveDate: '',
+        title: 'Офис мениджър',
+        nkpd: '33413004',
+        unit: 'Администрация (офис)',
+        reportsTo: 'Управител',
+        subordinates: 'Хигиенист',
+        purpose: 'Осигурява ефективната организация на офиса, документооборота и комуникацията на фирмата с клиенти, доставчици и служители и подпомага управителя в ежедневната му работа.',
+        duties: [
+          'Посреща клиенти и посетители, отговаря на телефонните обаждания и на имейлите, постъпили на общия адрес на фирмата, и ги насочва към съответните служители.',
+          'Приема, регистрира и разпределя входящата кореспонденция; изготвя и изпраща изходящата кореспонденция; води входящ и изходящ дневник.',
+          'Организира и поддържа архива на фирмата.',
+          'Изготвя договорите с клиентите по утвърдения образец, следи сроковете за плащане по тях и напомня на клиентите за предстоящи и просрочени плащания.',
+          'Събира документите на новопостъпващите служители и ги предава на счетоводителя за оформяне на трудовите договори; води графика за ползване на платения годишен отпуск.',
+          'Заявява и закупува канцеларски материали, консумативи и други стоки за нуждите на офиса, като покупки над 300 евро съгласува предварително с управителя.',
+          'Води календара на управителя и организира срещите му с клиенти и доставчици.',
+          'Изготвя графика на доставките и го съгласува с шофьорите.',
+          'Ръководи и контролира работата на хигиениста.',
+          'Всеки петък представя на управителя писмен отчет за приетите поръчки и за закъснелите плащания.',
+          'Изпълнява и други задачи, възложени от управителя, свързани с длъжността.'
+        ],
+        rights: [
+          'Да получава от служителите информацията, необходима за изпълнение на задълженията и за изготвяне на отчетите.',
+          'Да подписва приемо-предавателни протоколи за получени материали и консумативи.',
+          'Да извършва покупки за нуждите на офиса до 300 евро без предварително съгласуване.',
+          'Да дава указания на хигиениста във връзка с работата му.',
+          'Да прави предложения пред управителя за подобряване на организацията на работата.',
+          'Да ползва служебен компютър, принтер и телефон.'
+        ],
+        resp: [
+          'Отговаря за точното и навременно изпълнение на задълженията си.',
+          'Отговаря за правилното водене и съхранение на документите и архива.',
+          'Носи имуществена отговорност за паричните средства в касата за дребни разходи (до 200 евро) и за поверената офис техника.',
+          'Отговаря за опазването на личните данни на клиентите и служителите и на търговската информация на фирмата.',
+          'Отговаря за спазването на правилника за вътрешния трудов ред и на правилата за безопасност и здраве при работа.'
+        ],
+        relInt: 'Управител, счетоводител, продавач-консултанти, шофьори, хигиенист, служители в цеха.',
+        relExt: 'Клиенти и посетители, доставчици на материали и консумативи.',
+        edu: 'Средно образование с икономически профил; висше образование — предимство.',
+        exp: 'Минимум 2 години опит в офис или административна работа.',
+        skills: 'Отлична работа с MS Word, MS Excel и електронна поща; английски език — предимство.',
+        qualities: 'Организираност, учтивост, комуникативност, дискретност.',
+        other: '',
+        workTime: 'Пълно работно време — 8 часа дневно, понеделник – петък, от 8:30 до 17:00 ч., с 30 минути почивка за обяд.',
+        workplace: 'Офис в шоурума на фирмата, гр. Свищов.',
+        equipment: 'Компютър, принтер, служебен телефон.',
+        criteria: [
+          'Навременна обработка на кореспонденцията — в рамките на работния ден.',
+          'Точност и пълнота на седмичните отчети.',
+          'Навременни напомняния за плащанията; липса на пропуснати срокове.',
+          'Подреденост на архива и документите.',
+          'Обратна връзка от клиентите и от управителя.'
+        ],
+        preparedBy: '[Име на ученика], стажант, отдел „Човешки ресурси“',
+        employee: '',
+        handDate: ''
+      },
+      teacherTraps: [
+        'Заплата 1 300 евро и бонус — уговарят се в трудовия договор.',
+        'Кандидатката Илиана, адресът ѝ и малкото дете — лични данни; характеристиката описва длъжността.',
+        'Сутрешното кафе — лична услуга, не е трудово задължение (управителката сама го казва).',
+        'Годината на основаване и броят служители — контекст за фирмата, не съдържание на характеристиката.'
+      ],
+      nkpdNote: '„Административен секретар“ (33433001) и „Секретар“ (41202001) са близки, но не включват ръководство на персонал и организация на целия офис. „Технически сътрудник“ (41102005) е помощна длъжност. Верният избор е „Офис мениджър“ — 33413004.'
+    },
+
+    B: {
+      letter: 'Б',
+      short: 'Търговски представител',
+      lead: 'Млечна фирма търси търговски представител за района си.',
+      mail: {
+        from: 'Петър Иванов, търговски мениджър, „Дунавска млечна компания“ ЕООД',
+        to: 'Отдел „Човешки ресурси“',
+        subject: 'Търговски представител за район Свищов – Белене – Никопол',
+        body:
+          '<p>Здравейте,</p>' +
+          '<p>Нашата фирма има собствена мандра край Свищов и разпространява сирене, кашкавал, кисело и прясно мляко в магазините в региона. Търговският отдел има нужда от нов <b>търговски представител</b> за общините Свищов, Белене и Никопол. Той ще бъде пряко подчинен на мен като търговски мениджър и няма да има подчинени. Моля, подгответе длъжностната характеристика. Ще я утвърди управителят на фирмата, г-н Стефан Колев.</p>' +
+          '<p>Какво ще прави:</p>' +
+          '<ul>' +
+          '<li>всеки ден ще обикаля магазините от района по маршрутен график — средно 12–15 обекта на ден;</li>' +
+          '<li>ще приема поръчки и ще ги въвежда в таблета до 16:00 ч., за да може складът да ги подготви за следващия ден;</li>' +
+          '<li>ще представя новите продукти и промоциите и ще договаря условия с магазините. Може сам да дава отстъпка до 5% от ценовата листа, за повече — само с мое одобрение;</li>' +
+          '<li>ще търси нови клиенти — искаме поне 2 нови магазина на месец;</li>' +
+          '<li>ще следи как са подредени продуктите ни по рафтовете, колко има и дали няма продукти с изтичащ срок — за такива веднага да ни съобщава;</li>' +
+          '<li>някои магазини плащат в брой — представителят ще събира парите срещу документ и ще ги предава в касата до края на деня;</li>' +
+          '<li>ще напомня на магазините за неплатените фактури;</li>' +
+          '<li>ако клиент има рекламация, ще я приема и ще ми я предава;</li>' +
+          '<li>всеки петък ще попълва седмичен отчет — посещения, продажби, нови клиенти, проблеми;</li>' +
+          '<li>понякога ще участва в промоции и панаири в събота — по график.</li>' +
+          '</ul>' +
+          '<p>Ще ползва служебен автомобил, таблет и телефон — и ще отговаря за тях. Трябва да води пътен лист и да поддържа колата чиста и изправна. Цените и условията ни с клиентите са търговска тайна и не бива да стигат до конкуренцията. През първия месец ще мине обучение за продуктите ни.</p>' +
+          '<p>Изисквания: средно образование (икономическо или търговско е предимство), шофьорска книжка категория B с поне 2 години стаж като шофьор, опит в продажбите — предимство. Трябва да е комуникативен, инициативен и коректен и да работи уверено с таблет.</p>' +
+          '<p>Работно време: от понеделник до петък, 8:00–16:30 ч., на терен. Базата е офисът ни в Свищов.</p>' +
+          '<p>Заплатата е 1 100 евро плюс комисиона 3% от продажбите над плана. Колата е Dacia Logan от 2021 г. Предишният ни представител напусна след спор за отпуската. И да ви кажа честно — предпочитам да е мъж под 35 години, по-лесно издържат на пътуването.</p>' +
+          '<p>Поздрави,<br>Петър Иванов</p>'
+      },
+      nkpd: [['33223001', 'Търговски агент'], ['24346002', 'Търговски представител: ИКТ'], ['33223003', 'Търговски представител'], ['52232001', 'Продавач-консултант']],
+      correct: '33223003',
+      traps: [
+        { re: /(^|[^а-я])мъж|под\s*35|35\s*г/iu, msg: 'Изискване за пол или възраст („мъж под 35 години“) е дискриминационно и не се пише.' },
+        { re: /dacia|дачия|logan|логан/iu, msg: 'Марката и моделът на колата са излишни — достатъчно е „служебен автомобил“.' },
+        { re: /предишни\S* представител|спор\S* за отпуск/iu, msg: 'Историята с предишния представител няма отношение към длъжността.' }
+      ],
+      topics: [
+        [/посещ|обект|маршрут|обикаля/iu, 'посещенията на магазините по график'],
+        [/поръчк/iu, 'приемането и въвеждането на поръчки'],
+        [/продукт|промоци|ценова|услови/iu, 'представянето на продуктите и договарянето'],
+        [/нов\S* клиент|привлича/iu, 'търсенето на нови клиенти'],
+        [/рафт|наличност|годност|изтичащ|подрежда/iu, 'наличността, подреждането и сроковете на годност'],
+        [/в брой|каса|събира/iu, 'събирането на плащания в брой'],
+        [/фактур|вземан|напомня/iu, 'неплатените фактури'],
+        [/рекламаци/iu, 'рекламациите'],
+        [/отчет/iu, 'седмичният отчет'],
+        [/панаир|събот/iu, 'промоциите и панаирите'],
+        [/пътен лист|автомобил|кола/iu, 'служебният автомобил и пътният лист']
+      ],
+      sample: {
+        employer: '„Дунавска млечна компания“ ЕООД, гр. Свищов',
+        approver: 'Стефан Колев, управител',
+        approveDate: '',
+        title: 'Търговски представител',
+        nkpd: '33223003',
+        unit: 'Търговски отдел',
+        reportsTo: 'Търговски мениджър',
+        subordinates: 'Няма',
+        purpose: 'Осигурява продажбите на продуктите на фирмата в търговските обекти в общините Свищов, Белене и Никопол, като поддържа и разширява клиентската мрежа.',
+        duties: [
+          'Посещава ежедневно по утвърден маршрутен график търговските обекти от района си — средно 12–15 обекта на ден.',
+          'Приема поръчки от клиентите и ги въвежда в системата на фирмата чрез таблета до 16:00 ч. в същия ден.',
+          'Представя продуктите, новостите и промоциите на фирмата и договаря условията на продажба в рамките на утвърдената ценова листа.',
+          'Търси и привлича нови клиенти в района.',
+          'Следи наличността, подреждането и сроковете на годност на продуктите в обектите и незабавно сигнализира за продукти с изтичащ срок.',
+          'Събира плащания в брой от клиентите срещу документ и ги предава в касата на фирмата до края на работния ден.',
+          'Следи за неплатени фактури и напомня на клиентите за сроковете за плащане.',
+          'Приема рекламации от клиентите и ги предава на търговския мениджър.',
+          'Изготвя и представя всеки петък седмичен отчет за посещенията, продажбите, новите клиенти и възникналите проблеми.',
+          'Участва в промоции и панаири по утвърден график.',
+          'Води пътен лист и поддържа служебния автомобил в изправност и чистота.'
+        ],
+        rights: [
+          'Да предоставя отстъпки до 5% от цените в ценовата листа; по-големи отстъпки — само с одобрение на търговския мениджър.',
+          'Да ползва служебен автомобил, таблет и телефон за изпълнение на задълженията си.',
+          'Да получава актуална информация за наличностите, цените и промоциите.',
+          'Да предлага нови клиенти, продукти и промоционални дейности.',
+          'Да преминава обучение за продуктите на фирмата.'
+        ],
+        resp: [
+          'Отговаря за изпълнението на плана за продажби в района и за привличането на нови клиенти.',
+          'Носи имуществена отговорност за събраните парични средства до предаването им в касата.',
+          'Носи имуществена отговорност за поверените служебен автомобил, таблет и телефон.',
+          'Отговаря за верността на въведените поръчки и отчети.',
+          'Отговаря за опазването на търговската тайна — цени, условия и данни за клиентите.',
+          'Отговаря за спазването на правилата за движение по пътищата и за безопасност и здраве при работа.'
+        ],
+        relInt: 'Търговски мениджър, склад, каса и счетоводство, шофьори-доставчици.',
+        relExt: 'Собственици и управители на търговски обекти; потенциални нови клиенти.',
+        edu: 'Средно образование; икономически или търговски профил — предимство.',
+        exp: 'Опит в продажбите — предимство.',
+        skills: 'Уверена работа с таблет, смартфон и система за поръчки; умения за преговори и продажби.',
+        qualities: 'Комуникативност, инициативност, коректност, организираност.',
+        other: 'Свидетелство за управление на МПС, категория B, с минимум 2 години стаж като водач.',
+        workTime: 'Пълно работно време — понеделник – петък, от 8:00 до 16:30 ч.; при промоции и панаири — и в събота по утвърден график, при спазване на Кодекса на труда.',
+        workplace: 'Работа на терен в общините Свищов, Белене и Никопол; база — офисът на фирмата в гр. Свищов.',
+        equipment: 'Служебен автомобил, таблет със система за поръчки, служебен телефон.',
+        criteria: [
+          'Изпълнение на месечния план за продажби.',
+          'Брой нови клиенти — поне 2 на месец.',
+          'Реализирани посещения спрямо маршрутния график.',
+          'Точност и навременност на поръчките и отчетите.',
+          'Размер на просрочените плащания в района.'
+        ],
+        preparedBy: '[Име на ученика], стажант, отдел „Човешки ресурси“',
+        employee: '',
+        handDate: ''
+      },
+      teacherTraps: [
+        'Заплата 1 100 евро и комисиона 3% — уговарят се в трудовия договор.',
+        '„Мъж под 35 години“ — изискването за пол и възраст е дискриминационно (Закон за защита от дискриминацията).',
+        'Марката и годината на колата — излишна подробност; достатъчно е „служебен автомобил“.',
+        'Спорът с предишния представител — няма отношение към длъжността.'
+      ],
+      nkpdNote: '„Търговски агент“ (33223001) е в същата група 3322, но в казуса длъжността е изрично „търговски представител“. „Търговски представител: ИКТ“ (24346002) е за продажби на информационни и комуникационни технологии, а продавач-консултантът работи в магазин. Верният избор е „Търговски представител“ — 33223003.'
+    },
+
+    C: {
+      letter: 'В',
+      short: 'Администратор в хотел',
+      lead: 'Семеен хотел търси още един администратор на рецепцията.',
+      mail: {
+        from: 'Николай Георгиев, управител на семеен хотел „Дунавски бряг“',
+        to: 'Отдел „Човешки ресурси“',
+        subject: 'Още един администратор на рецепцията',
+        body:
+          '<p>Здравейте,</p>' +
+          '<p>Хотелът ни, собственост на „Дунавски бряг“ ЕООД, е открит през 2015 г. — 24 стаи и ресторант на брега на Дунав в гр. Свищов. Гостите ни са туристи от България, Румъния и Германия и групи от круизните кораби. Търся още един <b>администратор</b> на рецепцията, пряко подчинен на мен. Моля, подгответе длъжностната характеристика — аз ще я утвърдя.</p>' +
+          '<p>Какво трябва да прави:</p>' +
+          '<ul>' +
+          '<li>да посреща и настанява гостите и да оформя напускането им;</li>' +
+          '<li>да проверява документите за самоличност и да регистрира гостите в ЕСТИ (Единната система за туристическа информация);</li>' +
+          '<li>да приема резервации по телефон, имейл и от сайтовете за резервации и да следи да няма двойни резервации;</li>' +
+          '<li>да приема плащания в брой и с карта, да издава касови бележки и фактури;</li>' +
+          '<li>в края на смяната да прави отчет на касата и да предава касата, ключовете и важната информация на колегата от следващата смяна;</li>' +
+          '<li>да разказва на гостите за услугите на хотела и ресторанта и какво могат да видят в града;</li>' +
+          '<li>да казва на камериерките кои стаи са освободени и трябва да се подготвят;</li>' +
+          '<li>да приема оплаквания на гости и да ги предава на когото трябва, а ако е нещо сериозно — на мен;</li>' +
+          '<li>да пази ключовете и картите за стаите и да води дневника за забравени вещи.</li>' +
+          '</ul>' +
+          '<p>Администраторът ще отговаря за парите в касата по време на смяната си и за личните данни на гостите. Има право да откаже настаняване, ако човек няма документ за самоличност. Може да дава отстъпки само според ценоразписа, а за групи — след като се разбере с мен. Може да изисква от камериерките информация дали стаите са готови. Ще мине и обучение за системата за резервации.</p>' +
+          '<p>Изисквания: средно образование (хотелиерство или туризъм е предимство); английски език на ниво B1 е задължителен, а немски или румънски — предимство; добра работа с компютър. Искам човек учтив, търпелив и спокоен, когато гост е недоволен.</p>' +
+          '<p>Работата е на 12-часови смени — дневна от 7:00 до 19:00 ч. и нощна от 19:00 до 7:00 ч. — по месечен график, със сумирано изчисляване на работното време. Работното място е рецепцията — с компютър, система за резервации, ПОС терминал, касов апарат и телефон.</p>' +
+          '<p>Заплатата е 1 150 евро, плюс доплащане за нощен труд, а обядът в ресторанта е безплатен за персонала. И още нещо — моля, напишете, че кандидатът трябва да е с приятна външност. Ще поискам да ми изпратят снимки.</p>' +
+          '<p>Поздрави,<br>Николай Георгиев</p>'
+      },
+      nkpd: [['42242001', 'Рецепционист, хотел'], ['42243002', 'Администратор, хотел'], ['51621003', 'Камериер/камериерка, хотел'], ['52301001', 'Касиер']],
+      correct: '42243002',
+      traps: [
+        { re: /външност|изглежда|снимк/iu, msg: 'Изискване за външен вид („приятна външност“, снимки) е дискриминационно и не се пише.' },
+        { re: /безплат/iu, msg: 'Безплатният обяд е придобивка — тя не е част от длъжностната характеристика.' }
+      ],
+      topics: [
+        [/настанява|посреща|напуска/iu, 'настаняването и напускането на гостите'],
+        [/регистр|ести|самоличност/iu, 'регистрацията на гостите в ЕСТИ'],
+        [/резерваци/iu, 'резервациите'],
+        [/плащан|касов|фактур|бележк/iu, 'плащанията, касовите бележки и фактурите'],
+        [/смяна|смяната|отчет/iu, 'отчетът на касата и предаването на смяната'],
+        [/информ\S* гост|услуги|забележителност|град/iu, 'информирането на гостите'],
+        [/камериер/iu, 'координацията с камериерите'],
+        [/оплакван|сигнал/iu, 'оплакванията на гостите'],
+        [/ключ|вещи/iu, 'ключовете и забравените вещи']
+      ],
+      sample: {
+        employer: '„Дунавски бряг“ ЕООД — семеен хотел „Дунавски бряг“, гр. Свищов',
+        approver: 'Николай Георгиев, управител',
+        approveDate: '',
+        title: 'Администратор, хотел',
+        nkpd: '42243002',
+        unit: 'Рецепция',
+        reportsTo: 'Управител на хотела',
+        subordinates: 'Няма',
+        purpose: 'Осигурява качественото обслужване на гостите на рецепцията — резервации, настаняване, плащания и информация — и координира работата на рецепцията с останалите звена в хотела.',
+        duties: [
+          'Посреща и настанява гостите и оформя напускането им.',
+          'Проверява документите за самоличност на гостите и ги регистрира в Единната система за туристическа информация (ЕСТИ).',
+          'Приема и потвърждава резервации по телефон, имейл и чрез онлайн платформи, поддържа актуална наличността на стаите и не допуска двойни резервации.',
+          'Приема плащания в брой и с банкова карта, издава касови бележки и фактури.',
+          'В края на смяната изготвя отчет на касата и предава касата, ключовете и важната информация на следващия администратор.',
+          'Информира гостите за услугите на хотела и ресторанта и за забележителностите в града.',
+          'Уведомява камериерите за освободените стаи, които трябва да бъдат подготвени.',
+          'Приема оплаквания и сигнали от гости и ги предава на съответните служители, а при сериозни случаи — на управителя.',
+          'Съхранява ключовете и картите за стаите и води дневник за забравените вещи.'
+        ],
+        rights: [
+          'Да откаже настаняване на лице, което не представи документ за самоличност.',
+          'Да предоставя отстъпки съгласно утвърдения ценоразпис, а за групи — след съгласуване с управителя.',
+          'Да изисква от камериерите информация за готовността на стаите.',
+          'Да преминава обучение за работа със системата за резервации.',
+          'Да прави предложения за подобряване на обслужването.'
+        ],
+        resp: [
+          'Носи имуществена отговорност за паричните средства в касата по време на смяната си.',
+          'Отговаря за верността и навременността на регистрацията на гостите.',
+          'Отговаря за защитата на личните данни на гостите.',
+          'Отговаря за съхранението на ключовете и картите за стаите.',
+          'Отговаря за учтивото и качествено обслужване на гостите.'
+        ],
+        relInt: 'Управител, другите администратори (при предаване на смяната), камериери, ресторант.',
+        relExt: 'Гости на хотела, онлайн платформи и агенции за резервации.',
+        edu: 'Средно образование; профил „Хотелиерство“ или „Туризъм“ — предимство.',
+        exp: 'Не се изисква; опит на рецепция — предимство.',
+        skills: 'Английски език на ниво B1 — задължително; немски или румънски език — предимство; добра работа с компютър и система за резервации.',
+        qualities: 'Учтивост, търпение, спокойствие при конфликтни ситуации, отговорност.',
+        other: '',
+        workTime: '12-часови смени — дневна от 7:00 до 19:00 ч. и нощна от 19:00 до 7:00 ч. — по месечен график, при сумирано изчисляване на работното време.',
+        workplace: 'Рецепцията на хотела.',
+        equipment: 'Компютър със система за резервации, ПОС терминал, касов апарат, телефон.',
+        criteria: [
+          'Липса на несъответствия при отчета на касата.',
+          'Навременна регистрация на всички гости.',
+          'Липса на двойни резервации.',
+          'Брой и характер на оплакванията; оценки на гостите.'
+        ],
+        preparedBy: '[Име на ученика], стажант, отдел „Човешки ресурси“',
+        employee: '',
+        handDate: ''
+      },
+      teacherTraps: [
+        'Заплата 1 150 евро и доплащане за нощен труд — уговарят се в трудовия договор.',
+        'Безплатният обяд — придобивка, не е част от характеристиката.',
+        '„Приятна външност“ и снимки — изискване за външен вид е дискриминационно и не се пише.',
+        'Годината на откриване и броят стаи — контекст. Произходът на гостите обаче обяснява изискването за чужди езици.'
+      ],
+      nkpdNote: '„Рецепционист, хотел“ (42242001) е в същата единична група 4224. Управителят изрично търси администратор с касови функции и фактуриране, затова верният избор е „Администратор, хотел“ — 42243002. Ако ученик избере 42242001 и го обоснове, може да получи частичен кредит.'
+    }
+  };
+
+  var COMMON_TRAPS = [
+    { re: /заплат|възнагражд|бонус|комисион|доплащ/iu, msg: 'Заплатата, бонусите и доплащанията не се пишат в длъжностната характеристика — те се уговарят в трудовия договор.' }
+  ];
+
+  var QUIZ_CATS = [['duty', 'Задължение'], ['right', 'Право'], ['resp', 'Отговорност'], ['req', 'Изискване'], ['no', 'Не е за ДХ']];
+  var QUIZ = [
+    { id: 'q1', t: 'Изготвя и изпраща фактури на клиентите.', a: 'duty', e: 'Действие, което служителят извършва редовно. Започва с глагол в сегашно време.' },
+    { id: 'q2', t: 'Основна заплата 1 250 евро бруто.', a: 'no', e: 'Заплатата се уговаря в трудовия договор, не в длъжностната характеристика.' },
+    { id: 'q3', t: 'Да получава от колегите информацията, нужна за работата.', a: 'right', e: 'Започва с „Да…“ и показва какво служителят може да изисква.' },
+    { id: 'q4', t: 'Владее английски език на ниво B1.', a: 'req', e: 'Това е изискване към човека, който ще заеме длъжността.' },
+    { id: 'q5', t: 'Отговаря за опазването на поверените му документи и техника.', a: 'resp', e: 'Показва за какво служителят носи последствия.' },
+    { id: 'q6', t: 'Води входящия и изходящия дневник на кореспонденцията.', a: 'duty', e: 'Конкретна работа, която служителят върши.' },
+    { id: 'q7', t: 'Да е жена с приятна външност.', a: 'no', e: 'Изискванията за пол и външен вид са дискриминационни и не се пишат.' },
+    { id: 'q8', t: 'Да ползва служебен компютър и телефон.', a: 'right', e: 'Показва с какво служителят има право да работи.' },
+    { id: 'q9', t: 'Носи имуществена отговорност за паричните средства в касата.', a: 'resp', e: 'Материална отговорност за поверени пари — раздел „Отговорности“.' },
+    { id: 'q10', t: 'Средно образование с професионална квалификация.', a: 'req', e: 'Изискване за образование.' },
+    { id: 'q11', t: 'Кандидатът е на 28 години и живее близо до офиса.', a: 'no', e: 'Лични данни за конкретен човек — характеристиката описва длъжността.' },
+    { id: 'q12', t: 'Да прави предложения за подобряване на организацията на работата.', a: 'right', e: 'Възможност, която служителят има — право.' },
+    { id: 'q13', t: 'Свидетелство за управление на МПС, категория B.', a: 'req', e: 'Изискване, когато работата е свързана с шофиране.' }
+  ];
+
+  var FIELDS = {
+    employer: { label: 'Работодател', ph: 'Наименование на фирмата и град', hint: 'Пише се точното име на фирмата с правната форма (ООД, ЕООД, АД) и градът. Намерете ги в писмото.', req: true },
+    approver: { label: 'Утвърждава', ph: 'Име и длъжност, напр. „…, управител“', hint: 'Длъжностната характеристика се утвърждава от работодателя — обикновено от управителя на фирмата. В писмото е казано кой ще я утвърди.', req: true },
+    approveDate: { label: 'Дата на утвърждаване', type: 'date', hint: 'Може да поставите днешната дата.' },
+    title: { label: 'Наименование на длъжността', ph: 'Точно както е в НКПД', hint: 'Използвайте наименованието от НКПД — вижте извадката към казуса.', req: true },
+    nkpd: { label: 'Код по НКПД', ph: '8 цифри', hint: 'Кодът има 8 цифри. Първите четири показват групата, а последните четири — конкретната длъжност.', req: true, inputmode: 'numeric' },
+    unit: { label: 'Структурно звено (отдел)', ph: 'напр. Администрация, Търговски отдел…', hint: 'В кой отдел или звено на фирмата е длъжността.', req: true },
+    reportsTo: { label: 'Пряк ръководител', ph: 'Длъжността, на която е подчинен', hint: 'Пише се длъжността, а не името на човека: „Управител“, а не „Мария Петкова“.', req: true },
+    subordinates: { label: 'Подчинени длъжности', ph: 'Кои длъжности ръководи, или „Няма“', hint: 'Ако служителят не ръководи никого, напишете „Няма“.', req: true },
+    purpose: { label: 'Основна цел на длъжността', type: 'textarea', wide: true, ph: 'Едно-две изречения: защо фирмата има нужда от тази длъжност?', hint: 'Отговорете с едно-две изречения на въпроса „Защо фирмата има нужда от тази длъжност?“. Започнете с глагол: „Осигурява…“, „Организира…“, „Подпомага…“.', req: true },
+    duties: { label: 'Задължение', list: true, min: 6, add: '+ Добави задължение', ph: 'Започнете с глагол: „Приема…“, „Изготвя…“, „Води…“', hint: 'Всяко задължение е отделна точка и започва с глагол в сегашно време. Пишете конкретно какво се прави, колко често и до кога. Нужни са поне 6.', req: true },
+    rights: { label: 'Право', list: true, min: 3, add: '+ Добави право', ph: '„Да получава…“, „Да подписва…“, „Да ползва…“', hint: 'Правата показват какво служителят може да изисква, да решава сам или да ползва. Започват с „Да…“. Нужни са поне 3.', req: true },
+    resp: { label: 'Отговорност', list: true, min: 3, add: '+ Добави отговорност', ph: '„Отговаря за…“, „Носи имуществена отговорност за…“', hint: 'Отговорностите показват за какво служителят носи последствия: резултата от работата, пари, техника, документи, лични данни. Нужни са поне 3.', req: true },
+    relInt: { label: 'Вътрешни връзки', type: 'textarea', ph: 'С кои длъжности във фирмата работи', hint: 'Изброете длъжностите във фирмата, с които служителят работи редовно.', req: true },
+    relExt: { label: 'Външни връзки', type: 'textarea', ph: 'С кого извън фирмата контактува', hint: 'Клиенти, доставчици, гости, институции — с кого извън фирмата контактува служителят.', req: true },
+    edu: { label: 'Образование', ph: 'Степен и профил', hint: 'Минималната образователна степен и, ако е важно, профил. Отбележете кое е задължително и кое — предимство.', req: true },
+    exp: { label: 'Професионален опит', ph: 'Колко години и в каква работа', hint: 'Колко години опит и в каква работа. Ако опитът не е задължителен, напишете „предимство“.', req: true },
+    skills: { label: 'Знания и умения', type: 'textarea', wide: true, ph: 'Компютърни умения, чужди езици, специфични знания', hint: 'Компютърни програми, чужди езици с ниво (напр. B1), специфични знания за работата.', req: true },
+    qualities: { label: 'Лични качества', ph: 'напр. организираност, учтивост…', hint: 'Качества, свързани с работата. Не се пишат изисквания за пол, възраст, външен вид или семейно положение.', req: true },
+    other: { label: 'Други изисквания', ph: 'напр. шофьорска книжка — ако е нужна', hint: 'Например свидетелство за управление на МПС. Ако няма — оставете празно.' },
+    workTime: { label: 'Работно време и режим', type: 'textarea', wide: true, ph: 'Дни, часове, смени', hint: 'Пълно или непълно работно време, дни и часове, смени или сумирано изчисляване, ако има.', req: true },
+    workplace: { label: 'Място на работа', ph: 'Къде се работи', hint: 'Офис, рецепция, работа на терен — и в какъв район.', req: true },
+    equipment: { label: 'Средства за работа', ph: 'Техника, която фирмата осигурява', hint: 'Компютър, телефон, автомобил, таблет и т.н.', req: true },
+    criteria: { label: 'Критерий', list: true, min: 0, add: '+ Добави критерий', ph: 'Как ще се разбере, че работата е свършена добре?', hint: 'Измерими показатели: срокове, брой, липса на грешки, обратна връзка. Разделът не е задължителен, но е добра практика.' },
+    preparedBy: { label: 'Изготвил', ph: 'Вашето име, стажант, отдел „Човешки ресурси“', hint: 'Вие изготвяте документа — напишете името си и длъжността си на стажант.', req: true },
+    employee: { label: 'Запознат/а: служител', ph: 'Попълва се при назначаване', hint: 'При назначаването служителят се подписва, че е получил екземпляр. Сега може да остане празно.' },
+    handDate: { label: 'Дата на връчване', type: 'date', hint: 'Датата, на която служителят получава документа срещу подпис (чл. 127, ал. 1, т. 4 от КТ). Сега може да остане празно.' }
+  };
+
+  var SECTIONS = [
+    { id: 'zagl', num: '', title: 'Заглавна част', keys: ['employer', 'approver', 'approveDate'] },
+    { id: 's1', num: 'I', title: 'Обща информация', keys: ['title', 'nkpd', 'unit', 'reportsTo', 'subordinates'] },
+    { id: 's2', num: 'II', title: 'Основна цел на длъжността', keys: ['purpose'] },
+    { id: 's3', num: 'III', title: 'Основни задължения', keys: ['duties'] },
+    { id: 's4', num: 'IV', title: 'Права', keys: ['rights'] },
+    { id: 's5', num: 'V', title: 'Отговорности', keys: ['resp'] },
+    { id: 's6', num: 'VI', title: 'Взаимоотношения', keys: ['relInt', 'relExt'] },
+    { id: 's7', num: 'VII', title: 'Изисквания за заемане на длъжността', keys: ['edu', 'exp', 'skills', 'qualities', 'other'] },
+    { id: 's8', num: 'VIII', title: 'Условия на труд', keys: ['workTime', 'workplace', 'equipment'] },
+    { id: 's9', num: 'IX', title: 'Критерии за оценка на изпълнението', keys: ['criteria'], optional: true },
+    { id: 'podpisi', num: '', title: 'Подписи', keys: ['preparedBy', 'employee', 'handDate'] }
+  ];
+
+  var RUBRIC = [
+    ['Структура: всички раздели са налице и попълнени на мястото си', 5],
+    ['Наименование и код по НКПД — верни и съответстващи', 3],
+    ['Основна цел — ясна, в едно-две изречения', 2],
+    ['Задължения — конкретни, с глагол, покриват казуса (поне 6)', 8],
+    ['Права и отговорности — разграничени правилно', 5],
+    ['Подчиненост и взаимоотношения', 2],
+    ['Изисквания и условия на труд', 3],
+    ['Без излишна или недопустима информация (заплата, лични данни, дискриминация)', 2]
+  ];
+  var SCALE = [['0–9', 'Слаб 2'], ['10–15', 'Среден 3'], ['16–21', 'Добър 4'], ['22–26', 'Много добър 5'], ['27–30', 'Отличен 6']];
+  var QUESTIONS = [
+    'Защо заплатата не се пише в длъжностната характеристика?',
+    'По какво се различава задължение от отговорност? Дайте пример от вашия казус.',
+    'Кога и как служителят получава длъжностната характеристика? (при сключване на трудовия договор, срещу подпис и с дата — чл. 127, ал. 1, т. 4 от КТ)',
+    'Може ли работодателят да промени характеристиката по-късно? (да, в рамките на длъжността; служителят се запознава отново срещу подпис)',
+    'Защо изисквания като „мъж под 35 години“ или „приятна външност“ са недопустими?'
+  ];
+  var TEACHER_PIN = '1274';
+
+  /* ---------------- СЪСТОЯНИЕ ---------------- */
+
+  var KEY = 'dh-praktika-v1';
+  var LIST_KEYS = ['duties', 'rights', 'resp', 'criteria'];
+
+  function blankForm() {
+    return {
+      employer: '', approver: '', approveDate: '', title: '', nkpd: '', unit: '', reportsTo: '', subordinates: '',
+      purpose: '', duties: ['', '', '', '', '', ''], rights: ['', '', ''], resp: ['', '', ''],
+      relInt: '', relExt: '', edu: '', exp: '', skills: '', qualities: '', other: '',
+      workTime: '', workplace: '', equipment: '', criteria: ['', ''], preparedBy: '', employee: '', handDate: ''
+    };
+  }
+
+  var state = {
+    student: { name: '', cls: '', num: '' },
+    variant: 'A',
+    forms: { A: blankForm(), B: blankForm(), C: blankForm() },
+    quiz: {},
+    large: false,
+    hints: false
+  };
+
+  (function load() {
+    try {
+      var raw = window.localStorage.getItem(KEY);
+      if (!raw) return;
+      var s = JSON.parse(raw);
+      if (s.student) state.student = Object.assign(state.student, s.student);
+      if (s.variant && VARIANTS[s.variant]) state.variant = s.variant;
+      if (s.quiz) state.quiz = s.quiz;
+      state.large = !!s.large;
+      state.hints = !!s.hints;
+      ['A', 'B', 'C'].forEach(function (v) {
+        if (s.forms && s.forms[v]) {
+          var f = Object.assign(blankForm(), s.forms[v]);
+          LIST_KEYS.forEach(function (k) { if (!Array.isArray(f[k])) f[k] = blankForm()[k]; });
+          state.forms[v] = f;
+        }
+      });
+    } catch (e) { /* работи и без запазване */ }
+  })();
+
+  var saveTimer = null;
+  function scheduleSave() {
+    clearTimeout(saveTimer);
+    saveTimer = setTimeout(function () {
+      var note = document.getElementById('save-note');
+      try {
+        window.localStorage.setItem(KEY, JSON.stringify(state));
+        note.textContent = 'Запазено в този браузър';
+      } catch (e) {
+        note.textContent = 'Не може да се запази в този браузър — изтеглете документа преди да затворите.';
+      }
+    }, 350);
+  }
+
+  function cur() { return state.forms[state.variant]; }
+  function V() { return VARIANTS[state.variant]; }
+
+  /* ---------------- ПОМОЩНИ ---------------- */
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+  function filled(v) { return typeof v === 'string' && v.trim().length > 0; }
+  function listFilled(arr) { return (arr || []).filter(filled); }
+  function fmtDate(iso) {
+    if (!filled(iso)) return '';
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso);
+    return m ? (m[3] + '.' + m[2] + '.' + m[1] + ' г.') : iso;
+  }
+  function $(id) { return document.getElementById(id); }
+
+  /* ---------------- ТАБОВЕ ---------------- */
+
+  function buildTabs() {
+    var html = '';
+    TABS.forEach(function (t, i) {
+      html += '<button class="tab" role="tab" type="button" id="tab-' + t[0] + '" aria-controls="view-' + t[0] + '" aria-selected="false" data-tab="' + t[0] + '"><span class="step">' + (i + 1) + '</span>' + t[1] + '</button>';
+    });
+    $('tablist').innerHTML = html;
+  }
+  function showTab(name, focusTop) {
+    if (!TABS.some(function (t) { return t[0] === name; })) name = 'teoria';
+    TABS.forEach(function (t) {
+      var on = t[0] === name;
+      $('view-' + t[0]).hidden = !on;
+      var b = $('tab-' + t[0]);
+      b.setAttribute('aria-selected', on ? 'true' : 'false');
+      b.tabIndex = on ? 0 : -1;
+      if (on) {
+        var bar = b.parentNode;
+        bar.scrollLeft = b.offsetLeft - bar.clientWidth / 2 + b.offsetWidth / 2;
+      }
+    });
+    if (name === 'dokument') renderPaper();
+    if (focusTop) window.scrollTo(0, 0);
+  }
+  function go(name) {
+    if (location.hash !== '#' + name) {
+      try { location.hash = name; } catch (e) { showTab(name, true); }
+    } else {
+      showTab(name, true);
+    }
+  }
+
+  /* ---------------- ВАРИАНТИ ---------------- */
+
+  function buildVariantSeg() {
+    var html = '';
+    ['A', 'B', 'C'].forEach(function (k) {
+      var v = VARIANTS[k];
+      html += '<button type="button" data-variant="' + k + '" aria-pressed="' + (state.variant === k) + '"><span class="v">' + v.letter + '</span>' + v.short + '</button>';
+    });
+    $('variant-seg').innerHTML = html;
+  }
+
+  function mailHTML(v) {
+    return '<article class="mail">' +
+      '<dl class="mail-head"><dt>От:</dt><dd>' + esc(v.mail.from) + '</dd><dt>До:</dt><dd>' + esc(v.mail.to) + '</dd><dt>Относно:</dt><dd>' + esc(v.mail.subject) + '</dd></dl>' +
+      '<div class="mail-body">' + v.mail.body + '</div></article>';
+  }
+  function nkpdHTML(v) {
+    var rows = v.nkpd.map(function (r) { return '<tr><td class="code">' + r[0] + '</td><td>' + esc(r[1]) + '</td></tr>'; }).join('');
+    return '<table class="nkpd"><thead><tr><th>Код</th><th>Наименование</th></tr></thead><tbody>' + rows + '</tbody></table>';
+  }
+
+  function renderCase() {
+    var v = V();
+    $('case-title').textContent = 'Казус — вариант ' + v.letter + ': ' + v.short;
+    $('case-lead').textContent = v.lead;
+    $('case-mail').innerHTML = mailHTML(v);
+    $('case-nkpd').innerHTML = nkpdHTML(v);
+    $('aside-sum').textContent = 'Казус — вариант ' + v.letter;
+    $('aside-mail').innerHTML = mailHTML(v);
+    $('aside-nkpd').innerHTML = '<p class="lbl" style="margin:6px 0 4px">Извадка от НКПД</p>' + nkpdHTML(v);
+    $('form-title').textContent = 'Бланка — ' + v.short;
+  }
+
+  /* ---------------- ЗАГРЯВКА ---------------- */
+
+  function catLabel(c) { for (var i = 0; i < QUIZ_CATS.length; i++) if (QUIZ_CATS[i][0] === c) return QUIZ_CATS[i][1]; return c; }
+
+  function renderQuiz() {
+    var right = 0, answered = 0, html = '';
+    QUIZ.forEach(function (q) {
+      var pick = state.quiz[q.id];
+      var ok = pick === q.a;
+      if (pick) { answered++; if (ok) right++; }
+      html += '<div class="qcard' + (pick ? (ok ? ' ok' : ' no') : '') + '">' +
+        '<div class="qtext">' + esc(q.t) + '</div>' +
+        '<div class="qbtns" role="group" aria-label="Изберете раздел">';
+      QUIZ_CATS.forEach(function (c) {
+        var cls = '';
+        if (pick === c[0]) cls = ok ? 'sel-ok' : 'sel-no';
+        else if (pick && !ok && c[0] === q.a) cls = 'is-right';
+        html += '<button type="button" class="' + cls + '" data-q="' + q.id + '" data-c="' + c[0] + '" aria-pressed="' + (pick === c[0]) + '">' + c[1] + '</button>';
+      });
+      html += '</div>';
+      if (pick) {
+        html += '<div class="qfb ' + (ok ? 'ok' : 'no') + '">' + (ok ? 'Вярно. ' : 'Не съвсем — вярно е „' + esc(catLabel(q.a)) + '“. ') + esc(q.e) + '</div>';
+      }
+      html += '</div>';
+    });
+    $('quiz').innerHTML = html;
+    $('quiz-score').textContent = right + ' / ' + QUIZ.length;
+    $('quiz-sub').textContent = answered < QUIZ.length ? 'верни · отговорени ' + answered + ' от ' + QUIZ.length : (right === QUIZ.length ? 'Отлично! Всичко е вярно.' : 'верни отговора — разгледайте грешните');
+  }
+
+  /* ---------------- БЛАНКА ---------------- */
+
+  function fieldHTML(k) {
+    var d = FIELDS[k], f = cur();
+    var star = d.req ? ' <span class="req" aria-hidden="true">*</span>' : '';
+    var hintId = 'h-' + k;
+    var head = '<div class="field-head"><label for="f-' + k + '">' + esc(d.label) + star + '</label>' +
+      (d.hint ? '<button type="button" class="hint-btn" data-hint="' + hintId + '" aria-expanded="' + state.hints + '" aria-controls="' + hintId + '">Подсказка</button>' : '') + '</div>' +
+      (d.hint ? '<p class="hint" id="' + hintId + '"' + (state.hints ? '' : ' hidden') + '>' + esc(d.hint) + '</p>' : '');
+    var ctrl;
+    if (d.type === 'textarea') {
+      ctrl = '<textarea id="f-' + k + '" data-k="' + k + '" rows="2" placeholder="' + esc(d.ph || '') + '">' + esc(f[k]) + '</textarea>';
+    } else {
+      ctrl = '<input id="f-' + k + '" data-k="' + k + '" type="' + (d.type === 'date' ? 'date' : 'text') + '"' + (d.inputmode ? ' inputmode="' + d.inputmode + '" maxlength="12"' : '') + ' value="' + esc(f[k]) + '" placeholder="' + esc(d.ph || '') + '">';
+    }
+    return '<div class="field' + (d.wide ? ' wide' : '') + '">' + head + ctrl + '</div>';
+  }
+
+  function listItemsHTML(k) {
+    var d = FIELDS[k], arr = cur()[k];
+    return arr.map(function (val, i) {
+      return '<li><span class="n">' + (i + 1) + '.</span>' +
+        '<textarea id="f-' + k + '-' + i + '" data-list="' + k + '" data-i="' + i + '" rows="2" aria-label="' + esc(d.label) + ' ' + (i + 1) + '" placeholder="' + (i === 0 ? esc(d.ph) : '') + '">' + esc(val) + '</textarea>' +
+        '<button type="button" class="rm" data-rm="' + k + '" data-i="' + i + '" aria-label="Премахни ' + esc(d.label.toLowerCase()) + ' ' + (i + 1) + '">×</button></li>';
+    }).join('');
+  }
+
+  function listHTML(k) {
+    var d = FIELDS[k];
+    var hintId = 'h-' + k;
+    return '<div class="field wide">' +
+      '<div class="field-head"><span class="lbl" id="lbl-' + k + '">' + (d.min ? 'Минимум ' + d.min + ' точки' : 'По желание') + '</span>' +
+      '<button type="button" class="hint-btn" data-hint="' + hintId + '" aria-expanded="' + state.hints + '" aria-controls="' + hintId + '">Подсказка</button></div>' +
+      '<p class="hint" id="' + hintId + '"' + (state.hints ? '' : ' hidden') + '>' + esc(d.hint) + '</p>' +
+      '<ol class="list" id="list-' + k + '" aria-labelledby="lbl-' + k + '">' + listItemsHTML(k) + '</ol>' +
+      '<button type="button" class="add" data-add="' + k + '">' + esc(d.add) + '</button></div>';
+  }
+
+  function renderForm() {
+    var html = '';
+    SECTIONS.forEach(function (s) {
+      html += '<section class="fsec" id="sec-' + s.id + '" aria-labelledby="sh-' + s.id + '">' +
+        '<div class="fsec-head"><h3 id="sh-' + s.id + '"><span class="rn">' + (s.num || '§') + '</span>' + esc(s.title) + '</h3><span class="chip todo" id="chip-' + s.id + '">непопълнен</span></div>' +
+        '<div class="fields">';
+      s.keys.forEach(function (k) { html += FIELDS[k].list ? listHTML(k) : fieldHTML(k); });
+      html += '</div></section>';
+    });
+    $('dh-form').innerHTML = html;
+    Array.prototype.forEach.call($('dh-form').querySelectorAll('textarea'), autoGrow);
+    updateStatus();
+  }
+
+  function rerenderList(k, focusIndex) {
+    $('list-' + k).innerHTML = listItemsHTML(k);
+    Array.prototype.forEach.call($('list-' + k).querySelectorAll('textarea'), autoGrow);
+    if (focusIndex != null) {
+      var el = $('f-' + k + '-' + focusIndex);
+      if (el) el.focus();
+    }
+  }
+
+  function autoGrow(t) {
+    if (!t || t.tagName !== 'TEXTAREA') return;
+    t.style.height = 'auto';
+    t.style.height = Math.max(44, t.scrollHeight + 2) + 'px';
+  }
+
+  function keyFilled(f, k) {
+    var d = FIELDS[k];
+    if (d.list) return listFilled(f[k]).length >= Math.max(1, d.min);
+    return filled(f[k]);
+  }
+
+  function sectionDone(f, s) {
+    var reqKeys = s.keys.filter(function (k) { return FIELDS[k].req; });
+    if (s.optional) return listFilled(f.criteria).length > 0;
+    return reqKeys.every(function (k) { return keyFilled(f, k); });
+  }
+
+  function countedSections() { return SECTIONS.filter(function (s) { return !s.optional; }); }
+
+  function updateStatus() {
+    var f = cur(), done = 0, all = countedSections();
+    SECTIONS.forEach(function (s) {
+      var chip = $('chip-' + s.id);
+      if (!chip) return;
+      var ok = sectionDone(f, s);
+      if (s.optional) {
+        chip.className = 'chip ' + (ok ? 'done' : 'opt');
+        chip.textContent = ok ? '✓ попълнен' : 'по желание';
+      } else {
+        if (ok) done++;
+        chip.className = 'chip ' + (ok ? 'done' : 'todo');
+        chip.textContent = ok ? '✓ попълнен' : 'непопълнен';
+      }
+    });
+    $('prog-bar').style.width = Math.round(done / all.length * 100) + '%';
+    $('prog-txt').textContent = done + ' от ' + all.length + ' раздела';
+  }
+
+  /* ---------------- ПРОВЕРКА ---------------- */
+
+  function allText(f) {
+    var parts = [];
+    Object.keys(FIELDS).forEach(function (k) {
+      if (FIELDS[k].list) parts = parts.concat(listFilled(f[k]));
+      else if (FIELDS[k].type !== 'date') parts.push(f[k] || '');
+    });
+    return parts.join('\n');
+  }
+
+  function firstWord(s) { return (s.trim().split(/\s+/)[0] || '').toLowerCase().replace(/[^а-яa-zѝ-]/giu, ''); }
+
+  function runCheck() {
+    var f = cur(), v = V();
+    var errs = [], warns = [], tips = [], oks = [];
+
+    // Задължителни полета
+    SECTIONS.forEach(function (s) {
+      s.keys.forEach(function (k) {
+        var d = FIELDS[k];
+        if (!d.req) return;
+        if (d.list) {
+          var n = listFilled(f[k]).length;
+          if (n < d.min) errs.push({ where: s.num ? s.num + '. ' + s.title : s.title, text: 'имате ' + n + ', а са нужни поне ' + d.min + ' точки.', k: k });
+        } else if (!filled(f[k])) {
+          errs.push({ where: (s.num ? s.num + '. ' : '') + d.label, text: 'полето е празно.', k: k });
+        }
+      });
+    });
+
+    // Код по НКПД
+    var code = (f.nkpd || '').replace(/\s+/g, '');
+    if (filled(code)) {
+      var inList = v.nkpd.some(function (r) { return r[0] === code; });
+      if (!/^\d{8}$/.test(code)) errs.push({ where: 'Код по НКПД', text: 'кодът трябва да е точно 8 цифри.', k: 'nkpd' });
+      else if (code === v.correct) oks.push('Кодът по НКПД отговаря на длъжността от казуса.');
+      else if (inList) warns.push({ where: 'Код по НКПД', text: 'кодът е от извадката, но не отговаря на длъжността от казуса. Прочетете пак какво точно търси работодателят.', k: 'nkpd' });
+      else warns.push({ where: 'Код по НКПД', text: 'този код не е от извадката към казуса.', k: 'nkpd' });
+      if (code === v.correct && filled(f.title)) {
+        var row = v.nkpd.filter(function (r) { return r[0] === code; })[0];
+        if (row && f.title.trim().toLowerCase().indexOf(row[1].toLowerCase()) !== 0) {
+          warns.push({ where: 'Наименование', text: 'наименованието трябва да е същото като в НКПД за кода ' + code + ': „' + row[1] + '“.', k: 'title' });
+        }
+      }
+    }
+
+    // Пряк ръководител — длъжност, не име
+    if (filled(f.reportsTo) && /петкова|иванов|колев|георгиев|г-н|г-жа/iu.test(f.reportsTo)) {
+      warns.push({ where: 'Пряк ръководител', text: 'пише се длъжността (напр. „Управител“), а не името на човека.', k: 'reportsTo' });
+    }
+
+    // Капани
+    var txt = allText(f);
+    COMMON_TRAPS.concat(v.traps).forEach(function (t) { if (t.re.test(txt)) warns.push({ where: 'Капан', text: t.msg }); });
+
+    // Задължения: стил
+    var duties = listFilled(f.duties);
+    duties.forEach(function (d) {
+      var i = f.duties.indexOf(d) + 1;
+      var w = firstWord(d);
+      if (/^да$/.test(w)) tips.push({ where: 'Задължение ' + i, text: 'махнете „да“ в началото — задълженията се пишат с глагол в сегашно време: „Изготвя…“, а не „Да изготвя…“.', k: 'duties' });
+      else if (/(ция|ции|ние|ния|ане|ене|ост)$/.test(w)) tips.push({ where: 'Задължение ' + i, text: 'започнете с глагол („Организира…“), а не със съществително („' + w + '…“).', k: 'duties' });
+      if (/^(отговаря|носи)$/.test(w)) tips.push({ where: 'Задължение ' + i, text: 'това звучи като отговорност — преместете го в раздел V.', k: 'duties' });
+      if (/^(има|може)$/.test(w)) tips.push({ where: 'Задължение ' + i, text: 'това звучи като право — преместете го в раздел IV.', k: 'duties' });
+      if (d.trim().length < 18) tips.push({ where: 'Задължение ' + i, text: 'твърде кратко — опишете по-конкретно какво се прави.', k: 'duties' });
+    });
+    listFilled(f.resp).forEach(function (r) {
+      var i = f.resp.indexOf(r) + 1;
+      if (!/отговор|отговаря/iu.test(r)) tips.push({ where: 'Отговорност ' + i, text: 'започнете с „Отговаря за…“ или „Носи имуществена отговорност за…“.', k: 'resp' });
+    });
+    listFilled(f.rights).forEach(function (r) {
+      var i = f.rights.indexOf(r) + 1;
+      var w = firstWord(r);
+      if (w !== 'да' && w !== 'има' && w !== 'може') tips.push({ where: 'Право ' + i, text: 'правата обикновено започват с „Да…“ — напр. „Да получава…“, „Да ползва…“.', k: 'rights' });
+    });
+
+    // Теми от казуса
+    var dutyText = duties.join('\n');
+    var missing = v.topics.filter(function (t) { return !t[0].test(dutyText); }).map(function (t) { return t[1]; });
+    var covered = v.topics.length - missing.length;
+
+    renderCheck(errs, warns, tips, oks, covered, v.topics.length, missing);
+  }
+
+  function msgItem(cls, m) {
+    var where = m.where ? '<span class="where">' + esc(m.where) + ':</span> ' : '';
+    var link = m.k ? ' <button type="button" class="linkish" data-jump="' + m.k + '">Към полето</button>' : '';
+    return '<li class="msg ' + cls + '">' + where + esc(m.text || m) + link + '</li>';
+  }
+
+  function renderCheck(errs, warns, tips, oks, covered, total, missing) {
+    var out = $('check-out');
+    var head = '<div class="card stack"><div class="check-sum"><h3>Резултат от проверката</h3>' +
+      '<button type="button" class="btn ghost" id="check-close">Скрий</button></div>';
+    var parts = [];
+    if (!errs.length && !warns.length) oks.unshift('Всички задължителни полета са попълнени и няма открити капани.');
+    var topicLine = 'Задълженията покриват ' + covered + ' от ' + total + ' теми от писмото.';
+    if (missing.length) {
+      parts.push('<li class="msg tip">' + esc(topicLine) + ' <button type="button" class="linkish" id="show-missing">Подскажи ми кои липсват</button>' +
+        '<div class="reveal" id="missing-list" hidden>Помислете дали сте включили: ' + esc(missing.join('; ')) + '.</div></li>');
+    } else {
+      oks.push(topicLine + ' Браво!');
+    }
+    errs.forEach(function (m) { parts.push(msgItem('err', m)); });
+    warns.forEach(function (m) { parts.push(msgItem('warn', m)); });
+    tips.slice(0, 8).forEach(function (m) { parts.push(msgItem('tip', m)); });
+    if (tips.length > 8) parts.push('<li class="msg tip">… и още ' + (tips.length - 8) + ' съвета за стила.</li>');
+    oks.forEach(function (m) { parts.unshift('<li class="msg ok">' + esc(m) + '</li>'); });
+    out.innerHTML = head + '<ul class="msgs">' + parts.join('') + '</ul></div>';
+    out.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }
+
+  /* ---------------- ДОКУМЕНТ ---------------- */
+
+  function docModel(f) {
+    var b = [];
+    b.push({ t: 'approve', approver: f.approver, date: fmtDate(f.approveDate) });
+    b.push({ t: 'employer', v: f.employer });
+    b.push({ t: 'title', title: f.title, nkpd: (f.nkpd || '').replace(/\s+/g, '') });
+    b.push({ t: 'h', v: 'I. Обща информация' });
+    b.push({ t: 'kv', l: 'Наименование на длъжността', v: f.title });
+    b.push({ t: 'kv', l: 'Код по НКПД', v: (f.nkpd || '').replace(/\s+/g, '') });
+    b.push({ t: 'kv', l: 'Структурно звено', v: f.unit });
+    b.push({ t: 'kv', l: 'Пряк ръководител', v: f.reportsTo });
+    b.push({ t: 'kv', l: 'Подчинени длъжности', v: f.subordinates });
+    b.push({ t: 'h', v: 'II. Основна цел на длъжността' });
+    b.push({ t: 'p', v: f.purpose });
+    b.push({ t: 'h', v: 'III. Основни задължения' });
+    b.push({ t: 'list', v: listFilled(f.duties) });
+    b.push({ t: 'h', v: 'IV. Права' });
+    b.push({ t: 'list', v: listFilled(f.rights) });
+    b.push({ t: 'h', v: 'V. Отговорности' });
+    b.push({ t: 'list', v: listFilled(f.resp) });
+    b.push({ t: 'h', v: 'VI. Взаимоотношения' });
+    b.push({ t: 'kv', l: 'Вътрешни връзки', v: f.relInt });
+    b.push({ t: 'kv', l: 'Външни връзки', v: f.relExt });
+    b.push({ t: 'h', v: 'VII. Изисквания за заемане на длъжността' });
+    b.push({ t: 'kv', l: 'Образование', v: f.edu });
+    b.push({ t: 'kv', l: 'Професионален опит', v: f.exp });
+    b.push({ t: 'kv', l: 'Знания и умения', v: f.skills });
+    b.push({ t: 'kv', l: 'Лични качества', v: f.qualities });
+    if (filled(f.other)) b.push({ t: 'kv', l: 'Други изисквания', v: f.other });
+    b.push({ t: 'h', v: 'VIII. Условия на труд' });
+    b.push({ t: 'kv', l: 'Работно време и режим', v: f.workTime });
+    b.push({ t: 'kv', l: 'Място на работа', v: f.workplace });
+    b.push({ t: 'kv', l: 'Средства за работа', v: f.equipment });
+    var crit = listFilled(f.criteria);
+    if (crit.length) {
+      b.push({ t: 'h', v: 'IX. Критерии за оценка на изпълнението' });
+      b.push({ t: 'list', v: crit });
+    }
+    b.push({ t: 'signs', prepared: f.preparedBy, approver: f.approver });
+    b.push({ t: 'ack', employee: f.employee, date: fmtDate(f.handDate) });
+    return b;
+  }
+
+  var DOTS = '………………………………';
+
+  function vOrBlank(s, cls) {
+    return filled(s) ? '<span class="' + (cls || '') + '">' + esc(s.trim()) + '</span>' : '<span class="blank">' + DOTS + '</span>';
+  }
+
+  function renderDocHTML(f) {
+    return docModel(f).map(function (x) {
+      switch (x.t) {
+        case 'approve':
+          return '<div class="approve"><b>УТВЪРЖДАВАМ:</b><br>' + vOrBlank(x.approver) + '<br>Подпис: <span class="blank">………………</span><br>Дата: ' + (x.date ? esc(x.date) : '<span class="blank">………………</span>') + '</div>';
+        case 'employer':
+          return '<div class="employer">' + vOrBlank(x.v) + '</div>';
+        case 'title':
+          return '<div class="dtitle">ДЛЪЖНОСТНА ХАРАКТЕРИСТИКА</div><div class="dsub">на длъжността „' + vOrBlank(x.title) + '“</div><div class="dsub">Код по НКПД: ' + vOrBlank(x.nkpd) + '</div>';
+        case 'h':
+          return '<h4>' + esc(x.v) + '</h4>';
+        case 'kv':
+          return '<p class="kv"><b>' + esc(x.l) + ':</b> ' + vOrBlank(x.v, 'pre') + '</p>';
+        case 'p':
+          return '<p class="pre">' + (filled(x.v) ? esc(x.v.trim()) : '<span class="blank">' + DOTS + DOTS + '</span>') + '</p>';
+        case 'list':
+          return x.v.length ? '<ol>' + x.v.map(function (i) { return '<li class="pre">' + esc(i.trim()) + '</li>'; }).join('') + '</ol>' : '<ol><li><span class="blank">' + DOTS + '</span></li></ol>';
+        case 'signs':
+          return '<div class="signs"><div>Изготвил: ' + vOrBlank(x.prepared) + ' &nbsp; Подпис: <span class="blank">………………</span></div>' +
+            '<div>Утвърдил: ' + vOrBlank(x.approver) + ' &nbsp; Подпис: <span class="blank">………………</span></div></div>';
+        case 'ack':
+          return '<div class="ack">Запознат/а съм със съдържанието на длъжностната характеристика и получих екземпляр от нея (чл. 127, ал. 1, т. 4 от Кодекса на труда).<br><br>' +
+            'Служител: ' + vOrBlank(x.employee) + ' &nbsp; Подпис: <span class="blank">………………</span><br>Дата на връчване: ' + (x.date ? esc(x.date) : '<span class="blank">………………</span>') + '</div>';
+      }
+      return '';
+    }).join('');
+  }
+
+  function renderPaper() { $('paper').innerHTML = renderDocHTML(cur()); }
+
+  function plainText(f) {
+    var lines = [];
+    function val(s) { return filled(s) ? s.trim() : DOTS; }
+    docModel(f).forEach(function (x) {
+      switch (x.t) {
+        case 'approve': lines.push('УТВЪРЖДАВАМ:', val(x.approver), 'Дата: ' + (x.date || DOTS), ''); break;
+        case 'employer': lines.push(val(x.v), ''); break;
+        case 'title': lines.push('ДЛЪЖНОСТНА ХАРАКТЕРИСТИКА', 'на длъжността „' + val(x.title) + '“', 'Код по НКПД: ' + val(x.nkpd)); break;
+        case 'h': lines.push('', x.v.toUpperCase()); break;
+        case 'kv': lines.push(x.l + ': ' + val(x.v)); break;
+        case 'p': lines.push(val(x.v)); break;
+        case 'list': if (x.v.length) x.v.forEach(function (i, n) { lines.push((n + 1) + '. ' + i.trim()); }); else lines.push('1. ' + DOTS); break;
+        case 'signs': lines.push('', 'Изготвил: ' + val(x.prepared) + '   Подпис: ……………', 'Утвърдил: ' + val(x.approver) + '   Подпис: ……………'); break;
+        case 'ack': lines.push('', 'Запознат/а съм със съдържанието на длъжностната характеристика и получих екземпляр от нея (чл. 127, ал. 1, т. 4 от Кодекса на труда).', 'Служител: ' + val(x.employee) + '   Подпис: ……………', 'Дата на връчване: ' + (x.date || DOTS)); break;
+      }
+    });
+    return lines.join('\n');
+  }
+
+  /* ---------------- WORD (.docx) ---------------- */
+
+  function xe(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+  function wr(text, o) {
+    o = o || {};
+    var rPr = (o.b ? '<w:b/><w:bCs/>' : '') + (o.i ? '<w:i/>' : '') + (o.color ? '<w:color w:val="' + o.color + '"/>' : '') + (o.sz ? '<w:sz w:val="' + o.sz + '"/><w:szCs w:val="' + o.sz + '"/>' : '');
+    var rp = rPr ? '<w:rPr>' + rPr + '</w:rPr>' : '';
+    return String(text).split('\n').map(function (part, i) {
+      return (i ? '<w:r>' + rp + '<w:br/></w:r>' : '') + '<w:r>' + rp + '<w:t xml:space="preserve">' + xe(part) + '</w:t></w:r>';
+    }).join('');
+  }
+  function wp(runs, o) {
+    o = o || {};
+    var pPr = (o.keep ? '<w:keepNext/>' : '') +
+      '<w:spacing w:before="' + (o.before || 0) + '" w:after="' + (o.after == null ? 60 : o.after) + '"/>' +
+      (o.ind ? '<w:ind w:left="' + o.ind[0] + '" w:hanging="' + o.ind[1] + '"/>' : '') +
+      (o.jc ? '<w:jc w:val="' + o.jc + '"/>' : '');
+    return '<w:p><w:pPr>' + pPr + '</w:pPr>' + runs + '</w:p>';
+  }
+  var WDOTS = '……………………………';
+  function wv(s) { return filled(s) ? s.trim() : WDOTS; }
+
+  function docxBodyXML(f) {
+    var out = [];
+    docModel(f).forEach(function (x) {
+      switch (x.t) {
+        case 'approve':
+          out.push(wp(wr('УТВЪРЖДАВАМ:', { b: true }), { jc: 'right', after: 0 }));
+          out.push(wp(wr(wv(x.approver)), { jc: 'right', after: 0 }));
+          out.push(wp(wr('Подпис: ………………'), { jc: 'right', after: 0 }));
+          out.push(wp(wr('Дата: ' + (x.date || '………………')), { jc: 'right', after: 240 }));
+          break;
+        case 'employer':
+          out.push(wp(wr(wv(x.v), { b: true }), { jc: 'center', before: 120, after: 240 }));
+          break;
+        case 'title':
+          out.push(wp(wr('ДЛЪЖНОСТНА ХАРАКТЕРИСТИКА', { b: true, sz: 32 }), { jc: 'center', after: 60 }));
+          out.push(wp(wr('на длъжността „' + wv(x.title) + '“'), { jc: 'center', after: 0 }));
+          out.push(wp(wr('Код по НКПД: ' + wv(x.nkpd)), { jc: 'center', after: 120 }));
+          break;
+        case 'h':
+          out.push(wp(wr(x.v.toUpperCase(), { b: true }), { before: 240, after: 80, keep: true }));
+          break;
+        case 'kv':
+          out.push(wp(wr(x.l + ': ', { b: true }) + wr(wv(x.v)), { jc: 'both' }));
+          break;
+        case 'p':
+          out.push(wp(wr(wv(x.v)), { jc: 'both' }));
+          break;
+        case 'list':
+          (x.v.length ? x.v : [WDOTS]).forEach(function (item, n) {
+            out.push(wp(wr((n + 1) + '. ' + item.trim()), { ind: [425, 425], jc: 'both' }));
+          });
+          break;
+        case 'signs':
+          out.push(wp(wr('Изготвил: ' + wv(x.prepared) + '     Подпис: ………………'), { before: 480, after: 160 }));
+          out.push(wp(wr('Утвърдил: ' + wv(x.approver) + '     Подпис: ………………'), { after: 160 }));
+          break;
+        case 'ack':
+          out.push(wp(wr('Запознат/а съм със съдържанието на длъжностната характеристика и получих екземпляр от нея (чл. 127, ал. 1, т. 4 от Кодекса на труда).', { i: true }), { before: 360, after: 160, jc: 'both' }));
+          out.push(wp(wr('Служител: ' + wv(x.employee) + '     Подпис: ………………'), { after: 60 }));
+          out.push(wp(wr('Дата на връчване: ' + (x.date || '………………')), { after: 0 }));
+          break;
+      }
+    });
+    return out.join('');
+  }
+
+  function buildDocx(f) {
+    var zip = new window.JSZip();
+    zip.file('[Content_Types].xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+      '<Default Extension="xml" ContentType="application/xml"/>' +
+      '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+      '<Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>' +
+      '</Types>');
+    zip.file('_rels/.rels',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+      '</Relationships>');
+    zip.file('word/_rels/document.xml.rels',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>' +
+      '</Relationships>');
+    zip.file('word/styles.xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+      '<w:docDefaults><w:rPrDefault><w:rPr><w:rFonts w:ascii="Times New Roman" w:hAnsi="Times New Roman" w:eastAsia="Times New Roman" w:cs="Times New Roman"/>' +
+      '<w:sz w:val="24"/><w:szCs w:val="24"/><w:lang w:val="bg-BG" w:eastAsia="bg-BG" w:bidi="ar-SA"/></w:rPr></w:rPrDefault>' +
+      '<w:pPrDefault><w:pPr><w:spacing w:after="60" w:line="276" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>' +
+      '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/><w:qFormat/></w:style>' +
+      '</w:styles>');
+    zip.file('word/document.xml',
+      '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships">' +
+      '<w:body>' + docxBodyXML(f) +
+      '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1418" w:header="709" w:footer="709" w:gutter="0"/></w:sectPr>' +
+      '</w:body></w:document>');
+    return zip.generateAsync({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  }
+
+  function docxName() {
+    var s = state.student;
+    var who = [s.name, s.cls].filter(filled).join(' ').trim();
+    var base = 'Длъжностна характеристика – ' + V().short + (who ? ' – ' + who : '');
+    return base.replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim() + '.docx';
+  }
+
+  function setDocStatus(t) { $('doc-status').textContent = t; }
+  function updateDownloadUI() {
+    var b = $('btn-docx');
+    var can = !!window.JSZip && typeof URL !== 'undefined' && typeof URL.createObjectURL === 'function';
+    b.disabled = !can;
+    b.title = can ? '' : 'Изтеглянето не е налично в този браузър — използвайте „Копирай текста“ и поставете в Word.';
+  }
+  function saveBlob(blob, name) {
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = name;
+    a.rel = 'noopener';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 1500);
+  }
+
+  /* ---------------- УЧИТЕЛ ---------------- */
+
+  function renderTeacher() {
+    var v = V(), total = 0;
+    RUBRIC.forEach(function (r) { total += r[1]; });
+    var sample = Object.assign({}, v.sample);
+    var html = '<div class="stack">' +
+      '<div><h3>Вариант ' + v.letter + ': ' + esc(v.short) + ' — код по НКПД</h3><p class="prose" style="margin-top:6px">' + esc(v.nkpdNote) + '</p></div>' +
+      '<div><h3>Капаните в писмото</h3><ul class="no-list" style="margin-top:8px">' + v.teacherTraps.map(function (t) { return '<li>' + esc(t) + '</li>'; }).join('') + '</ul></div>' +
+      '<div><h3>Критерии за оценяване</h3><table class="rubric" style="margin-top:8px"><thead><tr><th>Критерий</th><th class="pts">Точки</th></tr></thead><tbody>' +
+      RUBRIC.map(function (r) { return '<tr><td>' + esc(r[0]) + '</td><td class="pts">' + r[1] + '</td></tr>'; }).join('') +
+      '</tbody><tfoot><tr><td>Общо</td><td class="pts">' + total + '</td></tr></tfoot></table>' +
+      '<p class="lbl" style="margin:12px 0 6px">Примерна скала (адаптирайте при нужда)</p><div class="scale">' + SCALE.map(function (s) { return '<span>' + s[0] + ' т. → ' + esc(s[1]) + '</span>'; }).join('') + '</div></div>' +
+      '<div><h3>Въпроси за обсъждане</h3><ol class="rules prose" style="margin-top:8px">' + QUESTIONS.map(function (q) { return '<li>' + esc(q) + '</li>'; }).join('') + '</ol></div>' +
+      '<div><h3>Примерно решение</h3><p class="muted small" style="margin:4px 0 14px">Едно възможно решение. Приемайте и други формулировки, ако съдържанието е вярно и е в правилния раздел.</p>' +
+      '<div class="paper">' + renderDocHTML(sample) + '</div></div>' +
+      '</div>';
+    $('teacher-body').innerHTML = html;
+  }
+
+  /* ---------------- СЪБИТИЯ ---------------- */
+
+  function bind() {
+    // Табове
+    $('tablist').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-tab]');
+      if (b) go(b.getAttribute('data-tab'));
+    });
+    $('tablist').addEventListener('keydown', function (e) {
+      if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+      var ids = TABS.map(function (t) { return t[0]; });
+      var curIdx = ids.indexOf((document.activeElement.getAttribute('data-tab') || ''));
+      if (curIdx < 0) return;
+      var next = ids[(curIdx + (e.key === 'ArrowRight' ? 1 : ids.length - 1)) % ids.length];
+      go(next);
+      $('tab-' + next).focus();
+    });
+    document.addEventListener('click', function (e) {
+      var g = e.target.closest('[data-go]');
+      if (g) go(g.getAttribute('data-go'));
+    });
+    window.addEventListener('hashchange', function () { showTab(location.hash.slice(1), true); });
+
+    // Ученик
+    [['st-name', 'name'], ['st-cls', 'cls'], ['st-num', 'num']].forEach(function (p) {
+      var el = $(p[0]);
+      el.value = state.student[p[1]] || '';
+      el.addEventListener('input', function () { state.student[p[1]] = el.value; scheduleSave(); });
+    });
+
+    // Вариант
+    $('variant-seg').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-variant]');
+      if (!b) return;
+      state.variant = b.getAttribute('data-variant');
+      buildVariantSeg();
+      renderCase();
+      renderForm();
+      $('check-out').innerHTML = '';
+      if (!$('view-dokument').hidden) renderPaper();
+      if (!$('teacher-body').hidden) renderTeacher();
+      scheduleSave();
+    });
+
+    // Шрифт
+    var ft = $('font-toggle');
+    function applyLarge() { document.documentElement.classList.toggle('large', state.large); ft.setAttribute('aria-pressed', String(state.large)); syncTabsHeight(); }
+    applyLarge();
+    ft.addEventListener('click', function () { state.large = !state.large; applyLarge(); scheduleSave(); });
+
+    // Загрявка
+    $('quiz').addEventListener('click', function (e) {
+      var b = e.target.closest('[data-q]');
+      if (!b) return;
+      state.quiz[b.getAttribute('data-q')] = b.getAttribute('data-c');
+      renderQuiz();
+      scheduleSave();
+    });
+    $('quiz-reset').addEventListener('click', function () { state.quiz = {}; renderQuiz(); scheduleSave(); });
+
+    // Бланка — въвеждане
+    var form = $('dh-form');
+    form.addEventListener('submit', function (e) { e.preventDefault(); });
+    form.addEventListener('input', function (e) {
+      var t = e.target, f = cur();
+      if (t.hasAttribute('data-k')) f[t.getAttribute('data-k')] = t.value;
+      else if (t.hasAttribute('data-list')) f[t.getAttribute('data-list')][+t.getAttribute('data-i')] = t.value;
+      else return;
+      autoGrow(t);
+      updateStatus();
+      scheduleSave();
+    });
+    form.addEventListener('click', function (e) {
+      var h = e.target.closest('[data-hint]');
+      if (h) {
+        var p = $(h.getAttribute('data-hint'));
+        p.hidden = !p.hidden;
+        h.setAttribute('aria-expanded', String(!p.hidden));
+        return;
+      }
+      var a = e.target.closest('[data-add]');
+      if (a) {
+        var k = a.getAttribute('data-add');
+        cur()[k].push('');
+        rerenderList(k, cur()[k].length - 1);
+        updateStatus();
+        scheduleSave();
+        return;
+      }
+      var r = e.target.closest('[data-rm]');
+      if (r) {
+        var key = r.getAttribute('data-rm'), i = +r.getAttribute('data-i');
+        cur()[key].splice(i, 1);
+        rerenderList(key, cur()[key].length ? Math.min(i, cur()[key].length - 1) : null);
+        updateStatus();
+        scheduleSave();
+      }
+    });
+    $('all-hints').checked = state.hints;
+    $('all-hints').addEventListener('change', function () {
+      state.hints = this.checked;
+      Array.prototype.forEach.call(form.querySelectorAll('.hint'), function (p) { p.hidden = !state.hints; });
+      Array.prototype.forEach.call(form.querySelectorAll('[data-hint]'), function (b) { b.setAttribute('aria-expanded', String(state.hints)); });
+      scheduleSave();
+    });
+
+    // Проверка
+    $('btn-check').addEventListener('click', runCheck);
+    $('btn-check-2').addEventListener('click', runCheck);
+    $('check-out').addEventListener('click', function (e) {
+      if (e.target.id === 'check-close') { $('check-out').innerHTML = ''; return; }
+      if (e.target.id === 'show-missing') { $('missing-list').hidden = false; e.target.remove(); return; }
+      var j = e.target.closest('[data-jump]');
+      if (j) {
+        var k = j.getAttribute('data-jump');
+        var el = $('f-' + k) || $('f-' + k + '-0');
+        if (el) {
+          el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          setTimeout(function () { el.focus({ preventScroll: true }); }, 300);
+        }
+      }
+    });
+
+    // Изчистване (с потвърждение в страницата)
+    $('clear-wrap').addEventListener('click', function (e) {
+      if (e.target.id === 'btn-clear') {
+        $('clear-wrap').innerHTML = '<span class="confirm-row">Да изтрия ли всичко в бланката за вариант ' + V().letter + '? <button class="btn danger" type="button" id="clear-yes">Да, изтрий</button><button class="btn" type="button" id="clear-no">Отказ</button></span>';
+        $('clear-no').focus();
+      } else if (e.target.id === 'clear-yes') {
+        state.forms[state.variant] = blankForm();
+        renderForm();
+        $('check-out').innerHTML = '';
+        scheduleSave();
+        $('clear-wrap').innerHTML = '<button class="btn ghost danger" type="button" id="btn-clear">Изчисти бланката</button>';
+      } else if (e.target.id === 'clear-no') {
+        $('clear-wrap').innerHTML = '<button class="btn ghost danger" type="button" id="btn-clear">Изчисти бланката</button>';
+      }
+    });
+
+    // Документ
+    $('btn-docx').addEventListener('click', function () {
+      if (!window.JSZip) { setDocStatus('Изтеглянето не е налично тук. Използвайте „Копирай текста“.'); return; }
+      setDocStatus('Подготвям файла…');
+      buildDocx(cur()).then(function (blob) {
+        saveBlob(blob, docxName());
+        setDocStatus('Файлът е изтеглен.');
+      }, function () {
+        setDocStatus('Файлът не може да се създаде. Използвайте „Копирай текста“.');
+      });
+    });
+    $('btn-copy').addEventListener('click', function () {
+      var text = plainText(cur());
+      try {
+        navigator.clipboard.writeText(text).then(function () { setDocStatus('Текстът е копиран — поставете го в Word или в имейл.'); }, function () { setDocStatus('Копирането не е разрешено в този браузър.'); });
+      } catch (e) { setDocStatus('Копирането не е разрешено в този браузър.'); }
+    });
+
+    // Учител
+    $('teacher-open').addEventListener('click', function () {
+      $('teacher').hidden = false;
+      $('teacher').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if ($('teacher-body').hidden) setTimeout(function () { $('t-pin').focus({ preventScroll: true }); }, 300);
+    });
+    $('teacher-close').addEventListener('click', function () {
+      $('teacher').hidden = true;
+      $('teacher-body').hidden = true;
+      $('teacher-gate').hidden = false;
+      $('t-pin').value = '';
+      $('t-msg').textContent = '';
+    });
+    function tryPin() {
+      if ($('t-pin').value.trim() === TEACHER_PIN) {
+        $('teacher-gate').hidden = true;
+        $('teacher-body').hidden = false;
+        renderTeacher();
+      } else {
+        $('t-msg').textContent = 'Грешен код.';
+      }
+    }
+    $('t-go').addEventListener('click', tryPin);
+    $('t-pin').addEventListener('keydown', function (e) { if (e.key === 'Enter') tryPin(); });
+  }
+
+  function syncTabsHeight() {
+    var t = document.querySelector('.tabs');
+    if (t) document.documentElement.style.setProperty('--tabs-h', t.offsetHeight + 'px');
+  }
+  window.addEventListener('resize', syncTabsHeight);
+
+  /* ---------------- СТАРТ ---------------- */
+
+  buildTabs();
+  buildVariantSeg();
+  renderCase();
+  renderQuiz();
+  renderForm();
+  bind();
+  showTab(location.hash.slice(1) || 'teoria', false);
+  if (window.innerWidth <= 960) $('aside-details').open = false;
+  syncTabsHeight();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(syncTabsHeight);
+  updateDownloadUI();
+})();
+</script>
+</body>
+</html>
